@@ -5,18 +5,24 @@
              x:Class="RedFrogs.MainPage">
 
     <ContentPage.Content>
-	<Label Text="Welcome to Red Frogs!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
-    <ListView x:Name="EventsList" >
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="Drake 2017" TextColor="Red"/>
-                <TextCell Text="Kendrick Lamar 2017" TextColor="Blue"/>
-                <TextCell Text="Bruno Mars 2018" TextColor="Orange"/>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+        <StackLayout>
+        <ListView x:Name="EventsList" Header="Events!" SeparatorVisibility="Default" SeparatorColor="Beige">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="45">
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal" Padding="40,15,0,0">
+                                <Label Text="Drake" TextColor="Red"/>
+                                <Label Text="Kendrick Lamar 2017" TextColor="Blue"/>
+                                <Label Text="Bruno Mars 2018" TextColor="Orange"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+           
+        
+        </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

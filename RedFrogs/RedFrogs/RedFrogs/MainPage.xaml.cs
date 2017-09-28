@@ -12,6 +12,18 @@ namespace RedFrogs
         public MainPage()
         {
             InitializeComponent();
+
+            List<String> list = new List<string>();
+
+            for(int i = 0;  i < 10; i++)
+            {
+                list.Add("Drake" + i);
+            }
+
+            EventsList.ItemsSource = list;
+            
         }
+
+        
     }
 }
