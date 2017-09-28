@@ -26,6 +26,7 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -156,7 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RedFrogs\RedFrogs.csproj">
-      <Project>{7f28a8dc-e548-410c-859c-81f62ec3b991}</Project>
+      <Project>{FD79D681-51B9-4F42-A105-49CD90D19BFF}</Project>
       <Name>RedFrogs</Name>
     </ProjectReference>
   </ItemGroup>
