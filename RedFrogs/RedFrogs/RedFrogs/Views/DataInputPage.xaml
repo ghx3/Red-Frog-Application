@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedFrogs.Views.DataInputPage">
+ <ContentPage.Content>
+    <ScrollView>
+      <StackLayout Spacing="0" Padding="0" BackgroundColor="Maroon">
+        <Button BorderRadius="30" HeightRequest="60" WidthRequest="60"
+          BackgroundColor="Red" HorizontalOptions="Center" VerticalOptions="Start" />
+        
+        <StackLayout HeightRequest="100" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="20" BackgroundColor="Maroon">
+          <Label Text="User Name" FontSize="28" HorizontalOptions="Center"
+            VerticalOptions="Center" FontAttributes="Bold" />
+          <Entry Text=""
+            BackgroundColor="Maroon" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+ 
+        <StackLayout Orientation="Horizontal">
+          <Label FontSize="10" Text="Age:" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100" />
+          <Entry HorizontalOptions="FillAndExpand" Text="" TextColor="White" BackgroundColor="White" />
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+          <Label FontSize="10" Text="Symptoms:" TextColor="White"
+          HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100" />
+          <Editor HorizontalOptions="FillAndExpand" Text="" TextColor="White" BackgroundColor="White" />
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+          <Label FontSize="10" Text="Action taken:" TextColor="White"
+          HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"/>
+          <Entry HorizontalOptions="FillAndExpand" Text="" TextColor="White" BackgroundColor="White" />
+        </StackLayout>
+         <StackLayout Orientation="Horizontal">
+          <Label FontSize="10" Text="Time in Care:" TextColor="White"
+          HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"/>
+          <Entry HorizontalOptions="FillAndExpand" Text="" TextColor="White" BackgroundColor="White" />
+        </StackLayout>
+        
+   <StackLayout HeightRequest="100" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="20" BackgroundColor="Maroon">
+          <Label Text="Volunteer Name" FontSize="28" HorizontalOptions="Center"
+            VerticalOptions="Center" FontAttributes="Bold" />
+          <Entry Text=""
+            BackgroundColor="Maroon" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+        
+      <StackLayout Spacing="10" x:Name="layout">
+      <Button Text="Enter" VerticalOptions="Start"
+        HorizontalOptions="FillAndExpand" />
+       </StackLayout>
+      </StackLayout>
+    </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
