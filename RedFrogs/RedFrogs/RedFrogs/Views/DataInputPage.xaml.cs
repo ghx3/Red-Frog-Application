@@ -14,5 +14,10 @@ namespace RedFrogs.Views
         {
             InitializeComponent();
         }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

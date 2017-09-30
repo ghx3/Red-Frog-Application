@@ -25,6 +25,8 @@ namespace RedFrogs
             eventsName.Add(new Events { DisplayEvent = "Rihanna 2018" });
             eventsName.Add(new Events { DisplayEvent = "Demi Lovato 2018" });
 
+            
+
 
         }
 
