@@ -11,7 +11,7 @@ namespace RedFrogs.Droid
         public string GetLocalFilePath(string filename)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            return Path.combine(path, filename);
+            return Path.Combine(path, filename);
         }
     }
 }

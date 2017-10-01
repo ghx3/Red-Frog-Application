@@ -17,7 +17,7 @@ namespace RedFrogs.Data
 
         }
 
-        public Task<List<Events>> GetEventsAsync()
+     /*   public Task<List<Events>> GetEventsAsync()
         {
             return database.Table<Events>().ToListAsync();
         }
@@ -35,6 +35,6 @@ namespace RedFrogs.Data
         public Task<FeedBack> GetFeedbackAsync(int id)
         {
             return database.Table<FeedBack>().Where(i => i.ID == id).FirstOrDefaultAsync();
-        }
+        }*/ 
     }
 }
