@@ -13,7 +13,9 @@ namespace RedFrogs
         {
             InitializeComponent();
 
-            MainPage = new RedFrogs.MainPage();
+
+
+            MainPage = new RedFrogs.Views.EventsPage();
         }
 
         protected override void OnStart()

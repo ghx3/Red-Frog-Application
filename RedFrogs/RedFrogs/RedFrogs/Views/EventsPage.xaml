@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:RedFrogs"
-             x:Class="RedFrogs.MainPage">
+             x:Class="RedFrogs.Views.EventsPage">
 
     <ContentPage.Content>
         <StackLayout>
-        <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black">
+            <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black">
                 <ListView.Header>
                     <StackLayout Orientation="Horizontal" Padding="40,15,0,0">
                         <Label Text="Events Page" TextColor="Red" BackgroundColor="CornflowerBlue" HorizontalTextAlignment="Center" FontSize="Large"/>
                     </StackLayout>
                 </ListView.Header>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell Height="45">
-                        <ViewCell.View>
-                            <StackLayout Orientation="Horizontal" Padding="40,15,0,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="45">
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Padding="40,15,0,0">
                                     <Label Text="{Binding DisplayEvent}"/>
                                 </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-           
-        
-        </ListView>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
+
 </ContentPage>
