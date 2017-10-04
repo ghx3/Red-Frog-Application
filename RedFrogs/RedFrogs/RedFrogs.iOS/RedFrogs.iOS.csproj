@@ -164,6 +164,12 @@
       <Name>RedFrogs</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\768_1280.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\960_1440.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
