@@ -5,7 +5,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black">
+            <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black" ItemSelected="EventSelected">
                 <ListView.Header>
                     <StackLayout Orientation="Horizontal" Padding="40,15,0,0">
                         <Label Text="Events Page" TextColor="Red" BackgroundColor="CornflowerBlue" HorizontalTextAlignment="Center" FontSize="Large"/>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RedFrogs.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,7 @@ namespace RedFrogs
         {
             InitializeComponent();
 
-
-
-            MainPage = new RedFrogs.Views.EventsPage();
+            MainPage = new NavigationPage(new EventsPage());
         }
 
         protected override void OnStart()

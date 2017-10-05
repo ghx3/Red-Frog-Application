@@ -27,5 +27,11 @@ namespace RedFrogs.Views
             eventsName.Add(new Events { DisplayEvent = "Rihanna 2018" });
             eventsName.Add(new Events { DisplayEvent = "Demi Lovato 2018" });
         }
+
+        private async void EventSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Events sel = (Events) e.SelectedItem;
+            await Navigation.PushAsync(new DashboardPage(sel.DisplayEvent));
+        }
     }
 }
