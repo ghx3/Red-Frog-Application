@@ -8,8 +8,8 @@ namespace RedFrogs.Models
 {
     public class Cases
     {
-        public string PersonName;
-        public string SymptomName;
-        public string Color;
+        public string PersonName { get; set; }
+        public string SymptomName { get; set; }
+        public string Colour { get; set; }
     }
 }

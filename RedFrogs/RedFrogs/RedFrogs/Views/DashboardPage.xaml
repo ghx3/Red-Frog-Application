@@ -10,8 +10,10 @@
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
-          <StackLayout Orientation="Horizontal">
-            <Label Text="{Binding Name}" FontSize="Medium" />
+          <StackLayout Orientation="Horizontal" Margin="10, 5, 10, 0">
+            <Label Text="{Binding PersonName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+            <Label Text="{Binding SymptomName}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Colour}" FontSize="Medium" HorizontalOptions="EndAndExpand" />
           </StackLayout>
         </ViewCell>
       </DataTemplate>

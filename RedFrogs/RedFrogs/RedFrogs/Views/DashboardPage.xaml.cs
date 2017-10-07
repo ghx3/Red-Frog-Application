@@ -1,6 +1,7 @@
 ﻿using RedFrogs.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,23 +16,19 @@ namespace RedFrogs.Views
         {
             InitializeComponent();
 
-            var fList = App.access.GetAllFeedBack();
-            /*
+            var fList = App.access.GetAllFeedBack();            
             var sList = App.access.GetAllSymptoms();
 
-            List<Cases> cases = new List<Cases>();
+            ObservableCollection<Cases> cases = new ObservableCollection<Cases>();
             foreach(FeedBack f in fList)
-            {
-                Cases c = new Cases();
-                Symptoms info = sList.Where(s => s.Id == f.Symptom).FirstOrDefault();
-                c.PersonName = f.Name;
-                c.SymptomName = info.SympName;
-                c.Color = info.Colour;
-
-                cases.Add(c);
+            {                
+                Symptoms info = App.access.getSymptom(f.Symptom);
+                
+                cases.Add(new Cases { PersonName = f.Name, SymptomName = info.SympName, Colour = info.Colour});
             }
-            */
-            caseList.ItemsSource = fList;
+
+            DisplayAlert("test", cases.Count.ToString(), "ok");
+            caseList.ItemsSource = cases;
             
             add.Clicked += addClicked;
         }
