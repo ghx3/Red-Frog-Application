@@ -9,13 +9,13 @@
         
         <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
                      BackgroundColor="White">
-          <Entry Placeholder="Name" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
+          <Entry x:Name="nameFld" Placeholder="Name" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
                  Margin="5,0,0,0" TextColor="Black"/>
         </StackLayout>
 
         <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
                      BackgroundColor="White">
-          <Picker x:Name="gender" Title="Gender...">
+          <Picker x:Name="gender" Title="Gender..." SelectedIndexChanged="GenderPickerChanged">
             <Picker.ItemsSource>
               <x:Array Type="{x:Type x:String}">
                 <x:String>Male</x:String>
@@ -27,33 +27,32 @@
  
         <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
                      BackgroundColor="White">
-          <Entry Placeholder="Age" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
+          <Entry x:Name="ageFld" Placeholder="Age" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
                  Margin="5,0,0,0" TextColor="Black"/>
         </StackLayout>
         
-        <StackLayout HeightRequest="150" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+        <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
                      BackgroundColor="White">
-          <Entry Placeholder="Symptoms" HorizontalOptions="FillAndExpand" VerticalOptions="Start" 
-                 Margin="5,0,0,0" TextColor="Black"/>
+          <Picker x:Name="sympPicker" Title="Symptoms..."  SelectedIndexChanged="SymptomPickerChanged"/>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal" Margin="10,0,0,0" >
-          <Label Text="Seen by Medics:" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"></Label>
-          <Switch IsToggled="False"></Switch>
+          <Label Text="Seen by Medics:" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"></Label>
+          <Switch x:Name="medicSwitch" IsToggled="False"></Switch>
         
-          <Label Text="Incident Report:" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"></Label>
-           <Switch IsToggled="False"></Switch>
+          <Label Text="Incident Report:" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"></Label>
+           <Switch x:Name="reportSwitch" IsToggled="False"></Switch>
         </StackLayout>        
         
         <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
                      BackgroundColor="White">
-          <Entry Placeholder="Action Taken" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
+          <Entry x:Name="actionFld" HeightRequest="100" Placeholder="Action Taken" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
                  Margin="5,0,0,0" TextColor="Black"/>
         </StackLayout>    
          
-      <StackLayout x:Name="layout">
-      <Button Text="Add" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#f2795a" 
-              Margin="10,20,10,20"/>
+      <StackLayout>
+      <Button x:Name="addBtn" Text="Add" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#f2795a" 
+              Margin="10,20,10,20" />
        </StackLayout>
       
       </StackLayout>

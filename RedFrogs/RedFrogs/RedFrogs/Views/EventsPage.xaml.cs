@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RedFrogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -21,17 +22,17 @@ namespace RedFrogs.Views
 
             EventsList.ItemsSource = eventsName;
 
-            eventsName.Add(new Events { DisplayEvent = "Drake 2017" });
-            eventsName.Add(new Events { DisplayEvent = "Future 2017" });
-            eventsName.Add(new Events { DisplayEvent = "Post Malone 2018" });
-            eventsName.Add(new Events { DisplayEvent = "Rihanna 2018" });
-            eventsName.Add(new Events { DisplayEvent = "Demi Lovato 2018" });
+            eventsName.Add(new Events { EventName = "Drake 2017" });
+            eventsName.Add(new Events { EventName = "Future 2017" });
+            eventsName.Add(new Events { EventName = "Post Malone 2018" });
+            eventsName.Add(new Events { EventName = "Rihanna 2018" });
+            eventsName.Add(new Events { EventName = "Demi Lovato 2018" });
         }
 
         private async void EventSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Events sel = (Events) e.SelectedItem;
-            await Navigation.PushAsync(new DashboardPage(sel.DisplayEvent));
+            await Navigation.PushAsync(new DashboardPage(sel.EventName));
         }
     }
 }

@@ -2,23 +2,32 @@ using RedFrogs.iOS;
 using System;
 using System.IO;
 using Xamarin.Forms;
+using SQLite.Net;
 
 [assembly: Dependency(typeof(FileHelper))]
 namespace RedFrogs.iOS
 {
     public class FileHelper : IFileHelper
     {
-        public string GetLocalFilePath(string filename)
+        public SQLiteConnection GetConnection()
         {
-            string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            string libFolder = Path.Combine(docFolder, "..", "Library", "Databases");
+            var dbName = "redfrogs.db";
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); // Documents folder
+            string libraryPath = Path.Combine(documentsPath, "..", "Library"); // Library folder
+            var path = Path.Combine(libraryPath, dbName);
 
-            if (!Directory.Exists(libFolder))
+            // copy in prepoulated db
+            if (!File.Exists(path))
             {
-                Directory.CreateDirectory(libFolder);
+                File.Copy(dbName, path);
             }
 
-            return Path.Combine(libFolder, filename);
+            var plat = new SQLite.Net.Platform.XamarinIOS.SQLitePlatformIOS();
+            var conn = new SQLiteConnection(plat, path);
+
+            return conn;
+
         }
+
     }
 }

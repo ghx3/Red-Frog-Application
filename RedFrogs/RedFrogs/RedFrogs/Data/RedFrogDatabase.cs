@@ -1,40 +1,61 @@
 ﻿using RedFrogs.Models;
-using SQLite;
+using SQLite.Net;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace RedFrogs.Data
 {
     public class RedFrogDatabase
     {
-        readonly SQLiteAsyncConnection database;
+        SQLiteConnection conn;
 
-        public RedFrogDatabase(string dbPath)
+        public RedFrogDatabase()
         {
-            database = new SQLiteAsyncConnection(dbPath);
-            database.CreateTableAsync<Events>().Wait();
-            database.CreateTableAsync<FeedBack>().Wait();
+            conn = DependencyService.Get<IFileHelper>().GetConnection();
+            conn.CreateTable<Events>();
 
         }
 
-     /*   public Task<List<Events>> GetEventsAsync()
+        public List<Events> GetAllEvents()
         {
-            return database.Table<Events>().ToListAsync();
+            return conn.Query<Events>("Select * FROM [Events]");
         }
 
-        public Task<List<FeedBack>> GetFeedbacksAsync()
+        public List<FeedBack> GetAllFeedBack()
         {
-            return database.Table<FeedBack>().ToListAsync();
+            return conn.Query<FeedBack>("Select * FROM [FeedBack]");
         }
 
-        public Task<Events> GetEventAsync(int id)
+        public List<Symptoms> GetAllSymptoms()
         {
-            return database.Table<Events>().Where(i => i.ID == id).FirstOrDefaultAsync();
+            return conn.Query<Symptoms>("Select * FROM [Symptoms]");
         }
 
-        public Task<FeedBack> GetFeedbackAsync(int id)
+        public Events GetEvent(int id)
         {
-            return database.Table<FeedBack>().Where(i => i.ID == id).FirstOrDefaultAsync();
-        }*/ 
+            return conn.Table<Events>().Where(i => i.ID == id).FirstOrDefault();
+        }
+
+        public FeedBack GetFeedback(int id)
+        {
+            return conn.Table<FeedBack>().Where(i => i.ID == id).FirstOrDefault();
+        }
+
+        public Symptoms getSymptom(int id)
+        {
+            return conn.Table<Symptoms>().Where(i => i.Id == id).FirstOrDefault();
+        }
+
+        public int SaveFeedback(FeedBack item)
+        {
+            if (item.ID != 0)
+            {
+                return conn.Update(item);
+            }
+            else
+            {
+                return conn.Insert(item);
+            }
+        }
     }
 }

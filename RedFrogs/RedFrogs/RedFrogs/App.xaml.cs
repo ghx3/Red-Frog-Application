@@ -1,4 +1,5 @@
-﻿using RedFrogs.Views;
+﻿using RedFrogs.Data;
+using RedFrogs.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,25 @@ namespace RedFrogs
 {
     public partial class App : Application
     {
+
+        static RedFrogDatabase db;
         public App()
         {
             InitializeComponent();
 
             MainPage = new NavigationPage(new EventsPage());
+        }
+
+        public static RedFrogDatabase access
+        {
+            get {
+                if(db == null)
+                {
+                    db = new RedFrogDatabase();
+                }
+
+                return db;
+            }
         }
 
         protected override void OnStart()

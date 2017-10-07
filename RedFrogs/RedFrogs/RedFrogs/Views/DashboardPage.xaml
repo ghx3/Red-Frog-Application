@@ -5,5 +5,16 @@
   <ContentPage.ToolbarItems>
     <ToolbarItem x:Name="add" Text="+" />
   </ContentPage.ToolbarItems>
-  <Label x:Name="eventN" VerticalOptions="Center" HorizontalOptions="Center" />
+
+  <ListView x:Name="caseList" HasUnevenRows="False" SeparatorColor="Black">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Name}" FontSize="Medium" />
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>    
+  </ListView>  
 </ContentPage>

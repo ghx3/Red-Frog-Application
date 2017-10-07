@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RedFrogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,24 @@ namespace RedFrogs.Views
         {
             InitializeComponent();
 
-            eventN.Text = eventName;
+            var fList = App.access.GetAllFeedBack();
+            /*
+            var sList = App.access.GetAllSymptoms();
+
+            List<Cases> cases = new List<Cases>();
+            foreach(FeedBack f in fList)
+            {
+                Cases c = new Cases();
+                Symptoms info = sList.Where(s => s.Id == f.Symptom).FirstOrDefault();
+                c.PersonName = f.Name;
+                c.SymptomName = info.SympName;
+                c.Color = info.Colour;
+
+                cases.Add(c);
+            }
+            */
+            caseList.ItemsSource = fList;
+            
             add.Clicked += addClicked;
         }
 

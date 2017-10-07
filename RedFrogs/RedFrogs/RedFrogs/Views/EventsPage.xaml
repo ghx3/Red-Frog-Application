@@ -16,7 +16,7 @@
                         <ViewCell Height="45">
                             <ViewCell.View>
                                 <StackLayout Orientation="Horizontal" Padding="40,15,0,0">
-                                    <Label Text="{Binding DisplayEvent}"/>
+                                    <Label Text="{Binding EventName}"/>
                                 </StackLayout>
                             </ViewCell.View>
                         </ViewCell>
