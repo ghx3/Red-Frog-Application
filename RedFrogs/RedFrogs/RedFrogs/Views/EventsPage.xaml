@@ -7,8 +7,8 @@
         <StackLayout>
             <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black" ItemSelected="EventSelected">
                 <ListView.Header>
-                    <StackLayout Orientation="Horizontal" Padding="40,15,0,0">
-                        <Label Text="Events Page" TextColor="Red" BackgroundColor="CornflowerBlue" HorizontalTextAlignment="Center" FontSize="Large"/>
+                        <StackLayout Orientation="Horizontal" Padding="10,05,05,10" BackgroundColor="Yellow">
+                        <Label Text="Events Page" HorizontalTextAlignment="Center" FontSize="Large"/>
                     </StackLayout>
                 </ListView.Header>
                 <ListView.ItemTemplate>

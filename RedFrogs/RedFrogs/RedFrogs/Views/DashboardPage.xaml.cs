@@ -16,6 +16,8 @@ namespace RedFrogs.Views
         {
             InitializeComponent();
 
+            Title = eventName;
+
             var fList = App.access.GetAllFeedBack();            
             var sList = App.access.GetAllSymptoms();
 
