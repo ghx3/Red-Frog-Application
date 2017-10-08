@@ -9,17 +9,29 @@ namespace RedFrogs.Views
     public partial class DataInputPage : ContentPage
     {
         FeedBack saveFB;
+        private object selectedItem;
+
         public DataInputPage()
         {
             InitializeComponent();
 
             saveFB = new FeedBack();
-            addBtn.Clicked += addClicked;
-            populateSymptomPicker();
+            addBtn.Clicked += AddClicked;
+            PopulateSymptomPicker();
             
         }
 
-        void populateSymptomPicker()
+        public DataInputPage(object selectedItem)
+        {
+            this.selectedItem = selectedItem;
+            InitializeComponent();
+
+            saveFB = new FeedBack();
+            addBtn.Clicked += AddClicked;
+            PopulateSymptomPicker();
+        }
+
+        void PopulateSymptomPicker()
         {
             var symptoms = App.access.GetAllSymptoms();
             List<string> sympNames = new List<string>();
@@ -53,7 +65,7 @@ namespace RedFrogs.Views
             }
         }
 
-        public async void addClicked(object sender, EventArgs e)
+        public async void AddClicked(object sender, EventArgs e)
         {
             saveFB.Name = nameFld.Text;
             saveFB.Age = int.Parse(ageFld.Text);

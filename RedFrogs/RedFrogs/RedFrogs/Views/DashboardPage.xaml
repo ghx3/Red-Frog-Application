@@ -6,7 +6,7 @@
     <ToolbarItem x:Name="add" Text="+" />
   </ContentPage.ToolbarItems>
 
-  <ListView x:Name="caseList" HasUnevenRows="False" SeparatorColor="Black">
+  <ListView x:Name="caseList" HasUnevenRows="False" SeparatorColor="Black" ItemSelected="Client_ItemSelected">
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>

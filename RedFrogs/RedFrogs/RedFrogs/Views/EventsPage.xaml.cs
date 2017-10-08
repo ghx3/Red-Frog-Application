@@ -17,6 +17,7 @@ namespace RedFrogs.Views
         public EventsPage()
         {
             InitializeComponent();
+            Title = "Events Page";
 
             ObservableCollection<Events> eventsName = new ObservableCollection<Events>();
 

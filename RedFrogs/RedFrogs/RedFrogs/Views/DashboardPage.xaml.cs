@@ -29,15 +29,22 @@ namespace RedFrogs.Views
                 cases.Add(new Cases { PersonName = f.Name, SymptomName = info.SympName, Colour = info.Colour});
             }
 
+            
+            
             DisplayAlert("test", cases.Count.ToString(), "ok");
             caseList.ItemsSource = cases;
             
-            add.Clicked += addClicked;
+            add.Clicked += AddClicked;
         }
 
-        private async void addClicked(object sender, EventArgs e)
+        private async void AddClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new DataInputPage());
+        }
+
+        private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            await Navigation.PushAsync(new DataInputPage(e.SelectedItem));
         }
     }
 }
