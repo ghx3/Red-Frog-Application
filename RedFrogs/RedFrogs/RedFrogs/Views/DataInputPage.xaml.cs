@@ -10,11 +10,13 @@ namespace RedFrogs.Views
     {
         FeedBack saveFB;
         private object selectedItem;
+        string nameOfEvent = null;
 
-        public DataInputPage()
+        public DataInputPage(string eventName)
         {
             InitializeComponent();
-
+            nameOfEvent = eventName;
+            label.Text = eventName;
             saveFB = new FeedBack();
             addBtn.Clicked += AddClicked;
             PopulateSymptomPicker();
@@ -67,6 +69,7 @@ namespace RedFrogs.Views
 
         public async void AddClicked(object sender, EventArgs e)
         {
+            saveFB.EventName = nameOfEvent;
             saveFB.Name = nameFld.Text;
             saveFB.Age = int.Parse(ageFld.Text);
             saveFB.SeenByMedic = HelperClass.ConvertToInt(medicSwitch.IsToggled);
@@ -74,8 +77,9 @@ namespace RedFrogs.Views
             saveFB.ActionTaken = actionFld.Text;
 
             App.access.SaveFeedback(saveFB);
-
+            MessagingCenter.Send<DataInputPage>(this, "SaveValue");
             await Navigation.PopAsync();
-        }        
+        }
+        
     }
 }
