@@ -18,6 +18,8 @@ namespace RedFrogs
             InitializeComponent();
 
             MainPage = new NavigationPage(new EventsPage());
+            MainPage.SetValue(NavigationPage.BarBackgroundColorProperty, Color.FromHex("#bf3336"));
+            MainPage.SetValue(NavigationPage.BarTextColorProperty, Color.White);
         }
 
         public static RedFrogDatabase access

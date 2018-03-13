@@ -16,7 +16,6 @@ namespace RedFrogs.Views
         {
             InitializeComponent();
             nameOfEvent = eventName;
-            label.Text = eventName;
             saveFB = new FeedBack();
             addBtn.Clicked += AddClicked;
             PopulateSymptomPicker();

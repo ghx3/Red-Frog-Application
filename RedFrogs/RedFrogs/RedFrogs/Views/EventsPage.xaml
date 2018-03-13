@@ -10,7 +10,7 @@
                     <DataTemplate>
                         <ViewCell Height="45">
                             <ViewCell.View>
-                                <StackLayout Orientation="Horizontal" Padding="40,15,0,0">
+                                <StackLayout Orientation="Horizontal" Padding="20,15,0,0">
                                     <Label Text="{Binding EventName}" FontSize="Medium"/>
                                 </StackLayout>
                             </ViewCell.View>

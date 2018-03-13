@@ -7,13 +7,7 @@
         <ScrollView>
             <StackLayout Orientation="Vertical">
 
-                <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
-                     BackgroundColor="White">
-                    <Label x:Name="label" Text="Label goes here" HorizontalOptions="FillAndExpand" Margin="10,20,10,0" VerticalOptions="CenterAndExpand" 
-                  TextColor="Black"/>
-                </StackLayout>
-
-                <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+              <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
                      BackgroundColor="White">
                     <Entry x:Name="nameFld" Placeholder="Name" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
                  Margin="5,0,0,0" TextColor="Black"/>
@@ -57,8 +51,8 @@
                 </StackLayout>
 
                 <StackLayout>
-                    <Button x:Name="addBtn" Text="Add" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#f2795a" 
-              Margin="10,20,10,20" />
+                    <Button x:Name="addBtn" Text="Add" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#bf3336" 
+              Margin="10,20,10,20" TextColor="White" />
                 </StackLayout>
 
             </StackLayout>

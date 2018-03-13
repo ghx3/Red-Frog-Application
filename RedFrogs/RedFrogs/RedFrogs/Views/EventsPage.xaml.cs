@@ -28,15 +28,12 @@ namespace RedFrogs.Views
             eventsName.Add(new Events { EventName = "Post Malone 2018" });
             eventsName.Add(new Events { EventName = "Rihanna 2018" });
             eventsName.Add(new Events { EventName = "Demi Lovato 2018" });
-
-
-
         }
 
         private async void EventSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Events sel = (Events) e.SelectedItem;
-            await Navigation.PushAsync(new DashboardPage(sel.EventName));
+            await Navigation.PushAsync(new DashboardPage(sel));
         }
     }
 }

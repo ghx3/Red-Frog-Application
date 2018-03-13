@@ -7,5 +7,6 @@ namespace RedFrogs.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string EventName { get; set; }
+        public int numInteractions { get; set; }
     }
 }

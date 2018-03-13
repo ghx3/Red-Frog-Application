@@ -6,17 +6,30 @@
     <ToolbarItem x:Name="add" Text="+" />
   </ContentPage.ToolbarItems>
 
-  <ListView x:Name="caseList" HasUnevenRows="False" SeparatorColor="Black" ItemSelected="Client_ItemSelected">
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout Orientation="Horizontal" Margin="10, 5, 10, 0">
-            <Label Text="{Binding PersonName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-            <Label Text="{Binding SymptomName}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Colour}" FontSize="Medium" HorizontalOptions="EndAndExpand" />
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>    
-  </ListView>  
+  <StackLayout VerticalOptions="StartAndExpand">
+    <ListView x:Name="caseList" HasUnevenRows="False" SeparatorColor="Black" ItemSelected="Client_ItemSelected">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Orientation="Horizontal" Margin="10, 5, 10, 0">
+              <Label Text="{Binding PersonName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+              <Label Text="{Binding SymptomName}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+              <Label Text="{Binding Colour}" FontSize="Medium" HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>    
+    </ListView>
+  </StackLayout>
+  
+   <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="#bf3336">
+     <Button x:Name="minusBtn" Text="-" FontSize="20" 
+             VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+     <Label Text="Interactions:" TextColor="White" FontSize="20" 
+            VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+     <Label x:Name="intCount" TextColor="White" FontSize="20"
+            VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+     <Button x:Name="plusBtn" Text="+" FontSize="20" 
+             VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+   </StackLayout>
 </ContentPage>

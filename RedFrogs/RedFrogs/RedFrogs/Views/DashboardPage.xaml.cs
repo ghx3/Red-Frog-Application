@@ -1,10 +1,6 @@
 ﻿using RedFrogs.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -13,19 +9,23 @@ namespace RedFrogs.Views
     public partial class DashboardPage : ContentPage
     {
         string nameOfEvent = null;
-        public DashboardPage(string eventName)
+        Events currEvent;
+
+        public DashboardPage(Events selEvent)
         {
             InitializeComponent();
 
-            Title = eventName;
-            nameOfEvent = eventName;
+            currEvent = selEvent;
+
+            Title = currEvent.EventName;
+            nameOfEvent = currEvent.EventName;
             var fList = App.access.GetAllFeedBack();            
             var sList = App.access.GetAllSymptoms();
 
             ObservableCollection<Cases> cases = new ObservableCollection<Cases>();
             foreach(FeedBack f in fList)
             { 
-                if(f.EventName == eventName)
+                if(f.EventName == currEvent.EventName)
                 {
                     Symptoms info = App.access.getSymptom(f.Symptom);
 
@@ -44,7 +44,7 @@ namespace RedFrogs.Views
                 ObservableCollection<Cases> cases1 = new ObservableCollection<Cases>();
                 foreach (FeedBack f in fList1)
                 {
-                    if (f.EventName == eventName)
+                    if (f.EventName == currEvent.EventName)
                     {
                         Symptoms info = App.access.getSymptom(f.Symptom);
 
@@ -53,7 +53,6 @@ namespace RedFrogs.Views
 
                 }
 
-
                 caseList.ItemsSource = cases1;
 
             });
@@ -61,6 +60,8 @@ namespace RedFrogs.Views
             caseList.ItemsSource = cases;
             
             add.Clicked += AddClicked;
+            plusBtn.Clicked += plus;
+            minusBtn.Clicked += minus;
         }
 
         private async void AddClicked(object sender, EventArgs e)
@@ -71,6 +72,18 @@ namespace RedFrogs.Views
         private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             await Navigation.PushAsync(new DataInputPage(e.SelectedItem));
+        }
+
+        public void plus(object sender, EventArgs e)
+        {
+            currEvent.numInteractions += 1;
+            intCount.Text = currEvent.numInteractions.ToString();
+        }
+
+        public void minus(object sender, EventArgs e)
+        {
+            currEvent.numInteractions -= 1;
+            intCount.Text = currEvent.numInteractions.ToString();
         }
     }
 }
