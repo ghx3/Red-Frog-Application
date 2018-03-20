@@ -17,7 +17,7 @@ namespace RedFrogs
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new EventsPage());
+            MainPage = new NavigationPage(new FeedbackPage());
             MainPage.SetValue(NavigationPage.BarBackgroundColorProperty, Color.FromHex("#bf3336"));
             MainPage.SetValue(NavigationPage.BarTextColorProperty, Color.White);
         }
