@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace RedFrogs.Views
 {
-    public partial class FeedbackPage : ContentView
+    public partial class FeedbackPage : ContentPage
     {
         public FeedbackPage()
         {
