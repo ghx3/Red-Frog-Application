@@ -11,7 +11,6 @@ namespace RedFrogs
 {
     public partial class App : Application
     {
-
         static RedFrogDatabase db;
         public App()
         {

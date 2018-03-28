@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedFrogs.Views.FeedbackPage">
-  Title="NZ FeedBack Form">
+  
   <ContentPage.Content>
       <ScrollView>
            <StackLayout Orientation="Vertical">
@@ -18,7 +18,7 @@
     
                   <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
                      BackgroundColor="White">
-                    <Picker x:Name="City" Title="City..." SelectedIndexChanged="CityPickerChanged">
+                    <Picker x:Name="City" Title="City..." SelectedIndexChanged="City_SelectedIndexChanged">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Auckland</x:String>
@@ -37,7 +37,7 @@
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                    BackgroundColor="White">            
-         <Picker x:Name="SupportProvided" Title="Support Provided to..." SelectedIndexChanged="SupportProvidedPickerChanged">
+         <Picker x:Name="SupportProvided" Title="Support Provided to..." SelectedIndexChanged="SupportProvided_SelectedIndexChanged">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Music Festival</x:String>
@@ -56,7 +56,7 @@
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                      BackgroundColor="White">
-        <Picker x:Name="SupportGiven" Title="	Support given by means of ..." SelectedIndexChanged="SupportGivenPickerChanged">
+        <Picker x:Name="SupportGiven" Title="	Support given by means of ..." SelectedIndexChanged="SupportGiven_SelectedIndexChanged">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Hydration Station</x:String>
@@ -82,7 +82,7 @@
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                   BackgroundColor="White">
-        <Picker x:Name="VolunteerNumer" Title="	Number of Volunteers ..." SelectedIndexChanged="VolunteerNumPickerChanged">
+        <Picker x:Name="VolunteerNumer" Title="	Number of Volunteers ..." SelectedIndexChanged="VolunteerNumer_SelectedIndexChanged">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
               <x:String>1</x:String>
@@ -194,7 +194,7 @@
       
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                            BackgroundColor="White">
-        <Picker x:Name="HourSpend " Title="Approx amount of hours spent at the activation" SelectedIndexChanged="HourSpendPickerChanged">
+        <Picker x:Name="HourSpend" Title="Approx amount of hours spent at the activation" SelectedIndexChanged="HourSpend_SelectedIndexChanged">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
               <x:String>1</x:String>
@@ -267,7 +267,7 @@
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                      BackgroundColor="White">
-        <Picker x:Name="Lollies" Title="	Did you use Red Frogs lollies at the activation?" SelectedIndexChanged="RedFrogLolliesPickerChanged">
+        <Picker x:Name="Lollies" Title="	Did you use Red Frogs lollies at the activation?" SelectedIndexChanged="Lollies_SelectedIndexChanged">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
               <x:String>Yes</x:String>
@@ -279,7 +279,7 @@
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                   BackgroundColor="White">
-        <Picker x:Name="IcePoles" Title="Did you use icy poles at the activation" SelectedIndexChanged="IcePolesPickerChanged">
+        <Picker x:Name="IcePoles" Title="Did you use icy poles at the activation" SelectedIndexChanged="IcePoles_SelectedIndexChanged">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
               <x:String>Yes</x:String>
@@ -291,7 +291,7 @@
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                BackgroundColor="White">
-        <Picker x:Name="Pancakes" Title="Did you make pancakes at the activation?" SelectedIndexChanged="PancakesPickerChanged">
+        <Picker x:Name="Pancakes" Title="Did you make pancakes at the activation?" SelectedIndexChanged="Pancakes_SelectedIndexChanged">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
               <x:String>Yes</x:String>
@@ -303,7 +303,7 @@
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
               BackgroundColor="White">
-        <Picker x:Name="Water" Title="Did you make water at the activation?" SelectedIndexChanged="WaterPickerChanged">
+        <Picker x:Name="Water" Title="Did you make water at the activation?" SelectedIndexChanged="Water_SelectedIndexChanged">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
               <x:String>Yes</x:String>
@@ -315,7 +315,7 @@
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
             BackgroundColor="White">
-        <Picker x:Name="Donuts" Title="Did you make donuts at the activation?" SelectedIndexChanged="DonutsPickerChanged">
+        <Picker x:Name="Donuts" Title="Did you make donuts at the activation?" SelectedIndexChanged="Donuts_SelectedIndexChanged">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
               <x:String>Yes</x:String>
@@ -328,7 +328,7 @@
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
           BackgroundColor="White">
         <Picker x:Name="GiveAways" Title="Were there any other give away's at the activation? 
-e.g. sausages, skateboards, churros etc." SelectedIndexChanged="GiveAwaysPickerChanged">
+e.g. sausages, skateboards, churros etc." SelectedIndexChanged="GiveAways_SelectedIndexChanged">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
               <x:String>Yes</x:String>
@@ -341,7 +341,7 @@ e.g. sausages, skateboards, churros etc." SelectedIndexChanged="GiveAwaysPickerC
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
           BackgroundColor="White">
-        <Picker x:Name="Reports" Title="Were there any praise reports / cool stories / good reports coming out of the activation?" SelectedIndexChanged="ReportsPickerChanged">
+        <Picker x:Name="Reports" Title="Were there any praise reports / cool stories / good reports coming out of the activation?" SelectedIndexChanged="Reports_SelectedIndexChanged">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
               <x:String>Yes</x:String>
@@ -362,7 +362,7 @@ e.g. sausages, skateboards, churros etc." SelectedIndexChanged="GiveAwaysPickerC
 
         <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
             BackgroundColor="White">
-          <Picker x:Name="Incidents" Title="Were there any incidents at the activation?" SelectedIndexChanged="IncidentsChanged">
+          <Picker x:Name="Incidents" Title="Were there any incidents at the activation?" SelectedIndexChanged="Incidents_SelectedIndexChanged">
             <Picker.ItemsSource>
               <x:Array Type="{x:Type x:String}">
                 <x:String>Yes</x:String>
