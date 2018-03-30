@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedFrogs.Views.EventsPage">
 
+    <ContentPage.ToolbarItems>
+      <ToolbarItem x:Name="newEventBtn" Text="+" />
+    </ContentPage.ToolbarItems>
+  
+
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black" ItemSelected="EventSelected">
