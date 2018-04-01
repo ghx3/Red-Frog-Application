@@ -14,7 +14,7 @@ namespace RedFrogs.Views
 	{
 		public Login ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 		}
 
         private void Login_Clicked(object sender, EventArgs e)
