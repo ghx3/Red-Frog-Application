@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="RedFrogs.Views.NewEventPage">
+  
+  <StackLayout Orientation="Vertical">
+    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0">
+      <Entry x:Name="nameFld" Placeholder="Enter Event Name" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
+                 Margin="5,0,0,0" TextColor="Black"/>
+    </StackLayout>
+
+    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0">
+      <DatePicker x:Name="eventDate" Date="{x:Static sys:DateTime.Now}">
+        <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>      
+      </DatePicker>
+    </StackLayout>
+  
+    <StackLayout>
+      <Button x:Name="addBtn" Text="Add" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#bf3336" 
+              Margin="10,20,10,20" TextColor="White" />
+    </StackLayout>  
+
+  </StackLayout>
+
+</ContentPage>

@@ -4,9 +4,10 @@ namespace RedFrogs.Models
 {
     public class Events
     {
-        [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
+        [PrimaryKey]
+        public string ID { get; set; }
         public string EventName { get; set; }
-        public int numInteractions { get; set; }
+        public int NumInteractions { get; set; }
+        public string EndDate { get; set; }
     }
 }

@@ -76,14 +76,14 @@ namespace RedFrogs.Views
 
         public void plus(object sender, EventArgs e)
         {
-            currEvent.numInteractions += 1;
-            intCount.Text = currEvent.numInteractions.ToString();
+            currEvent.NumInteractions += 1;
+            intCount.Text = currEvent.NumInteractions.ToString();
         }
 
         public void minus(object sender, EventArgs e)
         {
-            currEvent.numInteractions -= 1;
-            intCount.Text = currEvent.numInteractions.ToString();
+            currEvent.NumInteractions -= 1;
+            intCount.Text = currEvent.NumInteractions.ToString();
         }
     }
 }

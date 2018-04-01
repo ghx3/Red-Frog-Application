@@ -12,13 +12,30 @@ namespace RedFrogs.Data
         public RedFrogDatabase()
         {
             conn = DependencyService.Get<IFileHelper>().GetConnection();
-            conn.CreateTable<Events>();
-
+            
         }
 
         public List<Events> GetAllEvents()
         {
             return conn.Query<Events>("Select * FROM [Events]");
+        }
+
+        public Events GetEvent(string id)
+        {
+            return conn.Table<Events>().Where(i => i.ID == id).FirstOrDefault();
+        }
+
+        public void SaveAllEvents(List<Events> toSave)
+        {
+            foreach(Events e in toSave)
+            {
+                conn.Insert(e);
+            }
+        }
+
+        public void DeleteAllEvents()
+        {
+            conn.Query<Events>("DELETE FROM [Events]");
         }
 
         public List<FeedBack> GetAllFeedBack()
@@ -29,12 +46,7 @@ namespace RedFrogs.Data
         public List<Symptoms> GetAllSymptoms()
         {
             return conn.Query<Symptoms>("Select * FROM [Symptoms]");
-        }
-
-        public Events GetEvent(int id)
-        {
-            return conn.Table<Events>().Where(i => i.ID == id).FirstOrDefault();
-        }
+        }       
 
         public FeedBack GetFeedback(int id)
         {
