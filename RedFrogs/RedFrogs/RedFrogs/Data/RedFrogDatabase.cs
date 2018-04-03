@@ -58,7 +58,7 @@ namespace RedFrogs.Data
             return conn.Table<Symptoms>().Where(i => i.Id == id).FirstOrDefault();
         }
 
-        public int SaveFeedback(FeedBack item)
+        public int SaveCaseInfo(CaseInfo item)
         {
             if (item.ID != 0)
             {

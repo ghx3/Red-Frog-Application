@@ -8,7 +8,7 @@ namespace RedFrogs.Views
 {
     public partial class DataInputPage : ContentPage
     {
-        FeedBack saveFB;
+        CaseInfo saveCase;
         private object selectedItem;
         string nameOfEvent = null;
 
@@ -16,7 +16,7 @@ namespace RedFrogs.Views
         {
             InitializeComponent();
             nameOfEvent = eventName;
-            saveFB = new FeedBack();
+            saveCase = new CaseInfo();
             addBtn.Clicked += AddClicked;
             PopulateSymptomPicker();
             
@@ -27,7 +27,7 @@ namespace RedFrogs.Views
             this.selectedItem = selectedItem;
             InitializeComponent();
 
-            saveFB = new FeedBack();
+            saveCase = new CaseInfo();
             addBtn.Clicked += AddClicked;
             PopulateSymptomPicker();
         }
@@ -51,7 +51,7 @@ namespace RedFrogs.Views
 
             if(selectedIndex != -1)
             {
-                saveFB.Gender = (string)gender.ItemsSource[selectedIndex];
+                saveCase.Gender = (string)gender.ItemsSource[selectedIndex];
             }
         }
 
@@ -62,20 +62,20 @@ namespace RedFrogs.Views
 
             if(selectedIndex != -1)
             {
-                saveFB.Symptom = selectedIndex + 1;
+                saveCase.Symptom = selectedIndex + 1;
             }
         }
 
         public async void AddClicked(object sender, EventArgs e)
         {
-            saveFB.EventName = nameOfEvent;
-            saveFB.Name = nameFld.Text;
-            saveFB.Age = int.Parse(ageFld.Text);
-            saveFB.SeenByMedic = HelperClass.ConvertToInt(medicSwitch.IsToggled);
-            saveFB.IncidentReported = HelperClass.ConvertToInt(reportSwitch.IsToggled);
-            saveFB.ActionTaken = actionFld.Text;
+            saveCase.EventName = nameOfEvent;
+            saveCase.Name = nameFld.Text;
+            saveCase.Age = int.Parse(ageFld.Text);
+            saveCase.SeenByMedic = HelperClass.ConvertToInt(medicSwitch.IsToggled);
+            saveCase.IncidentReported = HelperClass.ConvertToInt(reportSwitch.IsToggled);
+            saveCase.ActionTaken = actionFld.Text;
 
-            App.access.SaveFeedback(saveFB);
+            App.access.SaveCaseInfo(saveCase);
             MessagingCenter.Send<DataInputPage>(this, "SaveValue");
             await Navigation.PopAsync();
         }

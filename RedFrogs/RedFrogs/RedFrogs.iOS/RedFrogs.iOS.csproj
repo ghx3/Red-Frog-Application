@@ -209,6 +209,9 @@
     <BundleResource Include="Resources\960_1440.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_sync.png" />
+    <BundleResource Include="Resources\ic_sync_2x.png" />
+    <BundleResource Include="Resources\ic_sync_3x.png" />
     <Content Include="Scripts\firebase-debug.js" />
     <Content Include="Scripts\firebase.js" />
   </ItemGroup>

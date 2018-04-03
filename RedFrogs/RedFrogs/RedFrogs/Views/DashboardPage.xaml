@@ -4,6 +4,7 @@
              x:Class="RedFrogs.Views.DashboardPage">
   <ContentPage.ToolbarItems>
     <ToolbarItem x:Name="add" Text="+" />
+    <ToolbarItem x:Name="sync" Icon="ic_sync.png"/>
   </ContentPage.ToolbarItems>
 
   <StackLayout VerticalOptions="StartAndExpand">
