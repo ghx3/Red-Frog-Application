@@ -4,6 +4,7 @@ using RedFrogs.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,14 +39,23 @@ namespace RedFrogs.Views
             });
 
             newEventBtn.Clicked += addClicked;
-            
-            //EventsList.ItemsSource = eventsName;
 
-            /*eventsName.Add(new Events { EventName = "Drake 2017" });
-            eventsName.Add(new Events { EventName = "Future 2017" });
-            eventsName.Add(new Events { EventName = "Post Malone 2018" });
-            eventsName.Add(new Events { EventName = "Rihanna 2018" });
-            eventsName.Add(new Events { EventName = "Demi Lovato 2018" });*/
+           MessagingCenter.Subscribe<NewEventPage>(this, "SaveEvents", (async) =>
+            {
+                ObservableCollection<Events> eventsColl_1 = new ObservableCollection<Events>();
+               
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var newEvents = await fireDB.getEvents();
+                    foreach (var item in newEvents)
+                    {
+                        Debug.WriteLine(item.EventName);
+                        eventsColl_1.Add(item);
+                    }
+
+                    EventsList.ItemsSource = eventsColl_1;
+                });
+            });
         }
 
         private async void EventSelected(object sender, SelectedItemChangedEventArgs e)

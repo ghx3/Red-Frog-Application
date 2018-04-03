@@ -31,9 +31,14 @@ namespace RedFrogs.Views
             toSend.NumInteractions = 0;
             toSend.EndDate = eventDate.Date.ToString("dd/MM/yyyy");
 
-            fireDB.saveEvent(toSend);            
-
+            fireDB.saveEvent(toSend);
+            SendMessage();
             await Navigation.PopAsync();
+        }
+
+        private void SendMessage()
+        {
+            MessagingCenter.Send<NewEventPage>(this, "SaveEvents");
         }
     }
 }
