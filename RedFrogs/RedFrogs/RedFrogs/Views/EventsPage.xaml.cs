@@ -1,13 +1,6 @@
-﻿using Firebase.Xamarin.Database;
-using RedFrogs.Data;
-using RedFrogs.Models;
+﻿using RedFrogs.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,16 +12,13 @@ namespace RedFrogs.Views
         public EventsPage()
         {
             InitializeComponent();
-            Title = "Events Page";
-
-            var fireDB = new RedFrogFirebaseDB();
+            Title = "Events Page";            
 
             ObservableCollection<Events> eventsColl = new ObservableCollection<Events>();
             
-
             Device.BeginInvokeOnMainThread(async () =>
             {
-                var events = await fireDB.getEvents();               
+                var events = await App.firebaseDB.getEvents();               
                 foreach (var item in events)
                 {
                     eventsColl.Add(item);
@@ -37,15 +27,7 @@ namespace RedFrogs.Views
                 EventsList.ItemsSource = eventsColl;
             });
 
-            newEventBtn.Clicked += addClicked;
-            
-            //EventsList.ItemsSource = eventsName;
-
-            /*eventsName.Add(new Events { EventName = "Drake 2017" });
-            eventsName.Add(new Events { EventName = "Future 2017" });
-            eventsName.Add(new Events { EventName = "Post Malone 2018" });
-            eventsName.Add(new Events { EventName = "Rihanna 2018" });
-            eventsName.Add(new Events { EventName = "Demi Lovato 2018" });*/
+            newEventBtn.Clicked += addClicked;                        
         }
 
         private async void EventSelected(object sender, SelectedItemChangedEventArgs e)
