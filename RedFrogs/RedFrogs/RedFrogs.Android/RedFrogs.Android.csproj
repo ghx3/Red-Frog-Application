@@ -17,8 +17,8 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <JavaMaximumHeapSize />
@@ -226,10 +226,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_sync.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_sync.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_sync.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_sync.png" />
     <Content Include="Scripts\firebase-debug.js" />
     <Content Include="Scripts\firebase.js" />
   </ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using RedFrogs.Models;
 using System;
 using System.Collections.ObjectModel;
-
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace RedFrogs.Views
@@ -35,6 +35,8 @@ namespace RedFrogs.Views
 
             MessagingCenter.Subscribe<DataInputPage>(this, "SaveValue", (sender) =>
             {
+                Debug.WriteLine("Now at Dashboard Page");
+                Debug.WriteLine(currEvent.EventName + "This is the Event Name");
                 InitializeComponent();
                 ToolbarItems.Remove(add);
                 var fList1 = App.access.GetAllFeedBack();
@@ -51,6 +53,8 @@ namespace RedFrogs.Views
                     }
                 }
 
+                DisplayAlert("Title", cases1.Count.ToString(), "OK");
+
                 caseList.ItemsSource = cases1;
 
             });
@@ -58,8 +62,8 @@ namespace RedFrogs.Views
             caseList.ItemsSource = cases;
             
             add.Clicked += AddClicked;
-            plusBtn.Clicked += plus;
-            minusBtn.Clicked += minus;
+            //plusBtn.Clicked += plus;
+            //minusBtn.Clicked += minus;
         }
 
         private async void AddClicked(object sender, EventArgs e)
@@ -72,16 +76,16 @@ namespace RedFrogs.Views
             await Navigation.PushAsync(new DataInputPage(e.SelectedItem));
         }
 
-        public void plus(object sender, EventArgs e)
-        {
-            currEvent.NumInteractions += 1;
-            intCount.Text = currEvent.NumInteractions.ToString();
-        }
+        //public void plus(object sender, EventArgs e)
+        //{
+        //    currEvent.NumInteractions += 1;
+        //    intCount.Text = currEvent.NumInteractions.ToString();
+        //}
 
-        public void minus(object sender, EventArgs e)
-        {
-            currEvent.NumInteractions -= 1;
-            intCount.Text = currEvent.NumInteractions.ToString();
-        }
+        //public void minus(object sender, EventArgs e)
+        //{
+        //    currEvent.NumInteractions -= 1;
+        //    intCount.Text = currEvent.NumInteractions.ToString();
+        //}
     }
 }
