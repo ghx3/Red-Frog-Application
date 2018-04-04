@@ -30,8 +30,7 @@ namespace RedFrogs.Views
                     Symptoms info = App.access.getSymptom(f.Symptom);
 
                     cases.Add(new Cases { PersonName = f.Name, SymptomName = info.SympName, Colour = info.Colour });
-                }
-                
+                }                
             }
 
             MessagingCenter.Subscribe<DataInputPage>(this, "SaveValue", (sender) =>
@@ -52,7 +51,6 @@ namespace RedFrogs.Views
 
                         cases1.Add(new Cases { PersonName = f.Name, SymptomName = info.SympName, Colour = info.Colour });
                     }
-
                 }
 
                 DisplayAlert("Title", cases1.Count.ToString(), "OK");

@@ -43,6 +43,7 @@
     <Compile Include="Helpers\HelperClass.cs" />
     <Compile Include="IFileHelper.cs" />
     <Compile Include="IMessage.cs" />
+    <Compile Include="Models\CaseInfo.cs" />
     <Compile Include="Models\Cases.cs" />
     <Compile Include="Models\Symptoms.cs" />
     <Compile Include="Views\DashboardPage.xaml.cs">
