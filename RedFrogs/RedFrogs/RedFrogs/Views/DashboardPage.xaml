@@ -22,7 +22,7 @@
     </ListView>
   </StackLayout>
   
-   <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="#bf3336">
+   <!--<StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="#bf3336">
      <Button x:Name="minusBtn" Text="-" FontSize="20" 
              VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
      <Label Text="Interactions:" TextColor="White" FontSize="20" 
@@ -31,5 +31,5 @@
             VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
      <Button x:Name="plusBtn" Text="+" FontSize="20" 
              VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-   </StackLayout>
+   </StackLayout>-->
 </ContentPage>

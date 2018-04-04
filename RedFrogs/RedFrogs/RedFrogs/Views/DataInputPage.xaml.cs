@@ -67,7 +67,8 @@ namespace RedFrogs.Views
         }
 
         public async void AddClicked(object sender, EventArgs e)
-        {
+        {   
+            
             saveFB.EventName = nameOfEvent;
             saveFB.Name = nameFld.Text;
             saveFB.Age = int.Parse(ageFld.Text);
