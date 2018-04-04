@@ -73,7 +73,7 @@ namespace RedFrogs.Views
 
         private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new DataInputPage(e.SelectedItem));
+            await Navigation.PushAsync(new DataInputPage(currEvent, true));
         }
 
         //public void plus(object sender, EventArgs e)

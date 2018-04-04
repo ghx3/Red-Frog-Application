@@ -27,6 +27,22 @@ namespace RedFrogs.Views
                 EventsList.ItemsSource = eventsColl;
             });
 
+            MessagingCenter.Subscribe<NewEventPage>(this, "SaveEvents", (async) =>
+            {
+                ObservableCollection<Events> eventsColl_1 = new ObservableCollection<Events>();
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var newEvents = await App.firebaseDB.getEvents();
+                    foreach (var item in newEvents)
+                    {
+                        eventsColl_1.Add(item);
+                    }
+
+                    EventsList.ItemsSource = eventsColl_1;
+                });
+            });
+
             newEventBtn.Clicked += addClicked;                        
         }
 

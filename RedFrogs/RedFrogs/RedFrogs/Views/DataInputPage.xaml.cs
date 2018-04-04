@@ -22,14 +22,26 @@ namespace RedFrogs.Views
             
         }
 
-        public DataInputPage(object selectedItem)
+        public DataInputPage(Events selectedItem, bool isEdit)
         {
             this.selectedItem = selectedItem;
             InitializeComponent();
 
-            saveCase = new CaseInfo();
-            addBtn.Clicked += AddClicked;
-            PopulateSymptomPicker();
+            var fList1 = App.access.GetAllFeedBack();
+            var sList1 = App.access.GetAllSymptoms();
+
+            foreach (FeedBack f in fList1)
+            {
+                if (f.EventName == selectedItem.EventName)
+                {
+                    nameFld.Text = f.Name;
+                    ageFld.Text = Convert.ToString(f.Age);
+                    actionFld.Text = f.ActionTaken;
+                }
+            }
+            //saveCase = new CaseInfo();
+            //addBtn.Clicked += AddClicked;
+            //PopulateSymptomPicker();
         }
 
         void PopulateSymptomPicker()
