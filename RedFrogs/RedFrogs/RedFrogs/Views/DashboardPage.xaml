@@ -4,7 +4,7 @@
              x:Class="RedFrogs.Views.DashboardPage">
   <ContentPage.ToolbarItems>
     <ToolbarItem x:Name="add" Text="+" />
-    <ToolbarItem x:Name="sync" Icon="ic_sync.png"/>
+    <ToolbarItem x:Name="sync" Text="Sync"/>
   </ContentPage.ToolbarItems>
 
   <StackLayout VerticalOptions="StartAndExpand">
@@ -15,7 +15,7 @@
             <StackLayout Orientation="Horizontal" Margin="10, 5, 10, 0">
               <Label Text="{Binding PersonName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
               <Label Text="{Binding SymptomName}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
-              <Label Text="{Binding Colour}" FontSize="Medium" HorizontalOptions="EndAndExpand" />
+              <Label Text="{Binding Age}" FontSize="Medium" HorizontalOptions="EndAndExpand" />
             </StackLayout>
           </ViewCell>
         </DataTemplate>

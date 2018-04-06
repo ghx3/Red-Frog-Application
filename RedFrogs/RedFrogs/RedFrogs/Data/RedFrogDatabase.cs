@@ -43,6 +43,11 @@ namespace RedFrogs.Data
             return conn.Query<FeedBack>("Select * FROM [FeedBack]");
         }
 
+        public List<CaseInfo> GetAllCaseInfo()
+        {
+            return conn.Query<CaseInfo>("Select * FROM [CaseInfo]");
+        }
+
         public List<Symptoms> GetAllSymptoms()
         {
             return conn.Query<Symptoms>("Select * FROM [Symptoms]");

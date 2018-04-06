@@ -29,9 +29,13 @@ namespace RedFrogs.Views
                 toSend.EndDate = eventDate.Date.ToString("dd/MM/yyyy");
 
                 App.firebaseDB.saveEvent(toSend);
-
+                SendMessage();
                 await Navigation.PopAsync();
             }            
         }
+          private void SendMessage()
+          {
+            MessagingCenter.Send<NewEventPage>(this, "SaveEvents");
+          }
     }
 }

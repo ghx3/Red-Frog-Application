@@ -19,49 +19,50 @@ namespace RedFrogs.Views
 
             Title = currEvent.EventName;
             nameOfEvent = currEvent.EventName;
-            var fList = App.access.GetAllFeedBack();            
-            var sList = App.access.GetAllSymptoms();
+            //var fList = App.access.GetAllFeedBack();            
+            //var sList = App.access.GetAllSymptoms();
+            var caseInfo = App.access.GetAllCaseInfo();
 
             ObservableCollection<Cases> cases = new ObservableCollection<Cases>();
-            foreach(FeedBack f in fList)
+            foreach(CaseInfo cinfo in caseInfo)
             { 
-                if(f.EventName == currEvent.EventName)
+                if(cinfo.EventName == currEvent.EventName)
                 {
-                    Symptoms info = App.access.getSymptom(f.Symptom);
-
-                    cases.Add(new Cases { PersonName = f.Name, SymptomName = info.SympName, Colour = info.Colour });
+                    string symptom = Convert.ToString(cinfo.Symptom);
+                    cases.Add(new Cases { PersonName = cinfo.Name, SymptomName = symptom, Age = cinfo.Age });
                 }                
             }
+            caseList.ItemsSource = cases;
+            add.Clicked += AddClicked;
 
             MessagingCenter.Subscribe<DataInputPage>(this, "SaveValue", (sender) =>
             {
-                Debug.WriteLine("Now at Dashboard Page");
-                Debug.WriteLine(currEvent.EventName + "This is the Event Name");
+               
                 InitializeComponent();
                 ToolbarItems.Remove(add);
-                var fList1 = App.access.GetAllFeedBack();
-                var sList1 = App.access.GetAllSymptoms();
+                ToolbarItems.Remove(sync);
+                currEvent = selEvent;
+
+                Title = currEvent.EventName;
+                var caseInfo1 = App.access.GetAllCaseInfo();
 
                 ObservableCollection<Cases> cases1 = new ObservableCollection<Cases>();
-                foreach (FeedBack f in fList1)
+                foreach (CaseInfo cinfo1 in caseInfo1)
                 {
-                    if (f.EventName == currEvent.EventName)
+                    if (cinfo1.EventName == currEvent.EventName)
                     {
-                        Symptoms info = App.access.getSymptom(f.Symptom);
-
-                        cases1.Add(new Cases { PersonName = f.Name, SymptomName = info.SympName, Colour = info.Colour });
+                        string symptom = Convert.ToString(cinfo1.Symptom);
+                        cases1.Add(new Cases { PersonName = cinfo1.Name, SymptomName = symptom, Age = cinfo1.Age });
                     }
                 }
 
-                DisplayAlert("Title", cases1.Count.ToString(), "OK");
-
                 caseList.ItemsSource = cases1;
-
+                add.Clicked += AddClicked;
             });
 
-            caseList.ItemsSource = cases;
+           
             
-            add.Clicked += AddClicked;
+            
             //plusBtn.Clicked += plus;
             //minusBtn.Clicked += minus;
         }
@@ -73,7 +74,7 @@ namespace RedFrogs.Views
 
         private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new DataInputPage(e.SelectedItem));
+            await Navigation.PushAsync(new DataInputPage(currEvent, true));
         }
 
         //public void plus(object sender, EventArgs e)

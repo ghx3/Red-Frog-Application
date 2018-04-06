@@ -10,6 +10,6 @@ namespace RedFrogs.Models
     {
         public string PersonName { get; set; }
         public string SymptomName { get; set; }
-        public string Colour { get; set; }
+        public int Age { get; set; }
     }
 }
