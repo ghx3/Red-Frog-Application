@@ -10,7 +10,7 @@ namespace RedFrogs.Views
     {
         CaseInfo saveCase;
         private object selectedItem;
-        string nameOfEvent = null;
+        string nameOfEvent;
 
         public DataInputPage(string eventName)
         {
@@ -77,11 +77,11 @@ namespace RedFrogs.Views
         void SymptomPickerChanged(object sender, EventArgs e)
         {
             var symp = (Picker)sender;
-            int selectedIndex = gender.SelectedIndex;
+            int selectedIndex = symp.SelectedIndex;
 
             if(selectedIndex != -1)
             {
-                saveCase.Symptom = selectedIndex + 1;
+                saveCase.Symptom = symp.Items[symp.SelectedIndex + 1];
             }
         }
 

@@ -204,10 +204,6 @@
     <BundleResource Include="Resources\ic_sync_2x.png" />
     <BundleResource Include="Resources\ic_sync_3x.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\firebase-debug.js" />
-    <Content Include="Scripts\firebase.js" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

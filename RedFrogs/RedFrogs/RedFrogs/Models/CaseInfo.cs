@@ -10,7 +10,7 @@ namespace RedFrogs.Models
         public string Name { get; set; }
         public string Gender { get; set; }
         public int Age { get; set; }
-        public int Symptom { get; set; }
+        public string Symptom { get; set; }
         public int SeenByMedic { get; set; }
         public int IncidentReported { get; set; }
         public string ActionTaken { get; set; }

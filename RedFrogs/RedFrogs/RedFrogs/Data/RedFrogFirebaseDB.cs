@@ -1,7 +1,6 @@
 ﻿using Firebase.Xamarin.Database;
 using Plugin.Connectivity;
 using RedFrogs.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +14,7 @@ namespace RedFrogs.Data
 
         public RedFrogFirebaseDB()
         {
+            
             client = new FirebaseClient("https://redfrogtest-12ad7.firebaseio.com/");
         }
 
