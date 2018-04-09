@@ -22,15 +22,23 @@ namespace RedFrogs.Views
             
         }
 
-        public DataInputPage(Events selectedItem, bool isEdit)
-        {
-            this.selectedItem = selectedItem;
+        public DataInputPage(CaseInfo selectedItem, bool isEdit)
+        {            
             InitializeComponent();
+            this.selectedItem = selectedItem;
+            
+            PopulateSymptomPicker();
 
-            var fList1 = App.access.GetAllFeedBack();
-            var sList1 = App.access.GetAllSymptoms();
+            saveCase = selectedItem;
+            nameFld.Text = saveCase.Name;
+            ageFld.Text = Convert.ToString(saveCase.Age);
+            actionFld.Text = saveCase.ActionTaken;            
 
-            foreach (FeedBack f in fList1)
+            addBtn.Clicked += AddClicked;
+
+            //var fList1 = App.DB.GetAllFeedBack(); don't need
+            //var sList1 = App.DB.GetAllSymptoms(); don't need
+            /*foreach (FeedBack f in fList1)
             {
                 if (f.EventName == selectedItem.EventName)
                 {
@@ -38,15 +46,14 @@ namespace RedFrogs.Views
                     ageFld.Text = Convert.ToString(f.Age);
                     actionFld.Text = f.ActionTaken;
                 }
-            }
-            //saveCase = new CaseInfo();
-            //addBtn.Clicked += AddClicked;
+            } don't need */
             //PopulateSymptomPicker();
+            //saveCase = new CaseInfo();
         }
 
-        void PopulateSymptomPicker()
+        private async void PopulateSymptomPicker()
         {
-            var symptoms = App.access.GetAllSymptoms();
+            var symptoms = await App.DB.GetAllSymptoms();
             List<string> sympNames = new List<string>();
             foreach (Symptoms name in symptoms)
             {
@@ -87,7 +94,7 @@ namespace RedFrogs.Views
             saveCase.IncidentReported = HelperClass.ConvertToInt(reportSwitch.IsToggled);
             saveCase.ActionTaken = actionFld.Text;
 
-            App.access.SaveCaseInfo(saveCase);
+            await App.DB.SaveCaseInfo(saveCase);
             MessagingCenter.Send<DataInputPage>(this, "SaveValue");
             await Navigation.PopAsync();
         }

@@ -22,11 +22,11 @@ namespace RedFrogs.Views
             if (string.IsNullOrWhiteSpace(nameFld.Text))
             {
                 await DisplayAlert("Event Name empty", "Please enter a name for the event", "Ok");
-            } else
-            {
+            } else {
                 toSend.EventName = nameFld.Text;
                 toSend.NumInteractions = 0;
                 toSend.EndDate = eventDate.Date.ToString("dd/MM/yyyy");
+                toSend.IsClosed = 0;
 
                 App.firebaseDB.saveEvent(toSend);
                 SendMessage();

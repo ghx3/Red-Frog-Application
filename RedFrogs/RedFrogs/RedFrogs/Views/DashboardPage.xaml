@@ -13,8 +13,8 @@
         <DataTemplate>
           <ViewCell>
             <StackLayout Orientation="Horizontal" Margin="10, 5, 10, 0">
-              <Label Text="{Binding PersonName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-              <Label Text="{Binding SymptomName}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+              <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+              <Label Text="{Binding Symptom}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
               <Label Text="{Binding Age}" FontSize="Medium" HorizontalOptions="EndAndExpand" />
             </StackLayout>
           </ViewCell>

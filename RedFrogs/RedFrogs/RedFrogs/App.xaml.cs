@@ -36,12 +36,12 @@ namespace RedFrogs
             }
         }
 
-        public static RedFrogDatabase access
+        public static RedFrogDatabase DB
         {
             get {
                 if(db == null)
                 {
-                    db = new RedFrogDatabase();
+                    db = new RedFrogDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("redfrogs.db"));
                 }
 
                 return db;

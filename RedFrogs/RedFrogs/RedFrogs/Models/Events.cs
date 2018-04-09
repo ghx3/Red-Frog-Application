@@ -1,4 +1,4 @@
-﻿using SQLite.Net.Attributes;
+﻿using SQLite;
 
 namespace RedFrogs.Models
 {
@@ -9,5 +9,6 @@ namespace RedFrogs.Models
         public string EventName { get; set; }
         public int NumInteractions { get; set; }
         public string EndDate { get; set; }
+        public int IsClosed { get; set; }
     }
 }

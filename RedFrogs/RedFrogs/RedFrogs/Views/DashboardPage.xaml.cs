@@ -1,5 +1,6 @@
 ﻿using RedFrogs.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Xamarin.Forms;
@@ -10,41 +11,29 @@ namespace RedFrogs.Views
     {
         string nameOfEvent = null;
         Events currEvent;
+        ObservableCollection<CaseInfo> cases;
 
         public DashboardPage(Events selEvent)
         {
             InitializeComponent();
 
-            currEvent = selEvent;
-
+            currEvent = selEvent;            
+            cases = new ObservableCollection<CaseInfo>();
             Title = currEvent.EventName;
             nameOfEvent = currEvent.EventName;
-            //var fList = App.access.GetAllFeedBack();            
-            //var sList = App.access.GetAllSymptoms();
-            var caseInfo = App.access.GetAllCaseInfo();
 
-            ObservableCollection<Cases> cases = new ObservableCollection<Cases>();
-            foreach(CaseInfo cinfo in caseInfo)
-            { 
-                if(cinfo.EventName == currEvent.EventName)
-                {
-                    string symptom = Convert.ToString(cinfo.Symptom);
-                    cases.Add(new Cases { PersonName = cinfo.Name, SymptomName = symptom, Age = cinfo.Age });
-                }                
-            }
-            caseList.ItemsSource = cases;
+            LoadEvents();
             add.Clicked += AddClicked;
-
-            MessagingCenter.Subscribe<DataInputPage>(this, "SaveValue", (sender) =>
+            MessagingCenter.Subscribe<DataInputPage>(this, "SaveValue", async (sender) =>
             {
-               
+
                 InitializeComponent();
                 ToolbarItems.Remove(add);
                 ToolbarItems.Remove(sync);
-                currEvent = selEvent;
+                //currEvent = selEvent;
 
                 Title = currEvent.EventName;
-                var caseInfo1 = App.access.GetAllCaseInfo();
+                var caseInfo1 = await App.DB.GetAllCaseInfo();
 
                 ObservableCollection<Cases> cases1 = new ObservableCollection<Cases>();
                 foreach (CaseInfo cinfo1 in caseInfo1)
@@ -60,11 +49,24 @@ namespace RedFrogs.Views
                 add.Clicked += AddClicked;
             });
 
-           
-            
-            
             //plusBtn.Clicked += plus;
             //minusBtn.Clicked += minus;
+        }
+
+        private async void LoadEvents()
+        {
+            List<CaseInfo> caseInfo = await App.DB.GetAllCaseInfo();
+
+            foreach (CaseInfo cinfo in caseInfo)
+            {
+                if (cinfo.EventName == currEvent.EventName)
+                {
+                    //string symptom = Convert.ToString(cinfo.Symptom); dont need
+                    cases.Add(cinfo);
+                }
+            }
+            caseList.ItemsSource = cases;            
+            
         }
 
         private async void AddClicked(object sender, EventArgs e)
@@ -74,7 +76,8 @@ namespace RedFrogs.Views
 
         private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new DataInputPage(currEvent, true));
+            CaseInfo toEdit = (CaseInfo)sender;
+            await Navigation.PushAsync(new DataInputPage(toEdit, true));
         }
 
         //public void plus(object sender, EventArgs e)

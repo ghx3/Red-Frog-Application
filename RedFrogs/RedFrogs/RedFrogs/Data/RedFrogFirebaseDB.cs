@@ -15,7 +15,7 @@ namespace RedFrogs.Data
 
         public RedFrogFirebaseDB()
         {
-            client = new FirebaseClient("https://redfrogs-3775b.firebaseio.com/");
+            client = new FirebaseClient("https://redfrogtest-12ad7.firebaseio.com/");
         }
 
         public async Task<List<Events>> getEvents()
@@ -32,20 +32,21 @@ namespace RedFrogs.Data
                       ID = item.Key,
                       EventName = item.Object.EventName,
                       NumInteractions = item.Object.NumInteractions,
-                      EndDate = item.Object.EndDate
+                      EndDate = item.Object.EndDate,
+                      IsClosed = item.Object.IsClosed
 
                   };
               }).ToList();
-                // save only current events
-                data.RemoveAll(x => DateTime.ParseExact(x.EndDate, "dd/MM/yyyy", null) < DateTime.Today);
+                // save only open events
+                data.RemoveAll(x => x.IsClosed == 1);
 
-                App.access.DeleteAllEvents();
-                App.access.SaveAllEvents(data);
+                App.DB.DeleteAllEvents();
+                await App.DB.SaveAllEvents(data);
                 DependencyService.Get<IMessage>().ShortAlert("Events saved locally");
                 
             } else
             {
-                data = App.access.GetAllEvents();
+                data = await App.DB.GetAllEvents();
                 DependencyService.Get<IMessage>().ShortAlert("Events loaded from local database");
             }
             return data;

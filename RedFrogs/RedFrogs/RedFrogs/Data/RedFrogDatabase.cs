@@ -1,77 +1,80 @@
 ﻿using RedFrogs.Models;
-using SQLite.Net;
+using SQLite;
 using System.Collections.Generic;
-using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace RedFrogs.Data
 {
     public class RedFrogDatabase
     {
-        SQLiteConnection conn;
+        readonly SQLiteAsyncConnection conn;
 
-        public RedFrogDatabase()
+        public RedFrogDatabase(string dbPath)
         {
-            conn = DependencyService.Get<IFileHelper>().GetConnection();
+            conn = new SQLiteAsyncConnection(dbPath);
             
         }
 
-        public List<Events> GetAllEvents()
+        public Task<List<Events>> GetAllEvents()
         {
-            return conn.Query<Events>("Select * FROM [Events]");
+            return conn.QueryAsync<Events>("Select * FROM [Events]");
         }
 
-        public Events GetEvent(string id)
+        public Task<Events> GetEvent(string id)
         {
-            return conn.Table<Events>().Where(i => i.ID == id).FirstOrDefault();
+            return conn.Table<Events>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
 
-        public void SaveAllEvents(List<Events> toSave)
+        public Task<int> SaveAllEvents(List<Events> toSave)
         {
-            foreach(Events e in toSave)
-            {
-                conn.Insert(e);
-            }
+            return conn.InsertAllAsync(toSave);
         }
 
         public void DeleteAllEvents()
         {
-            conn.Query<Events>("DELETE FROM [Events]");
+            conn.QueryAsync<Events>("DELETE FROM [Events]");
+            
         }
 
-        public List<FeedBack> GetAllFeedBack()
+        public Task<List<FeedBack>> GetAllFeedBack()
         {
-            return conn.Query<FeedBack>("Select * FROM [FeedBack]");
+            return conn.QueryAsync<FeedBack>("Select * FROM [FeedBack]");
         }
 
-        public List<CaseInfo> GetAllCaseInfo()
+        public Task<List<CaseInfo>> GetAllCaseInfo()
         {
-            return conn.Query<CaseInfo>("Select * FROM [CaseInfo]");
+            return conn.QueryAsync<CaseInfo>("Select * FROM [CaseInfo]");
         }
 
-        public List<Symptoms> GetAllSymptoms()
+        public Task<CaseInfo> getCaseInfo(int id)
         {
-            return conn.Query<Symptoms>("Select * FROM [Symptoms]");
+            return conn.Table<CaseInfo>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        }
+
+        public Task<List<Symptoms>> GetAllSymptoms()
+        {
+            return conn.QueryAsync<Symptoms>("Select * FROM [Symptoms]");
         }       
 
-        public FeedBack GetFeedback(int id)
+        /*public Task<FeedBack> GetFeedback(int id)
         {
-            return conn.Table<FeedBack>().Where(i => i.ID == id).FirstOrDefault();
+            return conn.Table<FeedBack>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        }*/
+
+        public Task<Symptoms> getSymptom(int id)
+        {
+            return conn.Table<Symptoms>().Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
-        public Symptoms getSymptom(int id)
-        {
-            return conn.Table<Symptoms>().Where(i => i.Id == id).FirstOrDefault();
-        }
-
-        public int SaveCaseInfo(CaseInfo item)
+        public Task<int> SaveCaseInfo(CaseInfo item)
         {
             if (item.ID != 0)
             {
-                return conn.Update(item);
+                return conn.UpdateAsync(item);
             }
             else
             {
-                return conn.Insert(item);
+                return conn.InsertAsync(item);
             }
         }
     }

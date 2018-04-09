@@ -1,5 +1,4 @@
-﻿using SQLite.Net.Attributes;
-
+﻿using SQLite;
 namespace RedFrogs.Models
 {
     public class Symptoms
