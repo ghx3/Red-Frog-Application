@@ -12,6 +12,7 @@ namespace RedFrogs.Data
         public RedFrogDatabase(string dbPath)
         {
             conn = new SQLiteAsyncConnection(dbPath);
+            conn.CreateTableAsync<Events>();
             
         }
 
