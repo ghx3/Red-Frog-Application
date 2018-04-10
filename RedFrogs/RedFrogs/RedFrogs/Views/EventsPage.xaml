@@ -5,6 +5,7 @@
 
     <ContentPage.ToolbarItems>
       <ToolbarItem x:Name="newEventBtn" Text="+" />
+        <ToolbarItem x:Name="deleteBtn" Text="X" />
     </ContentPage.ToolbarItems>
   
 

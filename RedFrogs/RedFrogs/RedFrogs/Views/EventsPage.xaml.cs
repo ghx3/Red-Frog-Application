@@ -43,7 +43,8 @@ namespace RedFrogs.Views
                 });
             });
 
-            newEventBtn.Clicked += addClicked;                        
+            newEventBtn.Clicked += addClicked;
+            deleteBtn.Clicked += deleteClicked;
         }
 
         private async void EventSelected(object sender, SelectedItemChangedEventArgs e)
@@ -55,6 +56,11 @@ namespace RedFrogs.Views
         private async void addClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NewEventPage());
+        }
+
+        private void deleteClicked(object sender, EventArgs e)
+        {
+            App.DB.DeleteAllEvents();
         }
 
     }

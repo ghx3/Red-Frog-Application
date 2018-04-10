@@ -15,7 +15,7 @@ namespace RedFrogs.Data
         public RedFrogFirebaseDB()
         {
             
-            client = new FirebaseClient("https://redfrogtest-12ad7.firebaseio.com/");
+            client = new FirebaseClient("https://rdrf-1a167.firebaseio.com/");
         }
 
         public async Task<List<Events>> getEvents()

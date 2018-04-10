@@ -32,7 +32,7 @@ namespace RedFrogs.Data
 
         public void DeleteAllEvents()
         {
-            conn.QueryAsync<Events>("DELETE FROM [Events]");
+            conn.ExecuteAsync("DELETE FROM Events");
             
         }
 
