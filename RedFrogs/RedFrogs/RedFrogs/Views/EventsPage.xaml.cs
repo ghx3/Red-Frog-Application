@@ -1,6 +1,7 @@
 ﻿using RedFrogs.Models;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,9 +12,8 @@ namespace RedFrogs.Views
     {
         public EventsPage()
         {
-            InitializeComponent();
-            Title = "Events Page";            
-
+            InitializeComponent();           
+             
             ObservableCollection<Events> eventsColl = new ObservableCollection<Events>();
             
             Device.BeginInvokeOnMainThread(async () =>
@@ -23,7 +23,6 @@ namespace RedFrogs.Views
                 {
                     eventsColl.Add(item);
                 }
-
                 EventsList.ItemsSource = eventsColl;
             });
 
@@ -61,6 +60,11 @@ namespace RedFrogs.Views
         private void deleteClicked(object sender, EventArgs e)
         {
             App.DB.DeleteAllEvents();
+        }
+        
+        private async void CloseClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FeedbackPage());
         }
 
     }

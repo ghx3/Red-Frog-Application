@@ -3,19 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedFrogs.Views.DashboardPage">
   <ContentPage.ToolbarItems>
-    <ToolbarItem x:Name="add" Text="+" />
-    <ToolbarItem x:Name="sync" Text="Sync"/>
+    <ToolbarItem x:Name="add" Icon="add.png" />
+    <ToolbarItem x:Name="sync" Icon="sync.png" />
   </ContentPage.ToolbarItems>
 
   <StackLayout VerticalOptions="StartAndExpand">
-    <ListView x:Name="caseList" HasUnevenRows="False" SeparatorColor="Black" ItemSelected="Client_ItemSelected">
+    <ListView x:Name="caseList" HasUnevenRows="False" SeparatorColor="Black" 
+              ItemSelected="Client_ItemSelected" RowHeight="75">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout Orientation="Horizontal" Margin="10, 5, 10, 0">
-              <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-              <Label Text="{Binding Symptom}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
-              <Label Text="{Binding Age}" FontSize="Medium" HorizontalOptions="EndAndExpand" />
+            <StackLayout Orientation="Horizontal" Margin="10, 10, 10, 10">
+                <Label Text="{Binding PersonName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                <Label Text="{Binding SymptomName}" FontSize="Medium" HorizontalOptions="StartAndExpand" />
+                <BoxView Color="{Binding colour}" HorizontalOptions="EndAndExpand" />
             </StackLayout>
           </ViewCell>
         </DataTemplate>

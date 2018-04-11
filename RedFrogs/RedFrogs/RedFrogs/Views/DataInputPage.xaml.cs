@@ -76,12 +76,11 @@ namespace RedFrogs.Views
 
         void SymptomPickerChanged(object sender, EventArgs e)
         {
-            var symp = (Picker)sender;
-            int selectedIndex = symp.SelectedIndex;
+            var symp = (Picker)sender; 
 
-            if(selectedIndex != -1)
+            if(symp.SelectedIndex != -1)
             {
-                saveCase.Symptom = symp.Items[symp.SelectedIndex + 1];
+                saveCase.Symptom = symp.Items[symp.SelectedIndex];
             }
         }
 

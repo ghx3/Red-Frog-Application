@@ -26,14 +26,14 @@ namespace RedFrogs.Views
             add.Clicked += AddClicked;
             MessagingCenter.Subscribe<DataInputPage>(this, "SaveValue", async (sender) =>
             {
-
                 InitializeComponent();
                 ToolbarItems.Remove(add);
                 ToolbarItems.Remove(sync);
                 //currEvent = selEvent;
 
                 Title = currEvent.EventName;
-                var caseInfo1 = await App.DB.GetAllCaseInfo();
+                LoadEvents();
+                /*var caseInfo1 = await App.DB.GetAllCaseInfo();
 
                 ObservableCollection<Cases> cases1 = new ObservableCollection<Cases>();
                 foreach (CaseInfo cinfo1 in caseInfo1)
@@ -46,7 +46,7 @@ namespace RedFrogs.Views
                 }
 
                 caseList.ItemsSource = cases1;
-                add.Clicked += AddClicked;
+                add.Clicked += AddClicked;*/
             });
 
             //plusBtn.Clicked += plus;
@@ -56,16 +56,26 @@ namespace RedFrogs.Views
         private async void LoadEvents()
         {
             List<CaseInfo> caseInfo = await App.DB.GetAllCaseInfo();
+            List<Cases> display = new List<Cases>();
+
+            ColorTypeConverter converter = new ColorTypeConverter();
 
             foreach (CaseInfo cinfo in caseInfo)
             {
                 if (cinfo.EventName == currEvent.EventName)
                 {
                     //string symptom = Convert.ToString(cinfo.Symptom); dont need
-                    cases.Add(cinfo);
+                    //cases.Add(cinfo);
+                    Symptoms symptomColour = await App.DB.getSymptom(cinfo.Symptom);
+                    Cases toAdd = new Cases() {
+                        PersonName = cinfo.Name,
+                        SymptomName = cinfo.Symptom,
+                        colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour))
+                    };
+                    display.Add(toAdd);
                 }
             }
-            caseList.ItemsSource = cases;            
+            caseList.ItemsSource = display;            
             
         }
 

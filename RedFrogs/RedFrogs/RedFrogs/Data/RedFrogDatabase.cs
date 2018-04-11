@@ -28,6 +28,7 @@ namespace RedFrogs.Data
 
         public Task<int> SaveAllEvents(List<Events> toSave)
         {
+            DependencyService.Get<IMessage>().ShortAlert("Events saved locally");
             return conn.InsertAllAsync(toSave);
         }
 
@@ -62,9 +63,9 @@ namespace RedFrogs.Data
             return conn.Table<FeedBack>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }*/
 
-        public Task<Symptoms> getSymptom(int id)
+        public Task<Symptoms> getSymptom(string name)
         {
-            return conn.Table<Symptoms>().Where(i => i.Id == id).FirstOrDefaultAsync();
+            return conn.Table<Symptoms>().Where(i => i.SympName == name).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveCaseInfo(CaseInfo item)

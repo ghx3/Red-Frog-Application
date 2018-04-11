@@ -41,8 +41,7 @@ namespace RedFrogs.Data
                 data.RemoveAll(x => x.IsClosed == 1);
 
                 App.DB.DeleteAllEvents();
-                await App.DB.SaveAllEvents(data);
-                DependencyService.Get<IMessage>().ShortAlert("Events saved locally");
+                await App.DB.SaveAllEvents(data);                
                 
             } else
             {
