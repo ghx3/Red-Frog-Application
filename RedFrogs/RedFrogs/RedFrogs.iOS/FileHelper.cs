@@ -13,7 +13,7 @@ namespace RedFrogs.iOS
 
         public SQLiteAsyncConnection GetConnection()
         {
-            var dbFilename = "RedFrogs.db";
+            var dbFilename = "redfrogs.db";
             string documentsPath = Environment.GetFolderPath
                 (Environment.SpecialFolder.Personal); // Documents folder
             string libraryPath = Path.Combine(documentsPath, "..", "Library"); // Library folder
