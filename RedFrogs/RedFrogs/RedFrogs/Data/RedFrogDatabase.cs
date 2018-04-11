@@ -2,6 +2,7 @@
 using SQLite;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace RedFrogs.Data
 {
@@ -9,11 +10,10 @@ namespace RedFrogs.Data
     {
         readonly SQLiteAsyncConnection conn;
 
-        public RedFrogDatabase(string dbPath)
+        public RedFrogDatabase()
         {
-            conn = new SQLiteAsyncConnection(dbPath);
-            conn.CreateTableAsync<Events>();
-            
+            conn = DependencyService.Get<IFileHelper>().GetConnection();
+
         }
 
         public Task<List<Events>> GetAllEvents()

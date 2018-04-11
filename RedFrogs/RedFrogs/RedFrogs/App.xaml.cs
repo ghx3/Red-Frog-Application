@@ -41,7 +41,7 @@ namespace RedFrogs
             get {
                 if(db == null)
                 {
-                    db = new RedFrogDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("redfrogs.db"));
+                    db = new RedFrogDatabase();
                 }
 
                 return db;
