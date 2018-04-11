@@ -13,6 +13,8 @@ namespace RedFrogs.Views
         public FeedbackPage()
         {
             InitializeComponent();
+
+            closeBtn.Clicked += ClosedEventClicked;
         }
 
         private void City_SelectedIndexChanged(object sender, EventArgs e)
@@ -78,6 +80,11 @@ namespace RedFrogs.Views
         private void Incidents_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public async void ClosedEventClicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }

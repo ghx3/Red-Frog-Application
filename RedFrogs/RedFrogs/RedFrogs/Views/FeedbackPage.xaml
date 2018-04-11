@@ -1,393 +1,220 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RedFrogs.Views.FeedbackPage">
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="RedFrogs.Views.FeedbackPage"             
+             Title="Event Feedback"
+             BackgroundColor="#eeeeee">
   
   <ContentPage.Content>
-      <ScrollView>
-           <StackLayout Orientation="Vertical">
-    <StackLayout Padding="5,10">
-      <Label TextColor="#0a0a0a" FontSize = "20"  >
-        <Label.Text>
-          Any time that you do an activation under the banner of Red Frogs you're required to submit the details below.
-          An activation includes: University Hall Visit, an Event or a Festival. If the activation is longer than a day, you are required to submit a form daily.
-          A form is needed for each activation you do, so a summary of what you've done as a church/city can be provided to you upon request.
-        </Label.Text>
-      </Label>
-  
-    
-                  <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+    <ScrollView>
+        <StackLayout Orientation="Vertical">
+            
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
                      BackgroundColor="White">
-                    <Picker x:Name="City" Title="City..." SelectedIndexChanged="City_SelectedIndexChanged">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Auckland</x:String>
-                                <x:String>Wellington</x:String>
-                              <x:String>Dunedin</x:String>
-                                <x:String>Christchurch</x:String>
-                               <x:String>Invercargill</x:String>
-                                <x:String>Hamilton</x:String>
-                              <x:String>Palmerston North</x:String>
-                                <x:String>Queenstown</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-                  </StackLayout>
+                <Picker x:Name="City" Title="City..." SelectedIndexChanged="City_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Auckland</x:String>
+                            <x:String>Wellington</x:String>
+                            <x:String>Dunedin</x:String>
+                            <x:String>Christchurch</x:String>
+                            <x:String>Invercargill</x:String>
+                            <x:String>Hamilton</x:String>
+                            <x:String>Palmerston North</x:String>
+                            <x:String>Queenstown</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                    BackgroundColor="White">            
-         <Picker x:Name="SupportProvided" Title="Support Provided to..." SelectedIndexChanged="SupportProvided_SelectedIndexChanged">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Music Festival</x:String>
-                                <x:String>Concert / Event</x:String>
-                              <x:String>Underage Event</x:String>
-                                <x:String>Residential Hall / Hostel</x:String>
-                               <x:String>University</x:String>
-                                <x:String>Safe Zone</x:String>
-                              <x:String>Flats</x:String>
-                                <x:String>Other</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-      </StackLayout>
-      
+                <Picker x:Name="SupportProvided" Title="Support Provided to..." SelectedIndexChanged="SupportProvided_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Music Festival</x:String>
+                            <x:String>Concert / Event</x:String>
+                            <x:String>Underage Event</x:String>
+                            <x:String>Residential Hall / Hostel</x:String>
+                            <x:String>University</x:String>
+                            <x:String>Safe Zone</x:String>
+                            <x:String>Flats</x:String>
+                            <x:String>Other</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0">
+                <DatePicker x:Name="eventDate" Date="{x:Static sys:DateTime.Now}">
+                    <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+                </DatePicker>
+            </StackLayout>
+
+
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                      BackgroundColor="White">
-        <Picker x:Name="SupportGiven" Title="	Support given by means of ..." SelectedIndexChanged="SupportGiven_SelectedIndexChanged">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Hydration Station</x:String>
-                                <x:String>Event Support</x:String>
-                              <x:String>Pancake Cookup</x:String>
-                                <x:String>Flat Support</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-      </StackLayout>
+                <Picker x:Name="SupportGiven" Title="	Support given by means of ..." SelectedIndexChanged="SupportGiven_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Hydration Station</x:String>
+                            <x:String>Event Support</x:String>
+                            <x:String>Pancake Cookup</x:String>
+                            <x:String>Flat Support</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-            BackgroundColor="White">
-        <Entry x:Name="locationFld" Placeholder="Location of Activation" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
-     Margin="5,0,0,0" TextColor="Black"/>
-      </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
+                         BackgroundColor="White">
+                <Entry x:Name="locationFld" Placeholder="Location of Activation" HorizontalOptions="FillAndExpand" 
+                       VerticalOptions="CenterAndExpand" Margin="5,0,0,0" TextColor="Black"/>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-          BackgroundColor="White">
-        <Entry x:Name="TeamLeaderNameFld" Placeholder="Name of Team Leader" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
-     Margin="5,0,0,0" TextColor="Black"/>
-      </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                         BackgroundColor="White">
+                <Entry x:Name="TeamLeaderNameFld" Placeholder="Name of Team Leader" HorizontalOptions="FillAndExpand" 
+                       VerticalOptions="CenterAndExpand" Margin="5,0,0,0" TextColor="Black"/>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-                  BackgroundColor="White">
-        <Picker x:Name="VolunteerNumer" Title="	Number of Volunteers ..." SelectedIndexChanged="VolunteerNumer_SelectedIndexChanged">
-          <Picker.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-              <x:String>1</x:String>
-              <x:String>2</x:String>
-              <x:String>3</x:String>
-              <x:String>4</x:String>
-              <x:String>5</x:String>
-              <x:String>6</x:String>
-              <x:String>7 </x:String>
-              <x:String>8</x:String>
-              <x:String>9</x:String>
-              <x:String>10</x:String>
-              <x:String>11</x:String>
-              <x:String>12</x:String>
-              <x:String>13</x:String>
-              <x:String>14</x:String>
-              <x:String>15</x:String>
-              <x:String>16</x:String>
-              <x:String>17</x:String>
-              <x:String>18</x:String>
-              <x:String>19</x:String>
-              <x:String>20</x:String>
-              <x:String>21</x:String>
-              <x:String>22</x:String>
-              <x:String>23</x:String>
-              <x:String>24</x:String>
-              <x:String>25</x:String>
-              <x:String>26</x:String>
-              <x:String>27</x:String>
-              <x:String>28</x:String>
-              <x:String>29</x:String>
-              <x:String>30</x:String>
-              <x:String>31 </x:String>
-              <x:String>32</x:String>
-              <x:String>33</x:String>
-              <x:String>34</x:String>
-              <x:String>35</x:String>
-              <x:String>36</x:String>
-              <x:String>37</x:String>
-              <x:String>38</x:String>
-              <x:String>39 </x:String>
-              <x:String>40</x:String>
-              <x:String>41</x:String>
-              <x:String>42</x:String>
-              <x:String>43</x:String>
-              <x:String>44</x:String>
-              <x:String>45</x:String>
-              <x:String>46</x:String>
-              <x:String>47 </x:String>
-              <x:String>48</x:String>
-              <x:String>49</x:String>
-              <x:String>50</x:String>
-              <x:String>51</x:String>
-              <x:String>52</x:String>
-              <x:String>53</x:String>
-              <x:String>54</x:String>
-              <x:String>55</x:String>
-              <x:String>56 </x:String>
-              <x:String>57</x:String>
-              <x:String>58</x:String>
-              <x:String>59</x:String>
-              <x:String>60</x:String>
-              <x:String>61</x:String>
-              <x:String>62</x:String>
-              <x:String>63</x:String>
-              <x:String>64 </x:String>
-              <x:String>65</x:String>
-              <x:String>66</x:String>
-              <x:String>67 </x:String>
-              <x:String>68</x:String>
-              <x:String>69</x:String>
-              <x:String>70</x:String>
-              <x:String>71</x:String>
-              <x:String>72</x:String>
-              <x:String>73</x:String>
-              <x:String>74</x:String>
-              <x:String>75</x:String>
-              <x:String>76 </x:String>
-              <x:String>77</x:String>
-              <x:String>78</x:String>
-              <x:String>79</x:String>
-              <x:String>80</x:String>
-              <x:String>81</x:String>
-              <x:String>82</x:String>
-              <x:String>83</x:String>
-              <x:String>84 </x:String>
-              <x:String>85</x:String>
-              <x:String>86 </x:String>
-              <x:String>87</x:String>
-              <x:String>88</x:String>
-              <x:String>89</x:String>
-              <x:String>90</x:String>
-              <x:String>91</x:String>
-              <x:String>92</x:String>
-              <x:String>93</x:String>
-              <x:String>94</x:String>
-              <x:String>95 </x:String>
-              <x:String>96</x:String>
-              <x:String>97</x:String>
-              <x:String>98</x:String>
-              <x:String>99</x:String>
-              <x:String>100</x:String>
-     
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                         BackgroundColor="White">
+                <Entry x:Name="VolNumber" Placeholder="Number of Volunteers" HorizontalOptions="FillAndExpand" 
+                       VerticalOptions="CenterAndExpand" Margin="5,0,0,0" TextColor="Black" Keyboard="Numeric"/>
+            </StackLayout>
 
-            </x:Array>
-          </Picker.ItemsSource>
-        </Picker>
-      </StackLayout>
-      
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-                           BackgroundColor="White">
-        <Picker x:Name="HourSpend" Title="Approx amount of hours spent at the activation" SelectedIndexChanged="HourSpend_SelectedIndexChanged">
-          <Picker.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-              <x:String>1</x:String>
-              <x:String>2</x:String>
-              <x:String>3</x:String>
-              <x:String>4</x:String>
-              <x:String>5</x:String>
-              <x:String>6</x:String>
-              <x:String>7 </x:String>
-              <x:String>8</x:String>
-              <x:String>9</x:String>
-              <x:String>10</x:String>
-              <x:String>11</x:String>
-              <x:String>12</x:String>
-              <x:String>13</x:String>
-              <x:String>14</x:String>
-              <x:String>15</x:String>
-              <x:String>16</x:String>
-              <x:String>17</x:String>
-              <x:String>18</x:String>
-              <x:String>19</x:String>
-              <x:String>20</x:String>
-              <x:String>21</x:String>
-              <x:String>22</x:String>
-              <x:String>23</x:String>
-              <x:String>24</x:String>
-              <x:String>25</x:String>
-              <x:String>26</x:String>
-              <x:String>27</x:String>
-              <x:String>28</x:String>
-              <x:String>29</x:String>
-              <x:String>30</x:String>
-              <x:String>31 </x:String>
-              <x:String>32</x:String>
-              <x:String>33</x:String>
-              <x:String>34</x:String>
-              <x:String>35</x:String>
-              <x:String>36</x:String>
-              <x:String>37</x:String>
-              <x:String>38</x:String>
-              <x:String>39 </x:String>
-              <x:String>40</x:String>
-              <x:String>41</x:String>
-              <x:String>42</x:String>
-              <x:String>43</x:String>
-              <x:String>44</x:String>
-              <x:String>45</x:String>
-              <x:String>46</x:String>
-              <x:String>47 </x:String>
-              <x:String>48</x:String>
-              <x:String>49</x:String>
-              <x:String>50</x:String>
-            </x:Array>
-          </Picker.ItemsSource>
-        </Picker>
-      </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                         BackgroundColor="White">
+                <Entry x:Name="HoursSpent" Placeholder="Hours Spent" HorizontalOptions="FillAndExpand" 
+                       VerticalOptions="CenterAndExpand" Margin="5,0,0,0" TextColor="Black" Keyboard="Numeric" />
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-          BackgroundColor="White">
-        <Entry x:Name="PatronsFld" Placeholder="Approx amount of patrons at the activation" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
-     Margin="5,0,0,0" TextColor="Black"/>
-      </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                         BackgroundColor="White">
+                <Entry x:Name="PatronsFld" Placeholder="Amount of patrons at activation" HorizontalOptions="FillAndExpand" 
+                       VerticalOptions="CenterAndExpand" Margin="5,0,0,0" TextColor="Black" Keyboard="Numeric"/>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-        BackgroundColor="White">
-        <Entry x:Name="InteractionsFld" Placeholder="Estimated number of interactions with patrons" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
-     Margin="5,0,0,0" TextColor="Black"/>
-      </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                         BackgroundColor="White">
+                <Entry x:Name="InteractionsFld" Placeholder="Number of interactions with patrons" 
+                       HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="5,0,0,0" 
+                       TextColor="Black" Keyboard="Numeric" />
+            </StackLayout>
 
-
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
                      BackgroundColor="White">
-        <Picker x:Name="Lollies" Title="	Did you use Red Frogs lollies at the activation?" SelectedIndexChanged="Lollies_SelectedIndexChanged">
-          <Picker.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-              <x:String>Yes</x:String>
-              <x:String>No</x:String>
-            </x:Array>
-          </Picker.ItemsSource>
-        </Picker>
-      </StackLayout>
+                <Picker x:Name="Lollies" Title="Red Frogs lollies used at activation?" 
+                        SelectedIndexChanged="Lollies_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Yes</x:String>
+                            <x:String>No</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-                  BackgroundColor="White">
-        <Picker x:Name="IcePoles" Title="Did you use icy poles at the activation" SelectedIndexChanged="IcePoles_SelectedIndexChanged">
-          <Picker.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-              <x:String>Yes</x:String>
-              <x:String>No</x:String>
-            </x:Array>
-          </Picker.ItemsSource>
-        </Picker>
-      </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
+                          BackgroundColor="White">
+                <Picker x:Name="IcePoles" Title="Icy Poles used at activation" SelectedIndexChanged="IcePoles_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Yes</x:String>
+                            <x:String>No</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-               BackgroundColor="White">
-        <Picker x:Name="Pancakes" Title="Did you make pancakes at the activation?" SelectedIndexChanged="Pancakes_SelectedIndexChanged">
-          <Picker.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-              <x:String>Yes</x:String>
-              <x:String>No</x:String>
-            </x:Array>
-          </Picker.ItemsSource>
-        </Picker>
-      </StackLayout>
+             <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                          BackgroundColor="White">
+                    <Picker x:Name="Pancakes" Title="Pancakes provided at activation?" SelectedIndexChanged="Pancakes_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Yes</x:String>
+                            <x:String>No</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+             </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-              BackgroundColor="White">
-        <Picker x:Name="Water" Title="Did you make water at the activation?" SelectedIndexChanged="Water_SelectedIndexChanged">
-          <Picker.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-              <x:String>Yes</x:String>
-              <x:String>No</x:String>
-            </x:Array>
-          </Picker.ItemsSource>
-        </Picker>
-      </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                          BackgroundColor="White">
+                <Picker x:Name="Water" Title="Water provided at activation?" SelectedIndexChanged="Water_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Yes</x:String>
+                            <x:String>No</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-            BackgroundColor="White">
-        <Picker x:Name="Donuts" Title="Did you make donuts at the activation?" SelectedIndexChanged="Donuts_SelectedIndexChanged">
-          <Picker.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-              <x:String>Yes</x:String>
-              <x:String>No</x:String>
-            </x:Array>
-          </Picker.ItemsSource>
-        </Picker>
-      </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                         BackgroundColor="White">
+                <Picker x:Name="Donuts" Title="Donuts provided at activation?" SelectedIndexChanged="Donuts_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Yes</x:String>
+                            <x:String>No</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-          BackgroundColor="White">
-        <Picker x:Name="GiveAways" Title="Were there any other give away's at the activation? 
-e.g. sausages, skateboards, churros etc." SelectedIndexChanged="GiveAways_SelectedIndexChanged">
-          <Picker.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-              <x:String>Yes</x:String>
-              <x:String>No</x:String>
-            </x:Array>
-          </Picker.ItemsSource>
-        </Picker>
-      </StackLayout>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                         BackgroundColor="White">
+                <Picker x:Name="GiveAways" Title="Any other give away's at the activation?" SelectedIndexChanged="GiveAways_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Yes</x:String>
+                            <x:String>No</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                         BackgroundColor="White">
+                <Picker x:Name="Reports" Title="Any praise reports / cool stories from activation?" 
+                        SelectedIndexChanged="Reports_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Yes</x:String>
+                            <x:String>No</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
-      <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-          BackgroundColor="White">
-        <Picker x:Name="Reports" Title="Were there any praise reports / cool stories / good reports coming out of the activation?" SelectedIndexChanged="Reports_SelectedIndexChanged">
-          <Picker.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-              <x:String>Yes</x:String>
-              <x:String>No</x:String>
-            </x:Array>
-          </Picker.ItemsSource>
-        </Picker>
-      </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0" >
+                <Label Text="Team member follow up needed by coordinator" FontSize="Medium" HorizontalOptions="StartAndExpand" 
+                       WidthRequest="100"></Label>
+                 <Switch x:Name="medicSwitch" HorizontalOptions="EndAndExpand" IsToggled="False"></Switch>
+            </StackLayout>
 
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0" 
+                         BackgroundColor="White">
+                <Picker x:Name="Incidents" Title="Any incidents at the activation?" SelectedIndexChanged="Incidents_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Yes</x:String>
+                            <x:String>No</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
 
+            <StackLayout>
+                <Button x:Name="closeBtn" Text="Close Event" VerticalOptions="Start" HorizontalOptions="FillAndExpand" 
+                        BackgroundColor="#bf3336" Margin="10,20,10,20" TextColor="White" />
+            </StackLayout>
 
-      <StackLayout Orientation="Horizontal" Margin="10,0,0,0" >
-        <Label Text="Does anyone in your team need to be followed up by your city coordinator?" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"></Label>
-        <Switch x:Name="medicSwitch" IsToggled="False"></Switch>
-
-
-
-
-        <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0"
-            BackgroundColor="White">
-          <Picker x:Name="Incidents" Title="Were there any incidents at the activation?" SelectedIndexChanged="Incidents_SelectedIndexChanged">
-            <Picker.ItemsSource>
-              <x:Array Type="{x:Type x:String}">
-                <x:String>Yes</x:String>
-                <x:String>No</x:String>
-              </x:Array>
-            </Picker.ItemsSource>
-          </Picker>
         </StackLayout>
-
-        <StackLayout>
-          <Button x:Name="SubmitBtn" Text="Submit From" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#FFFFFF"
-    Margin="10,20,10,20" />
-        </StackLayout>
-
-
-
-
-
-
-
-      </StackLayout>
-      
- 
-              </StackLayout>
-           </StackLayout>
-             </ScrollView>
+    </ScrollView>
   </ContentPage.Content>
 </ContentPage>
