@@ -14,7 +14,7 @@ namespace RedFrogs.Views
         {
             InitializeComponent();
 
-            closeBtn.Clicked += ClosedEventClicked;
+            //closeBtn.Clicked += ClosedEventClicked;
         }
 
         private void City_SelectedIndexChanged(object sender, EventArgs e)

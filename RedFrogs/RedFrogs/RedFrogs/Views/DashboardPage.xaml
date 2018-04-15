@@ -7,31 +7,51 @@
     <ToolbarItem x:Name="sync" Icon="sync.png" />
   </ContentPage.ToolbarItems>
 
-  <StackLayout VerticalOptions="StartAndExpand">
-    <ListView x:Name="caseList" HasUnevenRows="False" SeparatorColor="Black" 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="#d27072">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="minusBtn" Text="-" FontSize="20" Grid.Row="0" Grid.Column="0" 
+                       BackgroundColor="Transparent" TextColor="White" />
+                <Label Text="Interactions:" TextColor="White" FontSize="16" Grid.Row="0" Grid.Column="1" 
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Label x:Name="intCount" Text="0" TextColor="White" FontSize="16" Grid.Row="0" Grid.Column="2" 
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Button x:Name="plusBtn" Text="+" FontSize="20" Grid.Row="0" Grid.Column="3" 
+                       BackgroundColor="Transparent" TextColor="White" />
+            </Grid>
+        </StackLayout>
+
+        <ListView x:Name="caseList" HasUnevenRows="False" SeparatorColor="Black" Grid.Row="1" Grid.Column="0"
               ItemSelected="Client_ItemSelected" RowHeight="75">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <StackLayout Orientation="Horizontal" Margin="10, 10, 10, 10">
-                <Label Text="{Binding PersonName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-                <Label Text="{Binding SymptomName}" FontSize="Medium" HorizontalOptions="StartAndExpand" />
-                <BoxView Color="{Binding colour}" HorizontalOptions="EndAndExpand" />
-            </StackLayout>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>    
-    </ListView>
-  </StackLayout>
-  
-   <!--<StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="#bf3336">
-     <Button x:Name="minusBtn" Text="-" FontSize="20" 
-             VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
-     <Label Text="Interactions:" TextColor="White" FontSize="20" 
-            VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
-     <Label x:Name="intCount" TextColor="White" FontSize="20"
-            VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
-     <Button x:Name="plusBtn" Text="+" FontSize="20" 
-             VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-   </StackLayout>-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="10, 10, 10, 10">
+                            <Label Text="{Binding PersonName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding SymptomName}" FontSize="Medium" HorizontalOptions="StartAndExpand" />
+                            <BoxView Color="{Binding colour}" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </ContentPage>

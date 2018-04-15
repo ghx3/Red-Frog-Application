@@ -49,8 +49,8 @@ namespace RedFrogs.Views
                 add.Clicked += AddClicked;*/
             });
 
-            //plusBtn.Clicked += plus;
-            //minusBtn.Clicked += minus;
+            plusBtn.Clicked += plus;
+            minusBtn.Clicked += minus;
         }
 
         private async void LoadEvents()
@@ -90,16 +90,16 @@ namespace RedFrogs.Views
             await Navigation.PushAsync(new DataInputPage(toEdit, true));
         }
 
-        //public void plus(object sender, EventArgs e)
-        //{
-        //    currEvent.NumInteractions += 1;
-        //    intCount.Text = currEvent.NumInteractions.ToString();
-        //}
+        public void plus(object sender, EventArgs e)
+        {
+            currEvent.NumInteractions += 1;
+            intCount.Text = currEvent.NumInteractions.ToString();
+        }
 
-        //public void minus(object sender, EventArgs e)
-        //{
-        //    currEvent.NumInteractions -= 1;
-        //    intCount.Text = currEvent.NumInteractions.ToString();
-        //}
+        public void minus(object sender, EventArgs e)
+        {
+            currEvent.NumInteractions -= 1;
+            intCount.Text = currEvent.NumInteractions.ToString();
+        }
     }
 }
