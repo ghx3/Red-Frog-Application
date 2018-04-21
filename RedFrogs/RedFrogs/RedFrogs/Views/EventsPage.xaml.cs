@@ -1,6 +1,7 @@
 ﻿using RedFrogs.Models;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,22 +11,15 @@ namespace RedFrogs.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EventsPage : ContentPage
     {
+        ObservableCollection<Events> eventsColl;
+
         public EventsPage()
         {
-            InitializeComponent();           
-             
-            ObservableCollection<Events> eventsColl = new ObservableCollection<Events>();
-            
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var events = await App.firebaseDB.getEvents();               
-                foreach (var item in events)
-                {
-                    eventsColl.Add(item);
-                }
-                EventsList.ItemsSource = eventsColl;
-            });
+            InitializeComponent();
 
+            eventsColl = new ObservableCollection<Events>();
+            loadEvents();
+            
             MessagingCenter.Subscribe<NewEventPage>(this, "SaveEvents", (async) =>
             {
                 ObservableCollection<Events> eventsColl_1 = new ObservableCollection<Events>();
@@ -44,6 +38,16 @@ namespace RedFrogs.Views
 
             newEventBtn.Clicked += addClicked;
             deleteBtn.Clicked += deleteClicked;
+        }
+
+        private async void loadEvents()
+        {
+            var events = await App.firebaseDB.getEvents();
+            foreach (var item in events)
+            {
+                eventsColl.Add(item);
+            }
+            EventsList.ItemsSource = eventsColl;
         }
 
         private async void EventSelected(object sender, SelectedItemChangedEventArgs e)
