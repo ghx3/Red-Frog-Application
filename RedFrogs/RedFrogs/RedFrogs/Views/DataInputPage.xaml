@@ -8,6 +8,10 @@
         <ScrollView>
             <StackLayout Orientation="Vertical">
                 <Grid BackgroundColor="White" Margin="10,10,10,0" ColumnSpacing="0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -25,20 +29,20 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
+                    <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>-->
 
                     <Label Text="Name" Grid.Row="0" FontSize="16" 
                        VerticalTextAlignment="Center" />
                     <controls:CustomEntry x:Name="nameFld" Grid.Row="1"
-                                  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black"/>
+                                  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" Grid.ColumnSpan="2"/>
 
                     <Label Text="Gender" Grid.Row="2" FontSize="16" 
                        VerticalTextAlignment="Center" />
                     <controls:CustomPicker x:Name="gender" 
                                        Grid.Row="3"
-                                       SelectedIndexChanged="GenderPickerChanged" Image="arrow_drop_down">
+                                       SelectedIndexChanged="GenderPickerChanged" Image="arrow_drop_down"  Grid.ColumnSpan="2">
                         <controls:CustomPicker.Items>
                             <x:String>Male</x:String>
                             <x:String>Female</x:String>
@@ -47,27 +51,27 @@
 
                     <Label Text="Age" Grid.Row="4" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                    <controls:CustomEntry x:Name="ageFld" Grid.Row="5" TextColor="Black"/>
+                    <controls:CustomEntry x:Name="ageFld" Grid.Row="5" TextColor="Black"  Grid.ColumnSpan="2"/>
 
                     <Label Text="Symptoms" Grid.Row="6" FontSize="16" 
                        VerticalTextAlignment="Center" />
                     <controls:CustomPicker x:Name="sympPicker" Grid.Row="7" SelectedIndexChanged="SymptomPickerChanged" 
-                                           Image="arrow_drop_down"/>
+                                           Image="arrow_drop_down"  Grid.ColumnSpan="2"/>
 
                     <Label Text="Seen by Medic" Grid.Row="8" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                    <Switch x:Name="medicSwitch" IsToggled="False" Grid.Row="9" />
+                    <Switch x:Name="medicSwitch" IsToggled="False" Grid.Row="8" Grid.Column="1"/>
 
-                    <Label Text="Incident Report" Grid.Row="10" FontSize="16" 
+                    <Label Text="Incident Report" Grid.Row="9" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                    <Switch x:Name="reportSwitch" IsToggled="False" Grid.Row="11" />
+                    <Switch x:Name="reportSwitch" IsToggled="False" Grid.Row="9" Grid.Column="1" />
 
-                    <Label Text="Action Taken" Grid.Row="12" FontSize="16" 
+                    <Label Text="Action Taken" Grid.Row="10" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                    <controls:CustomEditor x:Name="actionFld" Grid.Row="13" HeightRequest="100"/>
+                    <controls:CustomEditor x:Name="actionFld" Grid.Row="11" HeightRequest="100"  Grid.ColumnSpan="2"/>
 
-                    <Button x:Name="addBtn" Text="Add" Grid.Row="14"
-                        BackgroundColor="#bf3336" TextColor="White" Clicked="AddClicked" Margin="0,10,0,10" />
+                    <Button x:Name="addBtn" Text="Add" Grid.Row="12"
+                        BackgroundColor="#bf3336" TextColor="White" Clicked="AddClicked" Margin="0,10,0,10"  Grid.ColumnSpan="2"/>
                     
                 </Grid>
             </StackLayout>
