@@ -2,25 +2,59 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             x:Class="RedFrogs.Views.NewEventPage">
-  
-  <StackLayout Orientation="Vertical">
-    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0">
-      <Entry x:Name="nameFld" Placeholder="Enter Event Name" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
-                 Margin="5,0,0,0" TextColor="Black"/>
-    </StackLayout>
+             xmlns:controls="clr-namespace:RedFrogs.Controls"
+             x:Class="RedFrogs.Views.NewEventPage"
+             Title="Add a new Event">
 
-    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0,20,0,20" Margin="10,20,10,0">
-      <DatePicker x:Name="eventDate" Date="{x:Static sys:DateTime.Now}">
-        <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>      
-      </DatePicker>
-    </StackLayout>
-  
-    <StackLayout>
-      <Button x:Name="addBtn" Text="Add" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#bf3336" 
-              Margin="10,20,10,20" TextColor="White" />
-    </StackLayout>  
+    <StackLayout Orientation="Vertical">
+        <Grid BackgroundColor="White" Margin="10,10,10,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-  </StackLayout>
+            <Label Text="Event Name" Grid.Row="0" FontSize="16" 
+                       VerticalTextAlignment="Center" />
+            <controls:CustomEntry x:Name="nameFld" Placeholder="Enter Event Name" Grid.Row="1"
+                                  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black"/>
+
+            <Label Text="City" Grid.Row="2" FontSize="16" 
+                       VerticalTextAlignment="Center" />
+            <controls:CustomPicker x:Name="cityPicker" 
+                                       Grid.Row="3"
+                                       SelectedIndexChanged="City_SelectedIndexChanged" Image="arrow_drop_down">
+                <controls:CustomPicker.Items>
+                    <x:String>Auckland</x:String>
+                    <x:String>Wellington</x:String>
+                    <x:String>Dunedin</x:String>
+                    <x:String>Christchurch</x:String>
+                    <x:String>Invercargill</x:String>
+                    <x:String>Hamilton</x:String>
+                    <x:String>Palmerston North</x:String>
+                    <x:String>Queenstown</x:String>
+                </controls:CustomPicker.Items>
+            </controls:CustomPicker>
+
+            <Label Text="Event Date" Grid.Row="4" FontSize="16" 
+                       VerticalTextAlignment="Center" />
+            <DatePicker x:Name="eventDate" Date="{x:Static sys:DateTime.Now}" Grid.Row="5">
+                <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+            </DatePicker>
+            
+            
+
+            <Button x:Name="addBtn" Text="Add" Grid.Row="6" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#bf3336" 
+              Margin="0,20,0,0" TextColor="White" />
+
+        </Grid>
+    </StackLayout>
 
 </ContentPage>

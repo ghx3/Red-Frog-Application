@@ -1,4 +1,5 @@
-﻿using RedFrogs.Models;
+﻿using RedFrogs.Data;
+using RedFrogs.Models;
 using System;
 
 using Xamarin.Forms;
@@ -7,35 +8,47 @@ namespace RedFrogs.Views
 {
     public partial class NewEventPage : ContentPage
     {
+        AzureService azureService;
+        Events newEvent;
 
         public NewEventPage()
         {
             InitializeComponent();
 
+            azureService = DependencyService.Get<AzureService>();
+            newEvent = new Events();
+
             eventDate.MinimumDate = DateTime.Today;
             addBtn.Clicked += sendEvent;
         }
 
-        public async void sendEvent(object sender, EventArgs e)
+        private void City_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Events toSend = new Events();
+            newEvent.Location = cityPicker.Items[cityPicker.SelectedIndex];
+        }
+
+        public async void sendEvent(object sender, EventArgs e)
+        {            
             if (string.IsNullOrWhiteSpace(nameFld.Text))
             {
                 await DisplayAlert("Event Name empty", "Please enter a name for the event", "Ok");
-            } else {
-                toSend.EventName = nameFld.Text;
-                toSend.NumInteractions = 0;
-                toSend.EndDate = eventDate.Date.ToString("dd/MM/yyyy");
-                toSend.IsClosed = 0;
+            }
+            else
+            {
+                newEvent.EventName = nameFld.Text;
+                newEvent.NumInteractions = 0;
+                newEvent.EndDate = eventDate.Date;
+                newEvent.IsClosed = 0;
 
-                App.firebaseDB.saveEvent(toSend);
+                await azureService.AddEvent(newEvent);
                 SendMessage();
                 await Navigation.PopAsync();
-            }            
+            }
         }
-          private void SendMessage()
-          {
+
+        private void SendMessage()
+        {
             MessagingCenter.Send<NewEventPage>(this, "SaveEvents");
-          }
+        }
     }
 }

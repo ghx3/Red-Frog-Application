@@ -10,6 +10,7 @@ namespace RedFrogs.Data
 {
     public class RedFrogFirebaseDB
     {
+        /*
         FirebaseClient client;
 
         public RedFrogFirebaseDB()
@@ -63,6 +64,6 @@ namespace RedFrogs.Data
                 DependencyService.Get<IMessage>().ShortAlert("Internet Connection required to create new event");
             }
                 
-        }
+        }*/
     }
 }

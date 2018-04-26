@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedFrogs.Views.DashboardPage">
   <ContentPage.ToolbarItems>
-    <ToolbarItem x:Name="add" Icon="add.png" />
+    <ToolbarItem x:Name="add" Icon="add.png" Clicked="AddClicked" />
     <ToolbarItem x:Name="sync" Icon="sync.png" />
   </ContentPage.ToolbarItems>
 
@@ -30,7 +30,7 @@
 
                 <Button x:Name="minusBtn" Text="-" FontSize="20" Grid.Row="0" Grid.Column="0" 
                        BackgroundColor="Transparent" TextColor="White" />
-                <Label Text="Interactions:" TextColor="White" FontSize="16" Grid.Row="0" Grid.Column="1" 
+                <Label Text="Interactions:" TextColor="White" FontSize="18" Grid.Row="0" Grid.Column="1" 
                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                 <Label x:Name="intCount" Text="0" TextColor="White" FontSize="16" Grid.Row="0" Grid.Column="2" 
                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
@@ -44,10 +44,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Margin="10, 10, 10, 10">
+                        <StackLayout Orientation="Horizontal" Margin="10, 10, 0, 10">
                             <Label Text="{Binding PersonName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                             <Label Text="{Binding SymptomName}" FontSize="Medium" HorizontalOptions="StartAndExpand" />
-                            <BoxView Color="{Binding colour}" HorizontalOptions="EndAndExpand" />
+                            <BoxView Color="{Binding colour}" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

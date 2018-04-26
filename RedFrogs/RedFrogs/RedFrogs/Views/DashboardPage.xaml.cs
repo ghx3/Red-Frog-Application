@@ -1,4 +1,7 @@
-﻿using RedFrogs.Models;
+﻿using MvvmHelpers;
+using RedFrogs.Data;
+using RedFrogs.Helpers;
+using RedFrogs.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,80 +12,52 @@ namespace RedFrogs.Views
 {
     public partial class DashboardPage : ContentPage
     {
-        string nameOfEvent = null;
+        AzureService azureService;
         Events currEvent;
-        ObservableCollection<CaseInfo> cases;
+        public ObservableRangeCollection<CaseInfo> cases { get; } = new ObservableRangeCollection<CaseInfo>();
+        string nameOfEvent = null;
+        //ObservableCollection<CaseInfo> cases;
 
         public DashboardPage(Events selEvent)
         {
-            InitializeComponent(); 
-
-            currEvent = selEvent;            
-            cases = new ObservableCollection<CaseInfo>();
+            InitializeComponent();
+            azureService = DependencyService.Get<AzureService>();
+            currEvent = selEvent;
             Title = currEvent.EventName;
             nameOfEvent = currEvent.EventName;
-
-            LoadEvents();
-            add.Clicked += AddClicked;
-            MessagingCenter.Subscribe<DataInputPage>(this, "SaveValue", async (sender) =>
-            {
-                InitializeComponent();
-                ToolbarItems.Remove(add);
-                ToolbarItems.Remove(sync);
-                //currEvent = selEvent;
-
-                Title = currEvent.EventName;
-                LoadEvents();
-                /*var caseInfo1 = await App.DB.GetAllCaseInfo();
-
-                ObservableCollection<Cases> cases1 = new ObservableCollection<Cases>();
-                foreach (CaseInfo cinfo1 in caseInfo1)
-                {
-                    if (cinfo1.EventName == currEvent.EventName)
-                    {
-                        string symptom = Convert.ToString(cinfo1.Symptom);
-                        cases1.Add(new Cases { PersonName = cinfo1.Name, SymptomName = symptom, Age = cinfo1.Age });
-                    }
-                }
-
-                caseList.ItemsSource = cases1;
-                add.Clicked += AddClicked;*/
-            });
-
-            caseList.ItemTapped += (sender, args) => {
-                var newItem = caseList.SelectedItem as Cases;
-                //DisplayAlert(newItem.ToString(), "WOW", "OK");
-                Navigation.PushAsync(new DataInputPage(newItem, true));
-
-            };
+            
             plusBtn.Clicked += plus;
             minusBtn.Clicked += minus;
         }
 
-        private async void LoadEvents()
+        protected async override void OnAppearing()
         {
-            List<CaseInfo> caseInfo = await App.DB.GetAllCaseInfo();
-            List<Cases> display = new List<Cases>();
+            var getCaseInfo = await azureService.GetEventCases(currEvent.EventName);
+            cases.ReplaceRange(getCaseInfo);
 
+            List<Cases> display = new List<Cases>();
             ColorTypeConverter converter = new ColorTypeConverter();
 
-            foreach (CaseInfo cinfo in caseInfo)
+            foreach (CaseInfo cinfo in getCaseInfo)
             {
-                if (cinfo.EventName == currEvent.EventName)
-                {
-                    //string symptom = Convert.ToString(cinfo.Symptom); dont need
-                    //cases.Add(cinfo);
-                    Symptoms symptomColour = await App.DB.getSymptom(cinfo.Symptom);
-                    Cases toAdd = new Cases() {
-                        PersonName = cinfo.Name,
-                        SymptomName = cinfo.Symptom,
-                        colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour))
-                    };
-                    display.Add(toAdd);
-                }
+                Symptoms symptomColour = await App.DB.getSymptom(cinfo.Symptom);                
+                Cases item = new Cases();
+                item.PersonName = cinfo.Name;
+                item.SymptomName = cinfo.Symptom;
+                item.colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour));
+                
+                display.Add(item);
             }
-            caseList.ItemsSource = display;            
+            caseList.ItemsSource = display;
             
+        }
+
+        private async void LoadEvents()
+        {
+            var getCaseInfo = await azureService.GetEventCases(currEvent.EventName);
+            cases.ReplaceRange(getCaseInfo);
+            await DisplayAlert("test", cases.Count.ToString(), "ok");
+
         }
 
         private async void AddClicked(object sender, EventArgs e)
@@ -92,14 +67,9 @@ namespace RedFrogs.Views
 
         private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-           // Debug.WriteLine("Heyo");
-           // CaseInfo toEdit = sender as CaseInfo;
-
-           // await DisplayAlert(toEdit.EventName, toEdit.Name, "OK");
-           //// await Navigation.PushAsync(new DataInputPage(toEdit, true));
+            CaseInfo toEdit = (CaseInfo)sender;
+            await Navigation.PushAsync(new DataInputPage(toEdit, true));
         }
-
-
 
         public void plus(object sender, EventArgs e)
         {
@@ -110,6 +80,7 @@ namespace RedFrogs.Views
         public void minus(object sender, EventArgs e)
         {
             currEvent.NumInteractions -= 1;
+            currEvent.NumInteractions = HelperClass.GreaterThanZero(currEvent.NumInteractions);
             intCount.Text = currEvent.NumInteractions.ToString();
         }
     }

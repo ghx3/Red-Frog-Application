@@ -16,6 +16,8 @@ namespace RedFrogs.Data
 
         }
 
+        /*
+        #region events
         public Task<List<Events>> GetAllEvents()
         {
             return conn.QueryAsync<Events>("Select * FROM [Events]");
@@ -38,6 +40,9 @@ namespace RedFrogs.Data
             
         }
 
+        #endregion
+        */
+
         public Task<List<FeedBack>> GetAllFeedBack()
         {
             return conn.QueryAsync<FeedBack>("Select * FROM [FeedBack]");
@@ -48,10 +53,11 @@ namespace RedFrogs.Data
             return conn.QueryAsync<CaseInfo>("Select * FROM [CaseInfo]");
         }
 
+        /*
         public Task<CaseInfo> getCaseInfo(int id)
         {
             return conn.Table<CaseInfo>().Where(i => i.ID == id).FirstOrDefaultAsync();
-        }
+        }*/
 
         public Task<List<Symptoms>> GetAllSymptoms()
         {
@@ -68,6 +74,7 @@ namespace RedFrogs.Data
             return conn.Table<Symptoms>().Where(i => i.SympName == name).FirstOrDefaultAsync();
         }
 
+        /*
         public Task<int> SaveCaseInfo(CaseInfo item)
         {
             if (item.ID != 0)
@@ -78,6 +85,6 @@ namespace RedFrogs.Data
             {
                 return conn.InsertAsync(item);
             }
-        }
+        }*/
     }
 }
