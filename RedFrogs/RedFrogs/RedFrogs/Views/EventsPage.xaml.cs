@@ -1,4 +1,6 @@
-﻿using RedFrogs.Models;
+﻿using MvvmHelpers;
+using RedFrogs.Data;
+using RedFrogs.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -11,50 +13,40 @@ namespace RedFrogs.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EventsPage : ContentPage
     {
-        ObservableCollection<Events> eventsColl;
+        AzureService azureService;
+        public ObservableRangeCollection<Events> events { get; } = new ObservableRangeCollection<Events>();
 
         public EventsPage()
         {
             InitializeComponent();
 
-            eventsColl = new ObservableCollection<Events>();
-            loadEvents();
+            azureService = DependencyService.Get<AzureService>();
             
-            MessagingCenter.Subscribe<NewEventPage>(this, "SaveEvents", (async) =>
-            {
-                ObservableCollection<Events> eventsColl_1 = new ObservableCollection<Events>();
+        }
 
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var newEvents = await App.firebaseDB.getEvents();
-                    foreach (var item in newEvents)
-                    {
-                        eventsColl_1.Add(item);
-                    }
+        protected async override void OnAppearing()
+        {
+            var getEvents = await azureService.GetEvents();
+            events.ReplaceRange(getEvents);
 
-                    EventsList.ItemsSource = eventsColl_1;
-                });
-            });
+            EventsList.ItemsSource = events;
 
             newEventBtn.Clicked += addClicked;
             deleteBtn.Clicked += deleteClicked;
         }
 
-        private async void loadEvents()
-        {
-            var events = await App.firebaseDB.getEvents();
-            foreach (var item in events)
-            {
-                eventsColl.Add(item);
-            }
-            EventsList.ItemsSource = eventsColl;
-        }
-
         private async void EventSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Events sel = (Events) e.SelectedItem;            
-            await Navigation.PushAsync(new DashboardPage(sel));
-        }        
+            if (e.SelectedItem != null)
+            {
+                Events sel = (Events)e.SelectedItem;
+                // clear selection
+                EventsList.SelectedItem = null;
+                //open dashboard page
+                var dashboardPage = new DashboardPage(sel);
+                await Navigation.PushAsync(dashboardPage);                
+            }            
+        }
 
         private async void addClicked(object sender, EventArgs e)
         {
@@ -63,12 +55,14 @@ namespace RedFrogs.Views
 
         private void deleteClicked(object sender, EventArgs e)
         {
-            App.DB.DeleteAllEvents();
+            
         }
-        
+
         private async void CloseClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new FeedbackPage());
+            var item = (Events)((Button)sender).BindingContext;
+
+            await Navigation.PushAsync(new FeedbackPage(item));
         }
 
     }

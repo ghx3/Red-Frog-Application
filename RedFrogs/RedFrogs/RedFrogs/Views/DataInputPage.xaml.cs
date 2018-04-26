@@ -3,21 +3,23 @@ using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using RedFrogs.Helpers;
+using RedFrogs.Data;
 
 namespace RedFrogs.Views
 {
     public partial class DataInputPage : ContentPage
     {
         CaseInfo saveCase;
+        AzureService azureService;
         private object selectedItem;
         string nameOfEvent;
 
         public DataInputPage(string eventName)
         {
             InitializeComponent();
+            azureService = DependencyService.Get<AzureService>();
             nameOfEvent = eventName;
             saveCase = new CaseInfo();
-            addBtn.Clicked += AddClicked;
             PopulateSymptomPicker();
             
         }
@@ -33,22 +35,7 @@ namespace RedFrogs.Views
             nameFld.Text = saveCase.Name;
             ageFld.Text = Convert.ToString(saveCase.Age);
             actionFld.Text = saveCase.ActionTaken;            
-
-            addBtn.Clicked += AddClicked;
-
-            //var fList1 = App.DB.GetAllFeedBack(); don't need
-            //var sList1 = App.DB.GetAllSymptoms(); don't need
-            /*foreach (FeedBack f in fList1)
-            {
-                if (f.EventName == selectedItem.EventName)
-                {
-                    nameFld.Text = f.Name;
-                    ageFld.Text = Convert.ToString(f.Age);
-                    actionFld.Text = f.ActionTaken;
-                }
-            } don't need */
-            //PopulateSymptomPicker();
-            //saveCase = new CaseInfo();
+            
         }
 
         private async void PopulateSymptomPicker()
@@ -64,23 +51,18 @@ namespace RedFrogs.Views
         }
 
         void GenderPickerChanged(object sender, EventArgs e)
-        {
-            var gender = (Picker)sender;
-            int selectedIndex = gender.SelectedIndex;
-
-            if(selectedIndex != -1)
+        {            
+            if(gender.SelectedIndex != -1)
             {
-                saveCase.Gender = (string)gender.ItemsSource[selectedIndex];
-            }
+                saveCase.Gender = gender.Items[gender.SelectedIndex];
+            }            
         }
 
         void SymptomPickerChanged(object sender, EventArgs e)
-        {
-            var symp = (Picker)sender; 
-
-            if(symp.SelectedIndex != -1)
+        {         
+            if(sympPicker.SelectedIndex != -1)
             {
-                saveCase.Symptom = symp.Items[symp.SelectedIndex];
+                saveCase.Symptom = sympPicker.Items[sympPicker.SelectedIndex];
             }
         }
 
@@ -88,12 +70,14 @@ namespace RedFrogs.Views
         {
             saveCase.EventName = nameOfEvent;
             saveCase.Name = nameFld.Text;
-            saveCase.Age = int.Parse(ageFld.Text);
-            saveCase.SeenByMedic = HelperClass.ConvertToInt(medicSwitch.IsToggled);
-            saveCase.IncidentReported = HelperClass.ConvertToInt(reportSwitch.IsToggled);
+            saveCase.Age = HelperClass.HasValue(ageFld.Text);
+            saveCase.SeenByMedic = medicSwitch.IsToggled;
+            saveCase.IncidentReported = reportSwitch.IsToggled;
             saveCase.ActionTaken = actionFld.Text;
+            saveCase.TimeInCare = "have to implement";
+            saveCase.VolunteerName = "have to add";
 
-            await App.DB.SaveCaseInfo(saveCase);
+            await azureService.AddCaseInfo(saveCase);
             MessagingCenter.Send<DataInputPage>(this, "SaveValue");
             await Navigation.PopAsync();
         }

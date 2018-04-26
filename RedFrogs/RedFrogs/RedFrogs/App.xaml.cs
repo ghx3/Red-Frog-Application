@@ -12,7 +12,6 @@ namespace RedFrogs
     public partial class App : Application
     {
         static RedFrogDatabase db;
-        static RedFrogFirebaseDB fireDB;
 
         public App()
         {
@@ -21,19 +20,6 @@ namespace RedFrogs
             MainPage = new NavigationPage(new Login());
             MainPage.SetValue(NavigationPage.BarBackgroundColorProperty, Color.FromHex("#bf3336"));
             MainPage.SetValue(NavigationPage.BarTextColorProperty, Color.White);
-        }
-
-        public static RedFrogFirebaseDB firebaseDB
-        {
-            get
-            {
-                if(db == null)
-                {
-                    fireDB = new RedFrogFirebaseDB();
-                }
-
-                return fireDB;
-            }
         }
 
         public static RedFrogDatabase DB
