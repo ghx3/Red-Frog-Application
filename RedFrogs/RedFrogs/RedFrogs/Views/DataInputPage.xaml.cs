@@ -9,7 +9,7 @@ namespace RedFrogs.Views
     public partial class DataInputPage : ContentPage
     {
         CaseInfo saveCase;
-        private object selectedItem;
+        Cases itemSelected = new Cases();
         string nameOfEvent;
 
         public DataInputPage(string eventName)
@@ -22,17 +22,17 @@ namespace RedFrogs.Views
             
         }
 
-        public DataInputPage(CaseInfo selectedItem, bool isEdit)
+        public DataInputPage(Cases selectedItem, bool isEdit)
         {            
             InitializeComponent();
-            this.selectedItem = selectedItem;
+            this.itemSelected = selectedItem;
             
             PopulateSymptomPicker();
 
-            saveCase = selectedItem;
-            nameFld.Text = saveCase.Name;
-            ageFld.Text = Convert.ToString(saveCase.Age);
-            actionFld.Text = saveCase.ActionTaken;            
+            //saveCase = selectedItem;
+            nameFld.Text = itemSelected.PersonName;
+            //ageFld.Text = Convert.ToString(itemSelected.Age);
+            //actionFld.Text = itemSelected.ActionTaken;            
 
             addBtn.Clicked += AddClicked;
 

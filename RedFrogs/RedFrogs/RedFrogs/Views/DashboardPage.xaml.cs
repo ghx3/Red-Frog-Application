@@ -15,7 +15,7 @@ namespace RedFrogs.Views
 
         public DashboardPage(Events selEvent)
         {
-            InitializeComponent();
+            InitializeComponent(); 
 
             currEvent = selEvent;            
             cases = new ObservableCollection<CaseInfo>();
@@ -49,6 +49,12 @@ namespace RedFrogs.Views
                 add.Clicked += AddClicked;*/
             });
 
+            caseList.ItemTapped += (sender, args) => {
+                var newItem = caseList.SelectedItem as Cases;
+                //DisplayAlert(newItem.ToString(), "WOW", "OK");
+                Navigation.PushAsync(new DataInputPage(newItem, true));
+
+            };
             plusBtn.Clicked += plus;
             minusBtn.Clicked += minus;
         }
@@ -86,9 +92,14 @@ namespace RedFrogs.Views
 
         private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            CaseInfo toEdit = (CaseInfo)sender;
-            await Navigation.PushAsync(new DataInputPage(toEdit, true));
+           // Debug.WriteLine("Heyo");
+           // CaseInfo toEdit = sender as CaseInfo;
+
+           // await DisplayAlert(toEdit.EventName, toEdit.Name, "OK");
+           //// await Navigation.PushAsync(new DataInputPage(toEdit, true));
         }
+
+
 
         public void plus(object sender, EventArgs e)
         {
