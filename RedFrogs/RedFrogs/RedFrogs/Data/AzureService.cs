@@ -3,6 +3,7 @@ using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using Plugin.Connectivity;
 using RedFrogs.Data;
+using RedFrogs.Helpers;
 using RedFrogs.Models;
 using System;
 using System.Collections.Generic;
@@ -22,13 +23,14 @@ namespace RedFrogs.Data
         IMobileServiceSyncTable<Events> eventsTable;
         IMobileServiceSyncTable<FeedBack> feedbackTable;
         IMobileServiceSyncTable<CaseInfo> caseInfoTable;
+        IMobileServiceSyncTable<Users> userTable;
 
         public async Task Initialize()
         {
             if (Client?.SyncContext?.IsInitialized ?? false)
                 return;
 
-            var appUrl = "https://redfrogtest.azurewebsites.net";
+            var appUrl = "https://redfrogs.azurewebsites.net";
 
             Client = new MobileServiceClient(appUrl);
 
@@ -43,6 +45,7 @@ namespace RedFrogs.Data
             store.DefineTable<Events>();
             store.DefineTable<FeedBack>();
             store.DefineTable<CaseInfo>();
+            store.DefineTable<Users>();
 
             //Initialize SyncContext
             await Client.SyncContext.InitializeAsync(store);
@@ -51,6 +54,8 @@ namespace RedFrogs.Data
             eventsTable = Client.GetSyncTable<Events>();
             feedbackTable = Client.GetSyncTable<FeedBack>();
             caseInfoTable = Client.GetSyncTable<CaseInfo>();
+            userTable = Client.GetSyncTable<Users>();
+
         }
 
         public async Task SyncEvents()
@@ -77,7 +82,7 @@ namespace RedFrogs.Data
             await Initialize();
             await SyncEvents();
 
-            return await eventsTable.Where(e => e.IsClosed == 0).ToEnumerableAsync(); ;
+            return await eventsTable.Where(e => !e.IsClosed).ToEnumerableAsync(); ;
 
         }
 
@@ -96,7 +101,7 @@ namespace RedFrogs.Data
                     return;
 
                 await Initialize();
-                toUpdate.IsClosed = 1;
+                toUpdate.IsClosed = true;
                 await eventsTable.UpdateAsync(toUpdate);
                 await SyncEvents();
             }
@@ -113,19 +118,60 @@ namespace RedFrogs.Data
             await Client.SyncContext.PushAsync();
         }
 
+        public async Task<FeedBack> GetFeedback(string eventID)
+        {
+            await Initialize();
+            
+            IMobileServiceTableQuery<FeedBack> query = feedbackTable.Where(e => e.EventID == eventID);
+            var result = await query.ToListAsync();
+            var feedback = result.FirstOrDefault();
+
+            return feedback;
+        }
+
         public async Task AddCaseInfo(CaseInfo caseInfo)
         {
             await Initialize();
             await caseInfoTable.InsertAsync(caseInfo);
         }
 
-        public async Task<IEnumerable<CaseInfo>> GetEventCases(string eventName)
+        // For not team leaders, get only their entered Cases
+        public async Task<IEnumerable<CaseInfo>> GetEventCases(string eventName, string volName)
         {
             //Initialize
+            await Initialize();                    
+
+            return await caseInfoTable.Where(e => (e.EventName == eventName) && (e.VolunteerName == volName)).ToEnumerableAsync(); ;
+
+        }
+
+        public async Task<bool> GetUserInfo(string user, string pass)
+        {
             await Initialize();
 
-            return await caseInfoTable.Where(e => e.EventName == eventName).ToEnumerableAsync(); ;
+            try
+            {
+                await userTable.PullAsync("allUsers", userTable.CreateQuery());
+                IMobileServiceTableQuery<Users> query = userTable.Where(e => e.Username == user && e.Password == pass);
+                var result = await query.ToListAsync();
+                var userDetails = result.FirstOrDefault();
 
+                Settings.VolunteerName = userDetails.VolName;
+                Settings.isTeamLeader = userDetails.IsLeader;
+
+                return true;
+            } catch (NullReferenceException nre)
+            {
+                Debug.WriteLine("Error: " + nre.Message);
+
+                return false;                    
+            } catch (ArgumentNullException nre)
+            {
+                Debug.WriteLine("Error: " + nre.Message);
+
+                return false;
+            }
+            
         }
 
     }

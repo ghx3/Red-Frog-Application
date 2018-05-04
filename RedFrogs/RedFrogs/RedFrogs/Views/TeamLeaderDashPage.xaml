@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedFrogs.Views.TeamLeaderDashPage"
+             Title="Dashboard"
+             BackgroundColor="#c6c6c6">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowSpacing="2" ColumnSpacing="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65"/>
+                    <RowDefinition Height="65"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="65"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout BackgroundColor="#bf3336" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" 
+                             Orientation="Horizontal" Padding="10, 0, 0, 0">
+                    <Label x:Name="volName" FontSize="20" TextColor="White"
+                           VerticalOptions="CenterAndExpand"  HorizontalOptions="StartAndExpand"/>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                    <Label x:Name="interactions" FontSize="20"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Total Interactions" FontSize="16" TextColor="Gray"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Grid.Row="1" Grid.Column="1">
+                    <Label x:Name="cases" Text="75" FontSize="20"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Total Cases" FontSize="16" TextColor="Gray"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                
+                <StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                             Orientation="Vertical" Padding="10, 10, 0, 10">
+                    <Label Text="Products given out" FontSize="20"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
+                    <Label x:Name="Water" Text="10 Bottles of Water" FontSize="16"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
+                    <Label x:Name="Lollies" Text="100 Red Frog Lollies" FontSize="16"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
+                    <Label x:Name="Pancakes" Text="0 Pancakes" FontSize="16"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Grid.Row="3" Grid.Column="0" Padding="0,0,0,10">
+                    <Label x:Name="volNum" Text="5" FontSize="20"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Volunteers at Event" FontSize="16" TextColor="Gray"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout BackgroundColor="White" Grid.Row="3" Grid.Column="1" Padding="0,0,0,10">
+                    <Label x:Name="hours" Text="3" FontSize="20"
+                           VerticalOptions="StartAndExpand"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Hours served at Event" FontSize="16" TextColor="Gray"
+                           VerticalOptions="Start"  HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </Grid>
+            
+            
+                
+        </ScrollView>
+        
+        
+    </ContentPage.Content>
+</ContentPage>

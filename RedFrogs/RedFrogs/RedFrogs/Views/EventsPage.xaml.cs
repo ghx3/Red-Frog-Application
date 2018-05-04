@@ -1,5 +1,6 @@
 ﻿using MvvmHelpers;
 using RedFrogs.Data;
+using RedFrogs.Helpers;
 using RedFrogs.Models;
 using System;
 using System.Collections.ObjectModel;
@@ -30,9 +31,6 @@ namespace RedFrogs.Views
             events.ReplaceRange(getEvents);
 
             EventsList.ItemsSource = events;
-
-            newEventBtn.Clicked += addClicked;
-            deleteBtn.Clicked += deleteClicked;
         }
 
         private async void EventSelected(object sender, SelectedItemChangedEventArgs e)
@@ -43,8 +41,16 @@ namespace RedFrogs.Views
                 // clear selection
                 EventsList.SelectedItem = null;
                 //open dashboard page
-                var dashboardPage = new DashboardPage(sel);
-                await Navigation.PushAsync(dashboardPage);                
+                if (Settings.isTeamLeader)
+                {
+                    var dashboardPage = new TabbedDashboard(sel);
+                    await Navigation.PushAsync(dashboardPage);
+                } else
+                {
+                    var dashboardPage = new DashboardPage(sel);
+                    await Navigation.PushAsync(dashboardPage);
+                }
+                              
             }            
         }
 

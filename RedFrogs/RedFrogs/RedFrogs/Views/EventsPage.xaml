@@ -6,8 +6,8 @@
              Title="Events">
 
     <ContentPage.ToolbarItems>
-      <ToolbarItem x:Name="newEventBtn" Icon="add.png" />
-        <ToolbarItem x:Name="deleteBtn" Icon="delete.png" />
+      <ToolbarItem x:Name="newEventBtn" Icon="add.png" Clicked="addClicked" />
+        <ToolbarItem x:Name="deleteBtn" Icon="delete.png" Clicked="deleteClicked" />
     </ContentPage.ToolbarItems>
   
     <ContentPage.Content>

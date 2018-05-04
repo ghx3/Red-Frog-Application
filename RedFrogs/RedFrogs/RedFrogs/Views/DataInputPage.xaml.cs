@@ -75,7 +75,7 @@ namespace RedFrogs.Views
             saveCase.IncidentReported = reportSwitch.IsToggled;
             saveCase.ActionTaken = actionFld.Text;
             saveCase.TimeInCare = "have to implement";
-            saveCase.VolunteerName = "have to add";
+            saveCase.VolunteerName = Settings.VolunteerName;
 
             await azureService.AddCaseInfo(saveCase);
             MessagingCenter.Send<DataInputPage>(this, "SaveValue");

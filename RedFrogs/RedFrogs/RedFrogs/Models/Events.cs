@@ -17,7 +17,7 @@ namespace RedFrogs.Models
         public DateTime EndDate { get; set; }
 
         [Newtonsoft.Json.JsonProperty("IsClosed")]
-        public int IsClosed { get; set; }
+        public bool IsClosed { get; set; }
 
         [Newtonsoft.Json.JsonProperty("Location")]
         public string Location { get; set; }

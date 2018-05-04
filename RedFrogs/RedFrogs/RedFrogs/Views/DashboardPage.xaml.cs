@@ -32,7 +32,7 @@ namespace RedFrogs.Views
 
         protected async override void OnAppearing()
         {
-            var getCaseInfo = await azureService.GetEventCases(currEvent.EventName);
+            var getCaseInfo = await azureService.GetEventCases(currEvent.EventName, Settings.VolunteerName);
             cases.ReplaceRange(getCaseInfo);
 
             List<Cases> display = new List<Cases>();
@@ -50,14 +50,6 @@ namespace RedFrogs.Views
             }
             caseList.ItemsSource = display;
             
-        }
-
-        private async void LoadEvents()
-        {
-            var getCaseInfo = await azureService.GetEventCases(currEvent.EventName);
-            cases.ReplaceRange(getCaseInfo);
-            await DisplayAlert("test", cases.Count.ToString(), "ok");
-
         }
 
         private async void AddClicked(object sender, EventArgs e)

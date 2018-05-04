@@ -38,7 +38,7 @@ namespace RedFrogs.Views
                 newEvent.EventName = nameFld.Text;
                 newEvent.NumInteractions = 0;
                 newEvent.EndDate = eventDate.Date;
-                newEvent.IsClosed = 0;
+                newEvent.IsClosed = false;
 
                 await azureService.AddEvent(newEvent);
                 SendMessage();
