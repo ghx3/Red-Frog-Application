@@ -25,28 +25,36 @@ namespace RedFrogs.Views
             currEvent = selEvent;
             Title = currEvent.EventName;
             nameOfEvent = currEvent.EventName;
+
+            caseList.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
+            {
+                var toEdit = e.SelectedItem as CaseInfo;
+                Navigation.PushAsync(new DataInputPage(toEdit, true));
+            };
             
         }
-
+         
         protected async override void OnAppearing()
         {
             var getCaseInfo = await azureService.GetEventCases(currEvent.EventName, Settings.VolunteerName);
-            cases.ReplaceRange(getCaseInfo);
+           // cases.ReplaceRange(getCaseInfo);
 
-            List<Cases> display = new List<Cases>();
+           // List<Cases> display = new List<Cases>();
             ColorTypeConverter converter = new ColorTypeConverter();
 
             foreach (CaseInfo cinfo in getCaseInfo)
             {
-                Symptoms symptomColour = await App.DB.getSymptom(cinfo.Symptom);                
-                Cases item = new Cases();
-                item.PersonName = cinfo.Name;
-                item.SymptomName = cinfo.Symptom;
-                item.colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour));
-                
-                display.Add(item);
+                //Symptoms symptomColour = await App.DB.getSymptom(cinfo.Symptom);                
+                //Cases item = new Cases();
+                //item.PersonName = cinfo.Name;
+                //item.SymptomName = cinfo.Symptom;
+                //item.colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour));
+
+                //display.Add(item);
+                cases.Add(cinfo);
+
             }
-            caseList.ItemsSource = display;
+            caseList.ItemsSource = cases;
             
         }
 
@@ -55,11 +63,12 @@ namespace RedFrogs.Views
             await Navigation.PushAsync(new DataInputPage(nameOfEvent));
         }
 
-        private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            CaseInfo toEdit = (CaseInfo)sender;
-            await Navigation.PushAsync(new DataInputPage(toEdit, true));
-        }
+        //private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //{
+        //    var toEdit = e.SelectedItem as CaseInfo; 
+        //    await DisplayAlert(toEdit.Name, toEdit.EventName, "OK");
+        //    await Navigation.PushAsync(new DataInputPage(toEdit, true));
+        //}
 
         public void plus(object sender, EventArgs e)
         {

@@ -48,6 +48,7 @@
                             <x:String>Female</x:String>
                         </controls:CustomPicker.Items>
                     </controls:CustomPicker>
+                    <controls:CustomEntry x:Name="genderEntry" Grid.Row="3" IsEnabled="False" IsVisible="False"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" Grid.ColumnSpan="2"/>
 
                     <Label Text="Age" Grid.Row="4" FontSize="16" 
                        VerticalTextAlignment="Center" />
@@ -57,6 +58,7 @@
                        VerticalTextAlignment="Center" />
                     <controls:CustomPicker x:Name="sympPicker" Grid.Row="7" SelectedIndexChanged="SymptomPickerChanged" 
                                            Image="arrow_drop_down"  Grid.ColumnSpan="2"/>
+                    <controls:CustomEntry x:Name="symptomEntry" Grid.Row="7" IsEnabled="False" IsVisible="False"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" Grid.ColumnSpan="2"/>
 
                     <Label Text="Seen by Medic" Grid.Row="8" FontSize="16" 
                        VerticalTextAlignment="Center" />
