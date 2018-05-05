@@ -26,8 +26,6 @@ namespace RedFrogs.Views
             Title = currEvent.EventName;
             nameOfEvent = currEvent.EventName;
             
-            plusBtn.Clicked += plus;
-            minusBtn.Clicked += minus;
         }
 
         protected async override void OnAppearing()

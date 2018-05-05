@@ -7,7 +7,6 @@
 
     <ContentPage.ToolbarItems>
       <ToolbarItem x:Name="newEventBtn" Icon="add.png" Clicked="addClicked" />
-        <ToolbarItem x:Name="deleteBtn" Icon="delete.png" Clicked="deleteClicked" />
     </ContentPage.ToolbarItems>
   
     <ContentPage.Content>

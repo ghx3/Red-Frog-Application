@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:RedFrogs.Views"
              x:Class="RedFrogs.Views.TabbedDashboard"
-             BarBackgroundColor="#bf3336">
+             BarBackgroundColor="#bf3336"
+             BarTextColor="White">
   <!--Pages can be added as references or inline-->
     
 </TabbedPage>

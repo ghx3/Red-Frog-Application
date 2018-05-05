@@ -3,6 +3,7 @@ using RedFrogs.Data;
 using RedFrogs.Helpers;
 using RedFrogs.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -27,9 +28,22 @@ namespace RedFrogs.Views
 
         protected async override void OnAppearing()
         {
-            var getEvents = await azureService.GetEvents();
-            events.ReplaceRange(getEvents);
+            await loadEventList();                       
+        }
 
+        public async Task loadEventList()
+        {
+            IEnumerable<Events> getEvents = null;
+
+            if (Settings.isTeamLeader)
+            {
+                getEvents = await azureService.GetAllEvents();
+            }
+            else {
+                getEvents = await azureService.GetOpenEvents();
+            }
+
+            events.ReplaceRange(getEvents);
             EventsList.ItemsSource = events;
         }
 

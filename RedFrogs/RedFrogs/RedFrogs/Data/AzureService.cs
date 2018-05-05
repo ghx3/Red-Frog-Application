@@ -76,14 +76,21 @@ namespace RedFrogs.Data
             }
         }
 
-        public async Task<IEnumerable<Events>> GetEvents()
+        public async Task<IEnumerable<Events>> GetOpenEvents()
         {
             //Initialize & Sync
             await Initialize();
             await SyncEvents();
 
             return await eventsTable.Where(e => !e.IsClosed).ToEnumerableAsync(); ;
+        }
 
+        public async Task<IEnumerable<Events>> GetAllEvents()
+        {
+            await Initialize();
+            await SyncEvents();
+
+            return await eventsTable.ToEnumerableAsync();
         }
 
         public async Task AddEvent(Events toAdd)
