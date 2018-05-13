@@ -85,6 +85,9 @@
     <Compile Include="Views\ResetPage.xaml.cs">
       <DependentUpon>ResetPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\incidentReport.xaml.cs">
+      <DependentUpon>incidentReport.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -92,6 +95,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ResetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\incidentReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

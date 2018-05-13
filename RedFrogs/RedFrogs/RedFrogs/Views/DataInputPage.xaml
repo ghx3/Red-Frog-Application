@@ -1,9 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:RedFrogs.Controls"
              x:Class="RedFrogs.Views.DataInputPage"
              Title="Add Case">
+   
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
@@ -72,9 +73,10 @@
                        VerticalTextAlignment="Center" />
                     <controls:CustomEditor x:Name="actionFld" Grid.Row="11" HeightRequest="100"  Grid.ColumnSpan="2"/>
 
-                    <Button x:Name="addBtn" Text="Add" Grid.Row="12"
+                    <Button x:Name="addBtn" Text="Add" Grid.Row="13"
                         BackgroundColor="#bf3336" TextColor="White" Clicked="AddClicked" Margin="0,10,0,10"  Grid.ColumnSpan="2"/>
-                    
+                    <Button x:Name="addReport" Text="Create Incident Report" Grid.Row="12"
+                         TextColor="Blue" Clicked="addingClicked"/>
                 </Grid>
             </StackLayout>
         </ScrollView>
