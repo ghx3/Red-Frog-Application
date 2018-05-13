@@ -64,10 +64,10 @@ namespace RedFrogs.Views
             
             feedBack.PatronInteractionNum = HelperClass.HasValue(InteractionsFld.Text);
             
-            //feedBack.LolliesUsed = lolliesSwitch.IsToggled;
-            //feedBack.NumberLollies = HelperClass.HasValue(numLollies.Text);
-            //feedBack.IcyPolesUsed = iPolesSwitch.IsToggled;
-            //feedBack.NumberIcyPoles = HelperClass.HasValue(numIPoles.Text);
+            feedBack.LolliesUsed = lolliesSwitch.IsToggled;
+            feedBack.NumberLollies = HelperClass.HasValue(numLollies.Text);
+            feedBack.IcyPolesUsed = iPolesSwitch.IsToggled;
+            feedBack.NumberIcyPoles = HelperClass.HasValue(numIPoles.Text);
             
             feedBack.PancakesProvided = pancakesSwitch.IsToggled;
             feedBack.NumberPancakes = HelperClass.HasValue(numpancakes.Text);
@@ -75,8 +75,8 @@ namespace RedFrogs.Views
             feedBack.WaterProvided = waterSwitch.IsToggled;
             feedBack.AmountWater = HelperClass.HasValue(numWater.Text);
             
-            //feedBack.DonutsProvided = donutSwitch.IsToggled;
-            //feedBack.NumberDonuts = HelperClass.HasValue(numDonuts.Text);
+            feedBack.DonutsProvided = donutSwitch.IsToggled;
+            feedBack.NumberDonuts = HelperClass.HasValue(numDonuts.Text);
             
             feedBack.AnyGiveaways = giveAwaySwitch.IsToggled;
             feedBack.GivenAway = giveAway.Text;
