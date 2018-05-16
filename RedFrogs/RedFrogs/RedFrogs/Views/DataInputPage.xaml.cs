@@ -21,12 +21,14 @@ namespace RedFrogs.Views
             nameOfEvent = eventName;
             saveCase = new CaseInfo();
             PopulateSymptomPicker();
+            ToolBarItems();
             
         }
 
         public DataInputPage(CaseInfo selectedItem, bool isEdit)
         {            
             InitializeComponent();
+            ToolBarItems();
             this.selectedItem = selectedItem;
             
             PopulateSymptomPicker();
@@ -60,6 +62,23 @@ namespace RedFrogs.Views
             symptomEntry.IsEnabled = true;
             sympPicker.IsEnabled = false;
             sympPicker.IsVisible = false;
+        }
+
+        public void ToolBarItems()
+        {
+            var toolBarItem = new ToolbarItem
+            {
+                Text = "Cancel",
+                Icon = "Cancel",
+                Command = new Command(this.GoBack),
+            };
+
+            this.ToolbarItems.Add(toolBarItem);
+        }
+
+        private void GoBack()
+        {
+            Navigation.PopAsync();
         }
 
         private async void PopulateSymptomPicker()

@@ -31,11 +31,13 @@ namespace RedFrogs.Views
                 var toEdit = e.SelectedItem as CaseInfo;
                 Navigation.PushAsync(new DataInputPage(toEdit, true));
             };
-            
+
+                        
         }
          
         protected async override void OnAppearing()
         {
+            cases.Clear();
             var getCaseInfo = await azureService.GetEventCases(currEvent.EventName, Settings.VolunteerName);
            // cases.ReplaceRange(getCaseInfo);
 
@@ -44,16 +46,10 @@ namespace RedFrogs.Views
 
             foreach (CaseInfo cinfo in getCaseInfo)
             {
-                //Symptoms symptomColour = await App.DB.getSymptom(cinfo.Symptom);                
-                //Cases item = new Cases();
-                //item.PersonName = cinfo.Name;
-                //item.SymptomName = cinfo.Symptom;
-                //item.colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour));
-
-                //display.Add(item);
-                cases.Add(cinfo);
-
+               cases.Add(cinfo);
             }
+
+            
             caseList.ItemsSource = cases;
             
         }

@@ -216,7 +216,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\TabbedDashboard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
