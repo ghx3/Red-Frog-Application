@@ -137,21 +137,23 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <!--<RowDefinition Height="Auto"/> 
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>-->
+                        <!--<RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>-->
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="60*" />
                         <ColumnDefinition Width="40*" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Red Frogs lollies used at Activation" Grid.Row="0" Grid.Column="0" FontSize="16" 
+                    <!--<Label Text="Red Frogs lollies used at Activation" Grid.Row="0" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
                     <Switch x:Name="lolliesSwitch" IsToggled="False" Grid.Row="0" Grid.Column="1"/>
                     <Label Text="Number of Lollies" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
@@ -167,68 +169,78 @@
                        BindingContext="{x:Reference iPolesSwitch}" IsVisible="{Binding Path=IsToggled}" />
                     <controls:CustomEntry x:Name="numIPoles" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                        BindingContext="{x:Reference iPolesSwitch}" IsVisible="{Binding Path=IsToggled}"
-                                          Keyboard="Numeric" Placeholder="0"/>
+                                          Keyboard="Numeric" Placeholder="0"/>-->
 
-                    <Label Text="Pancakes provided at Activation" Grid.Row="6" Grid.Column="0" FontSize="16" 
+                    <Label Text="Pancakes provided at Activation" Grid.Row="0" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <Switch x:Name="pancakesSwitch" IsToggled="False" Grid.Row="6" Grid.Column="1"/>
-                    <Label Text="Number of Pancakes" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
+                    <Switch x:Name="pancakesSwitch" IsToggled="False" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="Number of Pancakes" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
                        BindingContext="{x:Reference pancakesSwitch}" IsVisible="{Binding Path=IsToggled}" />
-                    <controls:CustomEntry x:Name="numpancakes" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
+                    <controls:CustomEntry x:Name="numpancakes" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                        BindingContext="{x:Reference pancakesSwitch}" IsVisible="{Binding Path=IsToggled}"
                                           Keyboard="Numeric" Placeholder="0"/>
 
-                    <Label Text="Water provided at Activation" Grid.Row="9" Grid.Column="0" FontSize="16" 
+                    <Label Text="Water provided at Activation" Grid.Row="3" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <Switch x:Name="waterSwitch" IsToggled="False" Grid.Row="9" Grid.Column="1"/>
-                    <Label Text="Amount of Water" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
+                    <Switch x:Name="waterSwitch" IsToggled="False" Grid.Row="3" Grid.Column="1"/>
+                    <Label Text="Amount of Water" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
                        BindingContext="{x:Reference waterSwitch}" IsVisible="{Binding Path=IsToggled}" />
-                    <controls:CustomEntry x:Name="numWater" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2"
+                    <controls:CustomEntry x:Name="numWater" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                        BindingContext="{x:Reference waterSwitch}" IsVisible="{Binding Path=IsToggled}"
                                           Keyboard="Numeric" Placeholder="0"/>
 
-                    <Label Text="Donuts provided at Activation" Grid.Row="12" Grid.Column="0" FontSize="16" 
+                    <!--<Label Text="Donuts provided at Activation" Grid.Row="12" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
                     <Switch x:Name="donutSwitch" IsToggled="False" Grid.Row="12" Grid.Column="1"/>
                     <Label Text="Number of Donuts" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
                        BindingContext="{x:Reference donutSwitch}" IsVisible="{Binding Path=IsToggled}" />
                     <controls:CustomEntry x:Name="numDonuts" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"
                        BindingContext="{x:Reference donutSwitch}" IsVisible="{Binding Path=IsToggled}"
-                                          Keyboard="Numeric" Placeholder="0"/>
+                                          Keyboard="Numeric" Placeholder="0"/>-->
 
-                    <Label Text="Any other give aways at Activation" Grid.Row="15" Grid.Column="0" FontSize="16" 
+                    <Label Text="Any other give aways at Activation" Grid.Row="6" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <Switch x:Name="giveAwaySwitch" IsToggled="False" Grid.Row="15" Grid.Column="1"/>
-                    <Label Text="Things given away" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
+                    <Switch x:Name="giveAwaySwitch" IsToggled="False" Grid.Row="6" Grid.Column="1"/>
+                    <Label Text="Things given away" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
                        BindingContext="{x:Reference giveAwaySwitch}" IsVisible="{Binding Path=IsToggled}" />
-                    <controls:CustomEntry x:Name="giveAway" Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2"
+                    <controls:CustomEntry x:Name="giveAway" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="1"
                        BindingContext="{x:Reference giveAwaySwitch}" IsVisible="{Binding Path=IsToggled}"/>
+                    <controls:CustomEntry x:Name="numOther" Grid.Row="8" Grid.Column="1"
+                     BindingContext="{x:Reference giveAwaySwitch}" IsVisible="{Binding Path=IsToggled}" Keyboard="Numeric" Placeholder="0"/>
+                    <controls:CustomEntry x:Name="giveAway1" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="1"
+                       BindingContext="{x:Reference giveAwaySwitch}" IsVisible="{Binding Path=IsToggled}"/>
+                    <controls:CustomEntry x:Name="numOther1" Grid.Row="9" Grid.Column="1"
+                     BindingContext="{x:Reference giveAwaySwitch}" IsVisible="{Binding Path=IsToggled}" Keyboard="Numeric" Placeholder="0"/>
+                    <controls:CustomEntry x:Name="giveAway2" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="1"
+                       BindingContext="{x:Reference giveAwaySwitch}" IsVisible="{Binding Path=IsToggled}"/>
+                    <controls:CustomEntry x:Name="numOther2" Grid.Row="10" Grid.Column="1"
+                     BindingContext="{x:Reference giveAwaySwitch}" IsVisible="{Binding Path=IsToggled}" Keyboard="Numeric" Placeholder="0"/>
 
-                    <Label Text="Any Praise Reports / Cool Stories" Grid.Row="18" Grid.Column="0" FontSize="16" 
+                    <Label Text="Any Praise Reports / Cool Stories" Grid.Row="11" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <Switch x:Name="praiseSwitch" IsToggled="False" Grid.Row="18" Grid.Column="1"/>
-                    <Label Text="Praise Reports / Cool Stories" Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
+                    <Switch x:Name="praiseSwitch" IsToggled="False" Grid.Row="11" Grid.Column="1"/>
+                    <Label Text="Praise Reports / Cool Stories" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
                        BindingContext="{x:Reference praiseSwitch}" IsVisible="{Binding Path=IsToggled}" />
-                    <controls:CustomEditor x:Name="praise" Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="2"
+                    <controls:CustomEditor x:Name="praise" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
                        BindingContext="{x:Reference praiseSwitch}" IsVisible="{Binding Path=IsToggled}" HeightRequest="50"/>
 
-                    <Label Text="Any Incidents at Activation" Grid.Row="21" Grid.Column="0" FontSize="16" 
+                    <Label Text="Any Incidents at Activation" Grid.Row="14" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <Switch x:Name="incidentSwitch" IsToggled="False" Grid.Row="21" Grid.Column="1"/>
-                    <Label Text="Incident Description" Grid.Row="22" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
+                    <Switch x:Name="incidentSwitch" IsToggled="False" Grid.Row="14" Grid.Column="1"/>
+                    <Label Text="Incident Description" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
                        BindingContext="{x:Reference incidentSwitch}" IsVisible="{Binding Path=IsToggled}" />
-                    <controls:CustomEditor x:Name="incident" Grid.Row="23" Grid.Column="0" Grid.ColumnSpan="2"
+                    <controls:CustomEditor x:Name="incident" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2"
                        BindingContext="{x:Reference incidentSwitch}" IsVisible="{Binding Path=IsToggled}" HeightRequest="50"/>
 
-                    <Label Text="Team member follow up needed by coordinator" Grid.Row="24" Grid.Column="0" FontSize="16" 
+                    <Label Text="Team member follow up needed by coordinator" Grid.Row="17" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <Switch x:Name="followUpSwitch" IsToggled="False" Grid.Row="24" Grid.Column="1"/>
-                    <Label Text="Member name to be Followed up" Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
+                    <Switch x:Name="followUpSwitch" IsToggled="False" Grid.Row="17" Grid.Column="1"/>
+                    <Label Text="Member name to be Followed up" Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
                        BindingContext="{x:Reference followUpSwitch}" IsVisible="{Binding Path=IsToggled}" />
-                    <controls:CustomEntry x:Name="followUp" Grid.Row="26" Grid.Column="0" Grid.ColumnSpan="2"
+                    <controls:CustomEntry x:Name="followUp" Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="2"
                        BindingContext="{x:Reference followUpSwitch}" IsVisible="{Binding Path=IsToggled}"/>
 
-                    <Button x:Name="closeBtn" Text="Close Event" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" 
+                    <Button x:Name="closeBtn" Text="Close Event" Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="2" 
                         BackgroundColor="#bf3336" TextColor="White" Clicked="ClosedEventClicked" />
 
                 </Grid>

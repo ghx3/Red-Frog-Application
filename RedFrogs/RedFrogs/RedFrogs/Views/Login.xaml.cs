@@ -15,49 +15,40 @@ namespace RedFrogs.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Login : ContentPage
 	{
-		AzureService azureService;
+        AzureService azureService;
 
-		public Login()
+        public Login ()
 		{
 			InitializeComponent();
-			azureService = DependencyService.Get<AzureService>();
-
-		}
-		 void Handle_Clicked(object sender, System.EventArgs e)
-        {
-			Navigation.PushAsync(new ResetPage());
+            azureService = DependencyService.Get<AzureService>();
         }
-		private async void Login_Clicked(object sender, EventArgs e)
-		{
-			string user = username.Text;
-			string pass = password.Text;
 
-			if (!String.IsNullOrWhiteSpace(user) && !String.IsNullOrWhiteSpace(pass))
-			{
-				UserDialogs.Instance.ShowLoading("Logging in", MaskType.Gradient);
-				var res = await azureService.GetUserInfo(user, pass);
-				UserDialogs.Instance.HideLoading();
+        private async void Login_Clicked(object sender, EventArgs e)
+        {
+            string user = username.Text;
+            string pass = password.Text;
 
-				if (res)
-				{
-					// get user details
-					//go to next page
-					await Navigation.PushAsync(new EventsPage());
-				}
-				else
-				{
-					await DisplayAlert("Invalid Login", "Incorrect Username or Password", "Try Again");
-				}
-			}
-			else
-			{
-				await DisplayAlert("Invalid Login", "Please enter a Username or Password", "Try Again");
-			}
+            if(!String.IsNullOrWhiteSpace(user) && !String.IsNullOrWhiteSpace(pass))
+            {
+                UserDialogs.Instance.ShowLoading("Logging in", MaskType.Gradient);
+                var res = await azureService.GetUserInfo(user, pass);
+                UserDialogs.Instance.HideLoading();
 
+                if (res)
+                {
+                    // get user details
+                    //go to next page
+                    await Navigation.PushAsync(new EventsPage());
+                } else
+                {
+                    await DisplayAlert("Invalid Login", "Incorrect Username or Password", "Try Again");
+                }
+            } else
+            {
+                await DisplayAlert("Invalid Login", "Please enter a Username or Password", "Try Again");
+            }
 
             
-		}
-
-
-	}
+        }
+    }
 }
