@@ -6,7 +6,6 @@
              x:Class="RedFrogs.Views.Login"
              BackgroundColor="White"> 
     <ContentPage.Content>
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50*"/>
@@ -21,15 +20,19 @@
             </StackLayout>
             <StackLayout Grid.Row="1" Grid.Column="0">
                 <Label Text="Username" FontSize="16" HorizontalOptions="Center"/>
-                <Entry x:Name="username" TextColor="Black" Margin="10, 0, 10, 5" Keyboard="Email" />
+                <Entry x:Name="username" TextColor="Black" Margin="10, 0, 10, 5" Keyboard="Email" 
+                       Placeholder = "username or Email" />
                 <Label Text="Password" FontSize="16" HorizontalOptions="Center"/>
-                <Entry x:Name="password" IsPassword="True" TextColor="Black" Margin="10, 0, 10, 5" />
+                <Entry x:Name="password" IsPassword="True" TextColor="Black" Margin="10, 0, 10, 5"
+                       Placeholder ="password" />
 
                 <Button x:Name="login" Margin="10, 0, 10, 0" TextColor="White" BorderRadius="10"
                                Clicked="Login_Clicked" BackgroundColor="#bf3336" Text="Log in" />
+
+                <Button Text ="Forgot password?" Clicked = "Handle_Clicked"
+                       FontSize = "12" TextColor ="Blue"
+                       HorizontalOptions="Center" />
             </StackLayout>
-
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

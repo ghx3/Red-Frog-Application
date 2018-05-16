@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:RedFrogs.Helpers"
+             x:Class="RedFrogs.Views.TLEventsPage"
+             NavigationPage.HasBackButton="False"             
+             Title="Events">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="newEventBtn" Icon="add.png" Clicked="addClicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black" 
+                      ItemSelected="EventSelected" RowHeight="75">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Margin="10,10,5,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60*"/>
+                                        <ColumnDefinition Width="40*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding EventName}" HorizontalOptions="StartAndExpand" 
+                                           VerticalOptions="Center" FontSize="Medium" Grid.Column="0"/>
+                                    <Button x:Name="closeBtn" Text="Close" TextColor="White" HorizontalOptions="End" BackgroundColor="#bf3336"
+                                            HeightRequest="35" Grid.Column="1" Clicked="CloseClicked"
+                                            IsVisible="{Binding IsClosed, Converter={helpers:InverseBoolConverter}}" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

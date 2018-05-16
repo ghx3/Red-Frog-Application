@@ -45,6 +45,7 @@
     <Compile Include="Data\AzureService.cs" />
     <Compile Include="Data\RedFrogDatabase.cs" />
     <Compile Include="Helpers\HelperClass.cs" />
+    <Compile Include="Helpers\InverseBoolConverter.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="IFileHelper.cs" />
     <Compile Include="IMessage.cs" />
@@ -76,11 +77,17 @@
     <Compile Include="Views\NewEventPage.xaml.cs">
       <DependentUpon>NewEventPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ResetPage.xaml.cs">
+      <DependentUpon>ResetPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TabbedDashboard.xaml.cs">
       <DependentUpon>TabbedDashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TeamLeaderDashPage.xaml.cs">
       <DependentUpon>TeamLeaderDashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TLEventsPage.xaml.cs">
+      <DependentUpon>TLEventsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +221,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\TeamLeaderDashPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TLEventsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ResetPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
