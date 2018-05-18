@@ -32,7 +32,7 @@
                 </StackLayout>
 
                 <StackLayout BackgroundColor="White" Grid.Row="1" Grid.Column="1">
-                    <Label x:Name="cases" Text="75" FontSize="20"
+                    <Label x:Name="cases"  FontSize="20"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="CenterAndExpand"/>
                     <Label Text="Total Cases" FontSize="16" TextColor="Gray"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="CenterAndExpand"/>
@@ -42,11 +42,11 @@
                              Orientation="Vertical" Padding="10, 10, 0, 10">
                     <Label Text="Products given out" FontSize="20"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
-                    <Label x:Name="Water" Text="10 Bottles of Water" FontSize="16"
+                    <Label x:Name="Water" Text="10 Litres of Water" FontSize="16"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
-                    <Label x:Name="Lollies" Text="100 Red Frog Lollies" FontSize="16"
+                    <Label x:Name="Lollies" Text="100 Bags of Red Frogs" FontSize="16"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
-                    <Label x:Name="Pancakes" Text="0 Pancakes" FontSize="16"
+                    <Label x:Name="Pancakes" Text="0 other goods handed out" FontSize="16"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
                 </StackLayout>
 

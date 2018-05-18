@@ -16,16 +16,31 @@ namespace RedFrogs.Views
     public partial class TeamLeaderDashPage : ContentPage
     {
         AzureService azureService;
+        Events eventObj;
 
         public TeamLeaderDashPage(Events e)
         {
             InitializeComponent();
-
+            eventObj = e;
             azureService = DependencyService.Get<AzureService>();
-            
+
             volName.Text = "Welcome " + Settings.VolunteerName;
             interactions.Text = e.NumInteractions.ToString();
-            
+
+        }
+
+        protected async override void OnAppearing()
+        {
+            var getCaseInfo = await azureService.GetEventCases(eventObj.EventName);
+            int numCases = 0;
+
+            foreach(CaseInfo ci in getCaseInfo)
+            {
+                numCases++;
+            }
+
+            cases.Text = numCases.ToString();
+
         }
     }
 }

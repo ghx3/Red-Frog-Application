@@ -93,7 +93,7 @@
                        VerticalTextAlignment="Center" />
                     <controls:CustomEntry x:Name="locationFld" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Black"/>
 
-                    <Label Text="Team Learder Name" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" 
+                    <Label Text="Team Leader" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" 
                        VerticalTextAlignment="Center" />
                     <controls:CustomEntry x:Name="TeamLeaderNameFld" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Black" />
 
@@ -105,7 +105,7 @@
                        VerticalTextAlignment="Center" />
                     <controls:CustomEntry x:Name="HoursSpent" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Black" Keyboard="Numeric" />
 
-                    <Label Text="Amount of Patrons at Activation" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" 
+                    <Label Text="Number of patrons at activation" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" 
                        VerticalTextAlignment="Center" />
                     <controls:CustomEntry x:Name="PatronsFld" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Black" Keyboard="Numeric" />
 

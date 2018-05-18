@@ -152,6 +152,15 @@ namespace RedFrogs.Data
 
         }
 
+        public async Task<IEnumerable<CaseInfo>> GetEventCases(string eventName)
+        {
+            //Initialize
+            await Initialize();
+
+            return await caseInfoTable.Where(e => (e.EventName == eventName)).ToEnumerableAsync(); ;
+
+        }
+
         public async Task<bool> GetUserInfo(string user, string pass)
         {
             await Initialize();

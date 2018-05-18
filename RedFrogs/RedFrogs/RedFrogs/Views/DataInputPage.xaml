@@ -53,7 +53,7 @@
 
                     <Label Text="Age" Grid.Row="4" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                    <controls:CustomEntry x:Name="ageFld" Grid.Row="5" TextColor="Black"  Grid.ColumnSpan="2"/>
+                    <controls:CustomEntry x:Name="ageFld" Grid.Row="5" TextColor="Black"  Grid.ColumnSpan="2" Keyboard="Numeric"/>
 
                     <Label Text="Symptoms" Grid.Row="6" FontSize="16" 
                        VerticalTextAlignment="Center" />
