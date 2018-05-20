@@ -4,11 +4,7 @@
              x:Class="RedFrogs.Views.EventsPage"
              NavigationPage.HasBackButton="False"             
              Title="Events">
-
-    <ContentPage.ToolbarItems>
-      <ToolbarItem x:Name="newEventBtn" Icon="add.png" Clicked="addClicked" />
-    </ContentPage.ToolbarItems>
-  
+ 
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black" 
@@ -20,8 +16,6 @@
                                 <StackLayout Orientation="Horizontal" Padding="20,15,20,15">
                                     <Label Text="{Binding EventName}" HorizontalOptions="StartAndExpand" 
                                            VerticalOptions="Center" FontSize="Medium"/>
-                                    <Button Text="Close" TextColor="White" HorizontalOptions="End" BackgroundColor="#bf3336"
-                                            HeightRequest="50" Clicked="CloseClicked" />
                                 </StackLayout>
                             </ViewCell.View>
                         </ViewCell>

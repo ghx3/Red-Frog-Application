@@ -1,25 +1,63 @@
 ﻿using RedFrogs.Data;
 using RedFrogs.Models;
 using System;
-
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace RedFrogs.Views
 {
     public partial class NewEventPage : ContentPage
     {
+        List<String> locations;
         AzureService azureService;
         Events newEvent;
+        bool edit;
 
-        public NewEventPage()
+        public NewEventPage(bool isEdit, Events e)
         {
             InitializeComponent();
 
             azureService = DependencyService.Get<AzureService>();
-            newEvent = new Events();
-
+            edit = isEdit;
+            newEvent = e;
+            setupLocationList();
+            setupFields();
+            
             eventDate.MinimumDate = DateTime.Today;
             addBtn.Clicked += sendEvent;
+        }
+
+        public void setupLocationList()
+        {
+            locations = new List<string>();
+            locations.Add("Auckland");
+            locations.Add("Hamilton");
+            locations.Add("Palmerston North");
+            locations.Add("Wellington");
+            locations.Add("Dunedin");
+            locations.Add("Queenstown");
+            locations.Add("Christchurch");
+            locations.Add("Invercargill");
+
+            cityPicker.ItemsSource = locations;
+        }
+
+        public int findSelectedLocation(string location)
+        {
+            return locations.IndexOf(location);
+        }
+
+        public void setupFields()
+        {
+            if (edit)
+            {
+                nameFld.Text = newEvent.EventName;
+                cityPicker.SelectedIndex = findSelectedLocation(newEvent.Location);
+                eventDate.Date = newEvent.EndDate;
+            } else
+            {
+                newEvent = new Events();
+            }
         }
 
         private void City_SelectedIndexChanged(object sender, EventArgs e)
@@ -32,6 +70,12 @@ namespace RedFrogs.Views
             if (string.IsNullOrWhiteSpace(nameFld.Text))
             {
                 await DisplayAlert("Event Name empty", "Please enter a name for the event", "Ok");
+            }
+            else if (edit)
+            {
+                await azureService.UpdateEvent(newEvent);
+                SendMessage();
+                await Navigation.PopAsync();
             }
             else
             {

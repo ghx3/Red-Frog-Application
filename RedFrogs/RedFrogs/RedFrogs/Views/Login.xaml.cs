@@ -26,43 +26,14 @@ namespace RedFrogs.Views
 
         private async void Login_Clicked(object sender, EventArgs e)
         {
-            string user = username.Text;
-            string pass = password.Text;
-
-            if (!String.IsNullOrWhiteSpace(user) && !String.IsNullOrWhiteSpace(pass))
+            var button = (Button)sender;
+            if (button.ClassId.Equals("TLBtn"))
             {
-                UserDialogs.Instance.ShowLoading("Logging in", MaskType.Gradient);
-                var res = await azureService.GetUserInfo(user, pass);
-                UserDialogs.Instance.HideLoading();
-
-                if (res)
-                {
-                    // get user details
-                    //go to next page
-                    if (Settings.isTeamLeader)
-                    {
-                        await Navigation.PushAsync(new TLEventsPage());
-                    }
-                    else
-                    {
-                        await Navigation.PushAsync(new EventsPage());
-                    }
-
-                }
-                else
-                {
-                    await DisplayAlert("Invalid Login", "Incorrect Username or Password", "Try Again");
-                }
-            }
-            else
+                await Navigation.PushAsync(new LoginHandlePage(true));
+            } else
             {
-                await DisplayAlert("Invalid Login", "Please enter a Username or Password", "Try Again");
+                await Navigation.PushAsync(new LoginHandlePage(false));
             }
-        }
-
-        void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            Navigation.PushAsync(new ResetPage());
-        }    
+        }   
     }
 }

@@ -16,22 +16,16 @@
             </Grid.ColumnDefinitions>
 
             <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="#ffffff">
-                <Image Source="logo.png" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+                <Image Source="logo.png" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
             </StackLayout>
             <StackLayout Grid.Row="1" Grid.Column="0">
-                <Label Text="Username" FontSize="16" HorizontalOptions="Center"/>
-                <Entry x:Name="username" TextColor="Black" Margin="10, 0, 10, 5" Keyboard="Email" 
-                       Placeholder = "username or Email" />
-                <Label Text="Password" FontSize="16" HorizontalOptions="Center"/>
-                <Entry x:Name="password" IsPassword="True" TextColor="Black" Margin="10, 0, 10, 5"
-                       Placeholder ="password" />
 
-                <Button x:Name="login" Margin="10, 0, 10, 0" TextColor="White" BorderRadius="10"
-                               Clicked="Login_Clicked" BackgroundColor="#bf3336" Text="Log in" />
+                <Button ClassId="TLBtn" Margin="10, 0, 10, 0" TextColor="White" BorderRadius="10"
+                               Clicked="Login_Clicked" BackgroundColor="#bf3336" Text="Log in as Team Leader" />
 
-                <Button Text ="Forgot password?" Clicked = "Handle_Clicked"
-                       FontSize = "12" TextColor ="Blue"
-                       HorizontalOptions="Center" />
+                <Button ClassId="UserBtn" Margin="10, 10, 10, 0" TextColor="White" BorderRadius="10"
+                               Clicked="Login_Clicked" BackgroundColor="#bf3336" Text="Log in as User" />
+
             </StackLayout>
         </Grid>
     </ContentPage.Content>

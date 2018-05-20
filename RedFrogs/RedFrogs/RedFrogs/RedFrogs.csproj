@@ -45,7 +45,6 @@
     <Compile Include="Data\AzureService.cs" />
     <Compile Include="Data\RedFrogDatabase.cs" />
     <Compile Include="Helpers\HelperClass.cs" />
-    <Compile Include="Helpers\InverseBoolConverter.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="IFileHelper.cs" />
     <Compile Include="IMessage.cs" />
@@ -73,6 +72,9 @@
     </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginHandlePage.xaml.cs">
+      <DependentUpon>LoginHandlePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewEventPage.xaml.cs">
       <DependentUpon>NewEventPage.xaml</DependentUpon>
@@ -232,6 +234,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ResetPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\LoginHandlePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

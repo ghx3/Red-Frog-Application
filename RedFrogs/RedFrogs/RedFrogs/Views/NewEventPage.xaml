@@ -23,7 +23,7 @@
 
             <Label Text="Event Name" Grid.Row="0" FontSize="16" 
                        VerticalTextAlignment="Center" />
-            <controls:CustomEntry x:Name="nameFld" Placeholder="Enter Event Name" Grid.Row="1"
+            <controls:CustomEntry x:Name="nameFld" Grid.Row="1"
                                   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black"/>
 
             <Label Text="City" Grid.Row="2" FontSize="16" 
@@ -31,16 +31,6 @@
             <controls:CustomPicker x:Name="cityPicker" 
                                        Grid.Row="3"
                                        SelectedIndexChanged="City_SelectedIndexChanged" Image="arrow_drop_down">
-                <controls:CustomPicker.Items>
-                    <x:String>Auckland</x:String>
-                    <x:String>Wellington</x:String>
-                    <x:String>Dunedin</x:String>
-                    <x:String>Christchurch</x:String>
-                    <x:String>Invercargill</x:String>
-                    <x:String>Hamilton</x:String>
-                    <x:String>Palmerston North</x:String>
-                    <x:String>Queenstown</x:String>
-                </controls:CustomPicker.Items>
             </controls:CustomPicker>
 
             <Label Text="Event Date" Grid.Row="4" FontSize="16" 
@@ -49,8 +39,6 @@
                 <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
             </DatePicker>
             
-            
-
             <Button x:Name="addBtn" Text="Add" Grid.Row="6" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#bf3336" 
               Margin="0,20,0,0" TextColor="White" />
 

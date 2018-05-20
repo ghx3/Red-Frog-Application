@@ -34,15 +34,9 @@ namespace RedFrogs.Views
         public async Task loadEventList()
         {
             IEnumerable<Events> getEvents = null;
-
-            if (Settings.isTeamLeader)
-            {
-                getEvents = await azureService.GetAllEvents();
-            }
-            else {
-                getEvents = await azureService.GetOpenEvents();
-            }
-
+            
+            getEvents = await azureService.GetOpenEvents();
+            
             events.ReplaceRange(getEvents);
             EventsList.ItemsSource = events;
         }
@@ -55,27 +49,19 @@ namespace RedFrogs.Views
                 // clear selection
                 EventsList.SelectedItem = null;
                 //open dashboard page
-                if (Settings.isTeamLeader)
-                {
-                    var dashboardPage = new TabbedDashboard(sel);
-                    await Navigation.PushAsync(dashboardPage);
-                } else
-                {
-                    var dashboardPage = new DashboardPage(sel);
-                    await Navigation.PushAsync(dashboardPage);
-                }
+                
+                var dashboardPage = new DashboardPage(sel);
+                await Navigation.PushAsync(dashboardPage);
+                
                               
             }            
         }
 
         private async void addClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewEventPage());
-        }
+            var item = (Events)((Button)sender).BindingContext;
 
-        private void deleteClicked(object sender, EventArgs e)
-        {
-            
+            await Navigation.PushAsync(new NewEventPage(true, item));
         }
 
         private async void CloseClicked(object sender, EventArgs e)

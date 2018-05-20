@@ -34,20 +34,8 @@
 
                     <Label Text="City" Grid.Row="0" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <controls:CustomPicker x:Name="cityPicker" 
-                                       Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                                       SelectedIndexChanged="City_SelectedIndexChanged" Image="arrow_drop_down">
-                        <controls:CustomPicker.Items>
-                            <x:String>Auckland</x:String>
-                            <x:String>Wellington</x:String>
-                            <x:String>Dunedin</x:String>
-                            <x:String>Christchurch</x:String>
-                            <x:String>Invercargill</x:String>
-                            <x:String>Hamilton</x:String>
-                            <x:String>Palmerston North</x:String>
-                            <x:String>Queenstown</x:String>
-                        </controls:CustomPicker.Items>
-                    </controls:CustomPicker>
+                    <controls:CustomEntry x:Name="cityEntry"  IsEnabled="False"
+                                       Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" />
 
                     <Label Text="Support Provided to" Grid.Row="1" Grid.Column="0"  FontSize="16" 
                        BackgroundColor="#dedede" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
@@ -70,7 +58,7 @@
 
                     <Label Text="Event Date" Grid.Row="2" Grid.Column="0"  FontSize="16"
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <DatePicker x:Name="eventDate" Date="{x:Static sys:DateTime.Now}"                                           
+                    <DatePicker x:Name="eventDate" IsEnabled="False"                                          
                                            Grid.Row="2" Grid.Column="1">
                         <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
                     </DatePicker>
@@ -138,38 +126,11 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <!--<RowDefinition Height="Auto"/> 
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="Auto"/>-->
-                        <!--<RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>-->
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="60*" />
                         <ColumnDefinition Width="40*" />
                     </Grid.ColumnDefinitions>
-
-                    <!--<Label Text="Red Frogs lollies used at Activation" Grid.Row="0" Grid.Column="0" FontSize="16" 
-                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <Switch x:Name="lolliesSwitch" IsToggled="False" Grid.Row="0" Grid.Column="1"/>
-                    <Label Text="Number of Lollies" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
-                       BindingContext="{x:Reference lolliesSwitch}" IsVisible="{Binding Path=IsToggled}" />
-                    <controls:CustomEntry x:Name="numLollies" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                       BindingContext="{x:Reference lolliesSwitch}" IsVisible="{Binding Path=IsToggled}" 
-                                          Keyboard="Numeric" Placeholder="0"/>
-
-                    <Label Text="Icy Poles used at Activation" Grid.Row="3" Grid.Column="0" FontSize="16" 
-                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <Switch x:Name="iPolesSwitch" IsToggled="False" Grid.Row="3" Grid.Column="1"/>
-                    <Label Text="Number of Icy Poles" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
-                       BindingContext="{x:Reference iPolesSwitch}" IsVisible="{Binding Path=IsToggled}" />
-                    <controls:CustomEntry x:Name="numIPoles" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
-                       BindingContext="{x:Reference iPolesSwitch}" IsVisible="{Binding Path=IsToggled}"
-                                          Keyboard="Numeric" Placeholder="0"/>-->
 
                     <Label Text="Pancakes provided at Activation" Grid.Row="0" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
@@ -188,15 +149,6 @@
                     <controls:CustomEntry x:Name="numWater" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                        BindingContext="{x:Reference waterSwitch}" IsVisible="{Binding Path=IsToggled}"
                                           Keyboard="Numeric" Placeholder="0"/>
-
-                    <!--<Label Text="Donuts provided at Activation" Grid.Row="12" Grid.Column="0" FontSize="16" 
-                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <Switch x:Name="donutSwitch" IsToggled="False" Grid.Row="12" Grid.Column="1"/>
-                    <Label Text="Number of Donuts" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12"
-                       BindingContext="{x:Reference donutSwitch}" IsVisible="{Binding Path=IsToggled}" />
-                    <controls:CustomEntry x:Name="numDonuts" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"
-                       BindingContext="{x:Reference donutSwitch}" IsVisible="{Binding Path=IsToggled}"
-                                          Keyboard="Numeric" Placeholder="0"/>-->
 
                     <Label Text="Any other give aways at Activation" Grid.Row="6" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />

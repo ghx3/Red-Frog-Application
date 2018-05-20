@@ -85,14 +85,6 @@ namespace RedFrogs.Data
             return await eventsTable.Where(e => !e.IsClosed).ToEnumerableAsync(); ;
         }
 
-        public async Task<IEnumerable<Events>> GetAllEvents()
-        {
-            await Initialize();
-            await SyncEvents();
-
-            return await eventsTable.ToEnumerableAsync();
-        }
-
         public async Task AddEvent(Events toAdd)
         {
             await Initialize();
@@ -107,8 +99,7 @@ namespace RedFrogs.Data
                 if (!CrossConnectivity.Current.IsConnected)
                     return;
 
-                await Initialize();
-                toUpdate.IsClosed = true;
+                await Initialize();                
                 await eventsTable.UpdateAsync(toUpdate);
                 await SyncEvents();
             }
@@ -161,34 +152,34 @@ namespace RedFrogs.Data
 
         }
 
-        public async Task<bool> GetUserInfo(string user, string pass)
+        public async Task<Users> GetUserInfo(string pass)
         {
             await Initialize();
 
             try
             {
                 await userTable.PullAsync("allUsers", userTable.CreateQuery());
-                IMobileServiceTableQuery<Users> query = userTable.Where(e => e.Username == user && e.Password == pass);
+                IMobileServiceTableQuery<Users> query = userTable.Where(e => e.Password == pass);
                 var result = await query.ToListAsync();
                 var userDetails = result.FirstOrDefault();
 
-                Settings.VolunteerName = userDetails.VolName;
-                Settings.isTeamLeader = userDetails.IsLeader;
+                return userDetails;
 
-                return true;
             } catch (NullReferenceException nre)
             {
                 Debug.WriteLine("Error: " + nre.Message);
 
-                return false;                    
+                return null;                    
             } catch (ArgumentNullException nre)
             {
                 Debug.WriteLine("Error: " + nre.Message);
 
-                return false;
+                return null;
             }
             
         }
+
+        
 
     }
 }

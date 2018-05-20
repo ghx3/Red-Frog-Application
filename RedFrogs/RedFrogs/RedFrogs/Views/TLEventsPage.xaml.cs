@@ -34,7 +34,7 @@ namespace RedFrogs.Views
         public async Task loadEventList()
         {
             IEnumerable<Events> getEvents = null;
-            getEvents = await azureService.GetAllEvents();
+            getEvents = await azureService.GetOpenEvents();
             getEvents.OrderByDescending(x => x.IsClosed);
 
 
@@ -59,7 +59,16 @@ namespace RedFrogs.Views
 
         private async void addClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewEventPage());
+            var button = sender as Button;
+            if (button != null && button.ClassId.Equals("editBtn"))
+            {
+                var item = (Events)((Button)sender).BindingContext;
+                await Navigation.PushAsync(new NewEventPage(true, item));
+            } else
+            {
+                await Navigation.PushAsync(new NewEventPage(false, null));
+            }
+            
         }
 
         private async void CloseClicked(object sender, EventArgs e)

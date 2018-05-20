@@ -40,19 +40,7 @@ namespace RedFrogs.Models
 
         [Newtonsoft.Json.JsonProperty("PatronInteractionNum")]
         public int PatronInteractionNum { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("LolliesUsed")]
-        public bool LolliesUsed { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("NumberLollies")]
-        public int NumberLollies { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("IcyPolesUsed")]
-        public bool IcyPolesUsed { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("NumberIcyPoles")]
-        public int NumberIcyPoles { get; set; }
-
+        
         [Newtonsoft.Json.JsonProperty("PancakesProvided")]
         public bool PancakesProvided { get; set; }
 
@@ -64,13 +52,7 @@ namespace RedFrogs.Models
 
         [Newtonsoft.Json.JsonProperty("AmountWater")]
         public int AmountWater { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("DonutsProvided")]
-        public bool DonutsProvided { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("NumberDonuts")]
-        public int NumberDonuts { get; set; }
-
+        
         [Newtonsoft.Json.JsonProperty("AnyGiveaways")]
         public bool AnyGiveaways { get; set; }
 

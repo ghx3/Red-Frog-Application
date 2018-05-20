@@ -24,14 +24,14 @@ namespace RedFrogs.Views
             ev = toClose;
             feedBack = new FeedBack();
             azureService = DependencyService.Get<AzureService>();
+            SetupFields();
         }
 
-        private void City_SelectedIndexChanged(object sender, EventArgs e)
+        public void SetupFields()
         {
-            if(cityPicker.SelectedIndex != -1)
-            {
-                feedBack.City = cityPicker.Items[cityPicker.SelectedIndex];
-            }
+            cityEntry.Text = ev.Location;
+            eventDate.Date = ev.EndDate;
+            TeamLeaderNameFld.Text = Settings.VolunteerName;
         }
 
         private void SupportProvided_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,21 +63,13 @@ namespace RedFrogs.Views
             feedBack.PatronNumber = HelperClass.HasValue(PatronsFld.Text);
             
             feedBack.PatronInteractionNum = HelperClass.HasValue(InteractionsFld.Text);
-            
-            //feedBack.LolliesUsed = lolliesSwitch.IsToggled;
-            //feedBack.NumberLollies = HelperClass.HasValue(numLollies.Text);
-            //feedBack.IcyPolesUsed = iPolesSwitch.IsToggled;
-            //feedBack.NumberIcyPoles = HelperClass.HasValue(numIPoles.Text);
-            
+                                   
             feedBack.PancakesProvided = pancakesSwitch.IsToggled;
             feedBack.NumberPancakes = HelperClass.HasValue(numpancakes.Text);
             
             feedBack.WaterProvided = waterSwitch.IsToggled;
             feedBack.AmountWater = HelperClass.HasValue(numWater.Text);
-            
-            //feedBack.DonutsProvided = donutSwitch.IsToggled;
-            //feedBack.NumberDonuts = HelperClass.HasValue(numDonuts.Text);
-            
+                        
             feedBack.AnyGiveaways = giveAwaySwitch.IsToggled;
             feedBack.GivenAway = giveAway.Text;
             feedBack.AnyPraiseReports = praiseSwitch.IsToggled;
@@ -87,6 +79,8 @@ namespace RedFrogs.Views
             feedBack.FollowUpNeeded = followUpSwitch.IsToggled;
             feedBack.FollowUpName = followUp.Text;
             feedBack.EventID = ev.Id;
+            // close event
+            ev.IsClosed = true;
 
             await azureService.AddFeedback(feedBack);
             await azureService.UpdateEvent(ev);
@@ -123,16 +117,12 @@ namespace RedFrogs.Views
             builder.Append("Hours Spent: " + feedBack.HoursSpent.ToString() + "\n");
             builder.Append("Amount of Patrons at Activation: " + feedBack.PatronNumber.ToString() + "\n");
             builder.Append("Patron Interaction Number: " + feedBack.PatronInteractionNum.ToString() + "\n");
-            builder.Append("Lollies Used: " + feedBack.LolliesUsed.ToString() + "\n");
-            builder.Append("Lollies Number: " + feedBack.NumberLollies.ToString() + "\n");
-            builder.Append("Icy Poles Used: " + feedBack.IcyPolesUsed.ToString() + "\n");
-            builder.Append("Icy Poles Number: " + feedBack.NumberIcyPoles.ToString() + "\n");
+            
             builder.Append("Pancakes Provided: " + feedBack.PancakesProvided.ToString() + "\n");
             builder.Append("Pancakes Number: " + feedBack.NumberPancakes.ToString() + "\n");
             builder.Append("Water Provided: " + feedBack.WaterProvided.ToString() + "\n");
             builder.Append("Amount of Water: " + feedBack.AmountWater.ToString() + "\n");
-            builder.Append("Donuts Provided: " + feedBack.DonutsProvided.ToString() + "\n");
-            builder.Append("Donuts Number: " + feedBack.NumberDonuts.ToString() + "\n");
+            
             builder.Append("Any Other Givaways: " + feedBack.AnyGiveaways.ToString() + "\n");
             builder.Append("Description: " + feedBack.GivenAway + "\n\n");
             builder.Append("Any Prasie Reports: " + feedBack.AnyPraiseReports.ToString() + "\n");
