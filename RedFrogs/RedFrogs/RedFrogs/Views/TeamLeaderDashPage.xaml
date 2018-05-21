@@ -42,11 +42,11 @@
                              Orientation="Vertical" Padding="10, 10, 0, 10">
                     <Label Text="Products given out" FontSize="20"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
-                    <Label x:Name="Water" Text="10 Litres of Water" FontSize="16"
+                    <Label x:Name="Water" FontSize="16"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
-                    <Label x:Name="Lollies" Text="100 Bags of Red Frogs" FontSize="16"
+                    <Label x:Name="Lollies" FontSize="16"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
-                    <Label x:Name="Pancakes" Text="0 other goods handed out" FontSize="16"
+                    <Label x:Name="OtherGoods" FontSize="16"
                            VerticalOptions="StartAndExpand"  HorizontalOptions="StartAndExpand"/>
                 </StackLayout>
 

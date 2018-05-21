@@ -15,7 +15,7 @@ namespace RedFrogs.Helpers
 
         public static int GreaterThanZero(int num)
         {
-            if(num < 0)
+            if(num <= 0)
             {
                 return 0;
             }

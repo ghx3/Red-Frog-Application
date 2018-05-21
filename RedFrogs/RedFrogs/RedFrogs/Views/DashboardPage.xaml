@@ -2,15 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedFrogs.Views.DashboardPage"
-             xmlns:controls="clr-namespace:RedFrogs.Controls">
+             xmlns:controls="clr-namespace:RedFrogs.Controls"
+             Title="Event Log">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="add" Icon="add.png" Clicked="AddClicked" />
-        <ToolbarItem x:Name="sync" Icon="sync.png" />
+        <ToolbarItem x:Name="sync" Icon="sync.png" Clicked="SyncClicked" />
     </ContentPage.ToolbarItems>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -21,23 +22,44 @@
         <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="#d27072">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*" />
-                    <ColumnDefinition Width="50*" />
-                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="60*" />
                     <ColumnDefinition Width="20*" />
                 </Grid.ColumnDefinitions>
 
                 <Button x:Name="minusBtn" Text="-" FontSize="20" Grid.Row="0" Grid.Column="0" 
                        BackgroundColor="Transparent" TextColor="White" Clicked="minus" />
-                <Label Text="Interactions:" TextColor="White" FontSize="18" Grid.Row="0" Grid.Column="1" 
+                <Label x:Name="intCount" TextColor="White" FontSize="15" Grid.Row="0" Grid.Column="1" 
                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                <Label x:Name="intCount" Text="0" TextColor="White" FontSize="16" Grid.Row="0" Grid.Column="2" 
-                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                <Button x:Name="plusBtn" Text="+" FontSize="20" Grid.Row="0" Grid.Column="3" 
+                <Button x:Name="plusBtn" Text="+" FontSize="20" Grid.Row="0" Grid.Column="2" 
                        BackgroundColor="Transparent" TextColor="White" Clicked="plus" />
+
+                <Button x:Name="minusWaterBtn" Text="-" FontSize="20" Grid.Row="1" Grid.Column="0" 
+                       BackgroundColor="Transparent" TextColor="White" Clicked="WaterMinus" />
+                <Label x:Name="waterCount" TextColor="White" FontSize="15" Grid.Row="1" Grid.Column="1" 
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Button x:Name="plusWaterBtn" Text="+" FontSize="20" Grid.Row="1" Grid.Column="2" 
+                       BackgroundColor="Transparent" TextColor="White" Clicked="WaterPlus" />
+
+                <Button x:Name="minusrfBtn" Text="-" FontSize="20" Grid.Row="2" Grid.Column="0" 
+                       BackgroundColor="Transparent" TextColor="White" Clicked="LolliesMinus" />
+                <Label x:Name="rfCount" TextColor="White" FontSize="15" Grid.Row="2" Grid.Column="1" 
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Button x:Name="plusrfBtn" Text="+" FontSize="20" Grid.Row="2" Grid.Column="2" 
+                       BackgroundColor="Transparent" TextColor="White" Clicked="LolliesPlus" />
+
+                <Button x:Name="minusOGBtn" Text="-" FontSize="20" Grid.Row="3" Grid.Column="0" 
+                       BackgroundColor="Transparent" TextColor="White" Clicked="OtherGoodsMinus" />
+                <Label x:Name="ogCount" TextColor="White" FontSize="15" Grid.Row="3" Grid.Column="1" 
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Button x:Name="plusOGBtn" Text="+" FontSize="20" Grid.Row="3" Grid.Column="2" 
+                       BackgroundColor="Transparent" TextColor="White" Clicked="OtherGoodsPlus" />
             </Grid>
         </StackLayout>
 

@@ -57,19 +57,5 @@ namespace RedFrogs.Views
             }            
         }
 
-        private async void addClicked(object sender, EventArgs e)
-        {
-            var item = (Events)((Button)sender).BindingContext;
-
-            await Navigation.PushAsync(new NewEventPage(true, item));
-        }
-
-        private async void CloseClicked(object sender, EventArgs e)
-        {
-            var item = (Events)((Button)sender).BindingContext;
-
-            await Navigation.PushAsync(new FeedbackPage(item));
-        }
-
     }
 }

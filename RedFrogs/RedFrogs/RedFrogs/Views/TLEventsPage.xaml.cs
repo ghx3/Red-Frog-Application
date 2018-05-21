@@ -35,8 +35,6 @@ namespace RedFrogs.Views
         {
             IEnumerable<Events> getEvents = null;
             getEvents = await azureService.GetOpenEvents();
-            getEvents.OrderByDescending(x => x.IsClosed);
-
 
             events.ReplaceRange(getEvents);
             EventsList.ItemsSource = events;

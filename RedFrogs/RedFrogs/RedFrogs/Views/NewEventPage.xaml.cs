@@ -22,8 +22,7 @@ namespace RedFrogs.Views
             newEvent = e;
             setupLocationList();
             setupFields();
-            
-            eventDate.MinimumDate = DateTime.Today;
+                        
             addBtn.Clicked += sendEvent;
         }
 
@@ -85,6 +84,7 @@ namespace RedFrogs.Views
                 newEvent.IsClosed = false;
 
                 await azureService.AddEvent(newEvent);
+                saveInitialFeedback();
                 SendMessage();
                 await Navigation.PopAsync();
             }
@@ -93,6 +93,40 @@ namespace RedFrogs.Views
         private void SendMessage()
         {
             MessagingCenter.Send<NewEventPage>(this, "SaveEvents");
+        }
+
+        public async void saveInitialFeedback()
+        {
+            FeedBack fb = new FeedBack()
+            {
+                EventName = newEvent.EventName,
+                City = newEvent.Location,
+                SupportTo = "",
+                EventDate = newEvent.EndDate,
+                SupportGiven = "",
+                ActivationLocation = "",
+                LeaderName = "",
+                VolunteerNumber = 0,
+                HoursSpent = 0,
+                PatronNumber = 0,
+                PatronInteractionNum = 0,
+                PancakesProvided = false,
+                NumberPancakes = 0,
+                WaterProvided = false,
+                AmountWater = 0,
+                AnyGiveaways = false,
+                GivenAway = "",
+                AnyPraiseReports = false,
+                PraiseReport = "",
+                AnyIncidents = false,
+                IncidentDescription = "",
+                FollowUpNeeded = false,
+                FollowUpName = "",
+                EventID = newEvent.Id
+            };
+
+            await azureService.AddFeedback(fb);
+                
         }
     }
 }

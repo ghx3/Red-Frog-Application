@@ -24,23 +24,26 @@ namespace RedFrogs.Views
             eventObj = e;
             azureService = DependencyService.Get<AzureService>();
 
-            volName.Text = "Welcome " + Settings.VolunteerName;
-            interactions.Text = e.NumInteractions.ToString();
-
+            volName.Text = "Welcome " + Settings.VolunteerName + " - " + eventObj.EventName;
+            
         }
 
         protected async override void OnAppearing()
         {
-            var getCaseInfo = await azureService.GetEventCases(eventObj.EventName);
-            int numCases = 0;
 
-            foreach(CaseInfo ci in getCaseInfo)
-            {
-                numCases++;
-            }
+            setupData();
+        }
 
-            cases.Text = numCases.ToString();
+        public async void  setupData()
+        {
+            interactions.Text = eventObj.NumInteractions.ToString();
+            var caseCount = await azureService.GetEventCasesCount(eventObj.EventName);
+            cases.Text = caseCount.ToString();
 
+
+            Water.Text = eventObj.LitresWater.ToString() + " Litres of Water";
+            Lollies.Text = eventObj.NumRFLollies.ToString() + " Bags of Red Frogs";
+            OtherGoods.Text = eventObj.NumOtherGoods.ToString() + " Other Goods Handed Out";
         }
     }
 }

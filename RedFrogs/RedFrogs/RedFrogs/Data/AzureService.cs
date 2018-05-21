@@ -58,6 +58,24 @@ namespace RedFrogs.Data
 
         }
 
+        public async Task Sync(Events e)
+        {
+            try
+            {
+                if (!CrossConnectivity.Current.IsConnected)
+                    return;
+
+                await Initialize();
+                await eventsTable.PullAsync("allEvents", eventsTable.CreateQuery());
+                await eventsTable.UpdateAsync(e);
+                await Client.SyncContext.PushAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Unable to sync events, that is alright as we have offline capabilities: " + ex);
+            }
+        }
+
         public async Task SyncEvents()
         {
             try
@@ -90,6 +108,23 @@ namespace RedFrogs.Data
             await Initialize();
             await eventsTable.InsertAsync(toAdd);
             await SyncEvents();
+        }
+
+        public async Task UpdateEventWithoutSync(Events update)
+        {
+            try
+            {
+                if (!CrossConnectivity.Current.IsConnected)
+                    return;
+
+                await Initialize();
+                await eventsTable.UpdateAsync(update);
+            }
+
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Unable to sync events: " + ex);
+            }
         }
 
         public async Task UpdateEvent(Events toUpdate)
@@ -133,7 +168,7 @@ namespace RedFrogs.Data
             await caseInfoTable.InsertAsync(caseInfo);
         }
 
-        // For not team leaders, get only their entered Cases
+        // For normal users, get only their entered Cases
         public async Task<IEnumerable<CaseInfo>> GetEventCases(string eventName, string volName)
         {
             //Initialize
@@ -143,13 +178,13 @@ namespace RedFrogs.Data
 
         }
 
-        public async Task<IEnumerable<CaseInfo>> GetEventCases(string eventName)
+        public async Task<int> GetEventCasesCount(string eventName)
         {
             //Initialize
             await Initialize();
 
-            return await caseInfoTable.Where(e => (e.EventName == eventName)).ToEnumerableAsync(); ;
-
+            var cases =  await caseInfoTable.Where(e => (e.EventName == eventName)).ToEnumerableAsync();
+            return cases.Count();
         }
 
         public async Task<Users> GetUserInfo(string pass)

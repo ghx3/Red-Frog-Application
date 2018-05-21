@@ -1,4 +1,5 @@
-﻿using MvvmHelpers;
+﻿using Acr.UserDialogs;
+using MvvmHelpers;
 using RedFrogs.Data;
 using RedFrogs.Helpers;
 using RedFrogs.Models;
@@ -14,7 +15,7 @@ namespace RedFrogs.Views
     {
         AzureService azureService;
         Events currEvent;
-        public ObservableRangeCollection<CaseInfo> cases { get; } = new ObservableRangeCollection<CaseInfo>();
+        public ObservableRangeCollection<Cases> cases { get; } = new ObservableRangeCollection<Cases>();
         string nameOfEvent = null;
         //ObservableCollection<CaseInfo> cases;
 
@@ -23,7 +24,6 @@ namespace RedFrogs.Views
             InitializeComponent();
             azureService = DependencyService.Get<AzureService>();
             currEvent = selEvent;
-            Title = currEvent.EventName;
             nameOfEvent = currEvent.EventName;
 
             caseList.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
@@ -31,27 +31,44 @@ namespace RedFrogs.Views
                 var toEdit = e.SelectedItem as CaseInfo;
                 Navigation.PushAsync(new DataInputPage(toEdit, true));
             };
-
-                        
+          
         }
          
         protected async override void OnAppearing()
-        {
+        {            
+            SetupCounts();
             cases.Clear();
             var getCaseInfo = await azureService.GetEventCases(currEvent.EventName, Settings.VolunteerName);
-           // cases.ReplaceRange(getCaseInfo);
-
-           // List<Cases> display = new List<Cases>();
+            Cases c = new Cases();
+            Symptoms symptomColour;
             ColorTypeConverter converter = new ColorTypeConverter();
 
             foreach (CaseInfo cinfo in getCaseInfo)
-            {
-               cases.Add(cinfo);
-            }
+            {                
+                symptomColour = await App.DB.getSymptom(cinfo.Symptom);
+                c.PersonName = cinfo.Name;
+                c.SymptomName = cinfo.Symptom;
+                c.colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour));
 
+                cases.Add(c);
+            }
             
-            caseList.ItemsSource = cases;
-            
+            caseList.ItemsSource = cases;            
+        }
+
+        public void SetupCounts()
+        {
+            currEvent.IndvlInteractions = HelperClass.GreaterThanZero(currEvent.IndvlInteractions);
+            intCount.Text = "Interactions: " + currEvent.IndvlInteractions.ToString();            
+
+            currEvent.IndvlWaterCount = HelperClass.GreaterThanZero(currEvent.IndvlWaterCount);
+            waterCount.Text = "Litres of Water: " + currEvent.IndvlWaterCount.ToString();
+
+            currEvent.IndvlRFLolliesCount = HelperClass.GreaterThanZero(currEvent.IndvlRFLolliesCount);
+            rfCount.Text = "Bags of Red Frogs: " + currEvent.IndvlRFLolliesCount;
+
+            currEvent.IndvlOGCount = HelperClass.GreaterThanZero(currEvent.IndvlOGCount);
+            ogCount.Text = "Other goods: " + currEvent.IndvlOGCount;
         }
 
         private async void AddClicked(object sender, EventArgs e)
@@ -59,24 +76,75 @@ namespace RedFrogs.Views
             await Navigation.PushAsync(new DataInputPage(nameOfEvent));
         }
 
-        //private async void Client_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        //{
-        //    var toEdit = e.SelectedItem as CaseInfo; 
-        //    await DisplayAlert(toEdit.Name, toEdit.EventName, "OK");
-        //    await Navigation.PushAsync(new DataInputPage(toEdit, true));
-        //}
-
-        public void plus(object sender, EventArgs e)
+        private async void SyncClicked(object sender, EventArgs e)
         {
-            currEvent.NumInteractions += 1;
-            intCount.Text = currEvent.NumInteractions.ToString();
+            UserDialogs.Instance.ShowLoading("Syncing in Progress", MaskType.Gradient);
+            currEvent.NumInteractions = currEvent.NumInteractions + currEvent.IndvlInteractions;
+            currEvent.LitresWater = currEvent.LitresWater + currEvent.IndvlWaterCount;
+            currEvent.NumRFLollies = currEvent.NumRFLollies + currEvent.IndvlRFLolliesCount;
+            currEvent.NumOtherGoods = currEvent.NumOtherGoods + currEvent.IndvlOGCount;
+            await azureService.Sync(currEvent);
+            UserDialogs.Instance.HideLoading();
+        }
+        
+        public async void plus(object sender, EventArgs e)
+        {
+            currEvent.IndvlInteractions += 1;
+            intCount.Text = "Interactions: " + currEvent.IndvlInteractions.ToString();
+            await azureService.UpdateEventWithoutSync(currEvent);
         }
 
-        public void minus(object sender, EventArgs e)
+        public async void minus(object sender, EventArgs e)
         {
-            currEvent.NumInteractions -= 1;
-            currEvent.NumInteractions = HelperClass.GreaterThanZero(currEvent.NumInteractions);
-            intCount.Text = currEvent.NumInteractions.ToString();
+            currEvent.IndvlInteractions -= 1;
+            currEvent.IndvlInteractions = HelperClass.GreaterThanZero(currEvent.IndvlInteractions);
+            intCount.Text = "Interactions: " + currEvent.IndvlInteractions.ToString();
+            await azureService.UpdateEventWithoutSync(currEvent);
+        }
+
+        public async void WaterPlus(object sender, EventArgs e)
+        {
+            currEvent.IndvlWaterCount += 1;
+            waterCount.Text = "Litres of Water: " + currEvent.IndvlWaterCount.ToString();
+            await azureService.UpdateEventWithoutSync(currEvent);
+        }
+
+        public async void WaterMinus(object sender, EventArgs e)
+        {
+            currEvent.IndvlWaterCount -= 1;
+            currEvent.IndvlWaterCount = HelperClass.GreaterThanZero(currEvent.IndvlWaterCount);
+            waterCount.Text = "Litres of Water: " + currEvent.IndvlWaterCount.ToString();
+            await azureService.UpdateEventWithoutSync(currEvent);
+        }
+
+        public async void LolliesPlus(object sender, EventArgs e)
+        {
+            currEvent.IndvlRFLolliesCount += 1;
+            rfCount.Text = "Bags of Red Frogs: " + currEvent.IndvlRFLolliesCount.ToString();
+            await azureService.UpdateEventWithoutSync(currEvent);
+        }
+
+        public async void LolliesMinus(object sender, EventArgs e)
+        {
+            currEvent.IndvlRFLolliesCount -= 1;
+            currEvent.IndvlRFLolliesCount = HelperClass.GreaterThanZero(currEvent.IndvlRFLolliesCount);
+            rfCount.Text = "Bags of Red Frogs: " + currEvent.IndvlRFLolliesCount.ToString();
+            await azureService.UpdateEventWithoutSync(currEvent);
+        }
+
+        public async void OtherGoodsPlus(object sender, EventArgs e)
+        {
+            currEvent.IndvlOGCount += 1;
+            ogCount.Text = "Other goods: " + currEvent.IndvlOGCount.ToString();
+            await azureService.UpdateEventWithoutSync(currEvent);
+        }
+
+        public async void OtherGoodsMinus(object sender, EventArgs e)
+        {
+            currEvent.IndvlOGCount -= 1;
+            currEvent.IndvlOGCount = HelperClass.GreaterThanZero(currEvent.IndvlOGCount);
+            ogCount.Text = "Other goods: " + currEvent.IndvlOGCount.ToString();
+            await azureService.UpdateEventWithoutSync(currEvent);
         }
     }
 }

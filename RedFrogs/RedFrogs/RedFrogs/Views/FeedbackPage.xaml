@@ -34,7 +34,7 @@
 
                     <Label Text="City" Grid.Row="0" Grid.Column="0" FontSize="16" 
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <controls:CustomEntry x:Name="cityEntry"  IsEnabled="False"
+                    <controls:CustomEntry x:Name="cityEntry"  IsEnabled="False" TextColor="Black"
                                        Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" />
 
                     <Label Text="Support Provided to" Grid.Row="1" Grid.Column="0"  FontSize="16" 
@@ -58,7 +58,7 @@
 
                     <Label Text="Event Date" Grid.Row="2" Grid.Column="0"  FontSize="16"
                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="#dedede" />
-                    <DatePicker x:Name="eventDate" IsEnabled="False"                                          
+                    <DatePicker x:Name="eventDate" IsEnabled="False" TextColor="Black"                                           
                                            Grid.Row="2" Grid.Column="1">
                         <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
                     </DatePicker>
