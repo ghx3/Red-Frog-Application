@@ -10,6 +10,8 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
+            <Button x:Name="logOutBtn" Text="logOut" Grid.Row="12"
+                        BackgroundColor="#bf3336" TextColor="White" Clicked="LogOutClicked" Margin="0,10,0,10"  Grid.ColumnSpan="2"/>
             <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black" 
                       ItemSelected="EventSelected" RowHeight="75">
                 <ListView.ItemTemplate>

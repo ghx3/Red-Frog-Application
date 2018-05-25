@@ -40,7 +40,12 @@ namespace RedFrogs.Views
             events.ReplaceRange(getEvents);
             EventsList.ItemsSource = events;
         }
+        private async void LogOutClicked(object sender, EventArgs e)
 
+        {
+            var loginPage = new Login();
+            await Navigation.PushAsync(loginPage);
+        }
         private async void EventSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)

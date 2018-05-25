@@ -33,6 +33,12 @@ namespace RedFrogs.Views
 
             setupData();
         }
+        private async void LogOutClicked(object sender, EventArgs e)
+
+        {
+            var loginPage = new Login();
+            await Navigation.PushAsync(loginPage);
+        }
 
         public async void  setupData()
         {

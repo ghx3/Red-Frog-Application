@@ -75,6 +75,12 @@ namespace RedFrogs.Views
         {
             await Navigation.PushAsync(new DataInputPage(nameOfEvent));
         }
+        private async void LogOutClicked(object sender, EventArgs e)
+
+        {
+            var loginPage = new Login();
+            await Navigation.PushAsync(loginPage);
+        }
 
         private async void SyncClicked(object sender, EventArgs e)
         {
