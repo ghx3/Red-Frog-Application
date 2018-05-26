@@ -50,6 +50,8 @@
     <Compile Include="IMessage.cs" />
     <Compile Include="Models\CaseInfo.cs" />
     <Compile Include="Models\Cases.cs" />
+    <Compile Include="Models\Incident.cs" />
+    <Compile Include="Models\Specific.cs" />
     <Compile Include="Models\Symptoms.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Views\DashboardPage.xaml.cs">

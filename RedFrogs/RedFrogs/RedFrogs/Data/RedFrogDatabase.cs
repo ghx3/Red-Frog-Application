@@ -62,7 +62,17 @@ namespace RedFrogs.Data
         public Task<List<Symptoms>> GetAllSymptoms()
         {
             return conn.QueryAsync<Symptoms>("Select * FROM [Symptoms]");
-        }       
+        }
+
+        public Task<List<Incident>> GetAllIncidents()
+        {
+            return conn.QueryAsync<Incident>("Select * FROM [IncidentType]");
+        }
+
+        public Task<List<Specific>> GetAllSpecifics()
+        {
+            return conn.QueryAsync<Specific>("Select * FROM [Specific]");
+        }
 
         /*public Task<FeedBack> GetFeedback(int id)
         {

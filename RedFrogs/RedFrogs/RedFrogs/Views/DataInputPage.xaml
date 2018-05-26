@@ -59,21 +59,27 @@
                        VerticalTextAlignment="Center" />
                     <controls:CustomPicker x:Name="sympPicker" Grid.Row="7" SelectedIndexChanged="SymptomPickerChanged" 
                                            Image="arrow_drop_down"  Grid.ColumnSpan="2"/>
-                    <controls:CustomEntry x:Name="symptomEntry" Grid.Row="7" IsEnabled="False" IsVisible="False"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" Grid.ColumnSpan="2"/>
-
-                    <Label Text="Seen by Medic" Grid.Row="8" FontSize="16" 
+                    <controls:CustomPicker x:Name="sympPicker1" Grid.Row="8" SelectedIndexChanged="sympPicker1_SelectedIndexChanged" 
+                                           Image="arrow_drop_down"  Grid.Column="0"/>
+                    <controls:CustomPicker x:Name="sympPicker2" Grid.Row="8" SelectedIndexChanged="sympPicker2_SelectedIndexChanged" 
+                                           Image="arrow_drop_down"  Grid.Column="1"/>
+                    <!--<controls:CustomEntry x:Name="symptomEntry" Grid.Row="7" IsEnabled="False" IsVisible="False"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" Grid.ColumnSpan="2"/>-->
+                    <controls:CustomEntry x:Name="incidentEntry" Grid.Row="7" IsEnabled="False" IsVisible="False"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" Grid.ColumnSpan="2"/>
+                    <controls:CustomEntry x:Name="specificEntry" Grid.Row="8" IsEnabled="False" IsVisible="False"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" Grid.ColumnSpan="2"/>
+                   
+                    <Label Text="Seen by Medic" Grid.Row="9" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                    <Switch x:Name="medicSwitch" IsToggled="False" Grid.Row="8" Grid.Column="1"/>
+                    <Switch x:Name="medicSwitch" IsToggled="False" Grid.Row="9" Grid.Column="1"/>
 
-                    <Label Text="Incident Report" Grid.Row="9" FontSize="16" 
+                    <Label Text="Incident Report" Grid.Row="10" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                    <Switch x:Name="reportSwitch" IsToggled="False" Grid.Row="9" Grid.Column="1" />
+                    <Switch x:Name="reportSwitch" IsToggled="False" Grid.Row="10" Grid.Column="1" />
 
-                    <Label Text="Action Taken" Grid.Row="10" FontSize="16" 
+                    <Label Text="Action Taken" Grid.Row="11" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                    <controls:CustomEditor x:Name="actionFld" Grid.Row="11" HeightRequest="100"  Grid.ColumnSpan="2"/>
+                    <controls:CustomEditor x:Name="actionFld" Grid.Row="12" HeightRequest="100"  Grid.ColumnSpan="2"/>
 
-                    <Button x:Name="addBtn" Text="Add" Grid.Row="12"
+                    <Button x:Name="addBtn" Text="Add" Grid.Row="13"
                         BackgroundColor="#bf3336" TextColor="White" Clicked="AddClicked" Margin="0,10,0,10"  Grid.ColumnSpan="2"/>
                     
                 </Grid>

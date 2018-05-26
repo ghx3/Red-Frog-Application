@@ -47,6 +47,7 @@ namespace RedFrogs.Views
             {                
                 symptomColour = await App.DB.getSymptom(cinfo.Symptom);
                 c.PersonName = cinfo.Name;
+                Debug.WriteLine("Person Name: " + cinfo.Name);
                 c.SymptomName = cinfo.Symptom;
                 c.colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour));
 
