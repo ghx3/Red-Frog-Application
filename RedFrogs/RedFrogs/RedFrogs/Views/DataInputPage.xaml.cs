@@ -70,6 +70,12 @@ namespace RedFrogs.Views
             specificEntry.IsEnabled = true;
             sympPicker.IsEnabled = false;
             sympPicker.IsVisible = false;
+            sympPicker1.IsEnabled = false;
+            sympPicker1.IsVisible = false;
+            sympPicker2.IsEnabled = false;
+            sympPicker2.IsVisible = false;
+            addBtn.IsEnabled = false;
+            addBtn.IsVisible = false;
         }
 
         public void ToolBarItems()

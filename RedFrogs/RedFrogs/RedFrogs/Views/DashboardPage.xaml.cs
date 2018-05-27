@@ -16,6 +16,7 @@ namespace RedFrogs.Views
         AzureService azureService;
         Events currEvent;
         public ObservableRangeCollection<Cases> cases { get; } = new ObservableRangeCollection<Cases>();
+        public ObservableRangeCollection<CaseInfo> CasesInfo_cases { get; } = new ObservableRangeCollection<CaseInfo>();
         string nameOfEvent = null;
         //ObservableCollection<CaseInfo> cases;
 
@@ -44,17 +45,19 @@ namespace RedFrogs.Views
             ColorTypeConverter converter = new ColorTypeConverter();
 
             foreach (CaseInfo cinfo in getCaseInfo)
-            {                
-                symptomColour = await App.DB.getSymptom(cinfo.Symptom);
-                c.PersonName = cinfo.Name;
-                Debug.WriteLine("Person Name: " + cinfo.Name);
-                c.SymptomName = cinfo.Symptom;
-                c.colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour));
+            {
+                //symptomColour = await App.DB.getSymptom(cinfo.Symptom);
+                //c.PersonName = cinfo.Name;
+                //Debug.WriteLine("Person Name: " + cinfo.Name);
+                //c.SymptomName = cinfo.Symptom;
+                //c.colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour));
 
-                cases.Add(c);
+                //cases.Add(c);
+
+                CasesInfo_cases.Add(cinfo);
             }
             
-            caseList.ItemsSource = cases;            
+            caseList.ItemsSource = CasesInfo_cases;            
         }
 
         public void SetupCounts()

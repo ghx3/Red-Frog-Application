@@ -80,8 +80,8 @@
 
                                 <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="StartAndExpand" Grid.Column="0" />
                                 <Label Text="{Binding Symptom}" FontSize="Medium" HorizontalOptions="StartAndExpand" Grid.Column="1"/>
-                                <controls:RoundBoxView BackgroundColor="{Binding colour}" WidthRequest="50" 
-                                         CornerRadius="300" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="2" />
+                                <!--<controls:RoundBoxView BackgroundColor="{Binding colour}" WidthRequest="50" 
+                                         CornerRadius="300" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="2" />-->
                             </Grid>
                         </ViewCell.View>
                     </ViewCell>
