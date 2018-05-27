@@ -16,6 +16,8 @@ namespace RedFrogs.Models
         public int Age { get; set; }
         [Newtonsoft.Json.JsonProperty("Symptom")]
         public string Symptom { get; set; }
+        [Newtonsoft.Json.JsonProperty("SymptomColour")]
+        public string SymptomColour { get; set; }
         [Newtonsoft.Json.JsonProperty("IncidentType")]
         public string IncidentType { get; set; }
         [Newtonsoft.Json.JsonProperty("Specific")]

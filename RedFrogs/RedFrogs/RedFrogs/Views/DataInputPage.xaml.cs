@@ -108,11 +108,13 @@ namespace RedFrogs.Views
             sympPicker.ItemsSource = sympNames;
         }
 
-        void SymptomPickerChanged(object sender, EventArgs e)
+        async void SymptomPickerChanged(object sender, EventArgs e)
         {
             if (sympPicker.SelectedIndex != -1)
             {
                 saveCase.Symptom = sympPicker.Items[sympPicker.SelectedIndex];
+                Symptoms symptom = await App.DB.getSymptom(saveCase.Symptom);
+                saveCase.SymptomColour = symptom.Colour;
             }
 
             PopulateIncidentPicker();

@@ -14,11 +14,9 @@ namespace RedFrogs.Views
     public partial class DashboardPage : ContentPage
     {
         AzureService azureService;
-        Events currEvent;
-        public ObservableRangeCollection<Cases> cases { get; } = new ObservableRangeCollection<Cases>();
+        Events currEvent;        
         public ObservableRangeCollection<CaseInfo> CasesInfo_cases { get; } = new ObservableRangeCollection<CaseInfo>();
         string nameOfEvent = null;
-        //ObservableCollection<CaseInfo> cases;
 
         public DashboardPage(Events selEvent)
         {
@@ -38,24 +36,9 @@ namespace RedFrogs.Views
         protected async override void OnAppearing()
         {            
             SetupCounts();
-            cases.Clear();
             var getCaseInfo = await azureService.GetEventCases(currEvent.EventName, Settings.VolunteerName);
-            Cases c = new Cases();
-            Symptoms symptomColour;
-            ColorTypeConverter converter = new ColorTypeConverter();
 
-            foreach (CaseInfo cinfo in getCaseInfo)
-            {
-                //symptomColour = await App.DB.getSymptom(cinfo.Symptom);
-                //c.PersonName = cinfo.Name;
-                //Debug.WriteLine("Person Name: " + cinfo.Name);
-                //c.SymptomName = cinfo.Symptom;
-                //c.colour = (Color)(converter.ConvertFromInvariantString(symptomColour.Colour));
-
-                //cases.Add(c);
-
-                CasesInfo_cases.Add(cinfo);
-            }
+            CasesInfo_cases.ReplaceRange(getCaseInfo);
             
             caseList.ItemsSource = CasesInfo_cases;            
         }
