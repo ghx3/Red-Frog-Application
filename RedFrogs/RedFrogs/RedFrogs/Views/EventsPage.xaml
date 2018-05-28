@@ -4,6 +4,9 @@
              x:Class="RedFrogs.Views.EventsPage"
              NavigationPage.HasBackButton="False"             
              Title="Events">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="logOut" Icon="logOut.jpg" Clicked="LogOutClicked" />
+    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout>
