@@ -36,11 +36,23 @@ namespace RedFrogs.Views
         protected async override void OnAppearing()
         {            
             SetupCounts();
-            var getCaseInfo = await azureService.GetEventCases(currEvent.EventName, Settings.VolunteerName);
+            setupCases();           
+        }
 
-            CasesInfo_cases.ReplaceRange(getCaseInfo);
-            
-            caseList.ItemsSource = CasesInfo_cases;            
+        public async void setupCases()
+        {
+            if (Settings.isTeamLeader)
+            {
+                var getCaseInfo = await azureService.GetAllEventCases(currEvent.EventName);
+                CasesInfo_cases.ReplaceRange(getCaseInfo);
+                
+            } else
+            {
+                var getCaseInfo = await azureService.GetEventCases(currEvent.EventName, Settings.VolunteerName);
+                CasesInfo_cases.ReplaceRange(getCaseInfo);                
+            }
+
+            caseList.ItemsSource = CasesInfo_cases;
         }
 
         public void SetupCounts()
@@ -65,8 +77,7 @@ namespace RedFrogs.Views
         private async void LogOutClicked(object sender, EventArgs e)
 
         {
-            var loginPage = new Login();
-            await Navigation.PushAsync(loginPage);
+            await Navigation.PopToRootAsync();
         }
 
         private async void SyncClicked(object sender, EventArgs e)

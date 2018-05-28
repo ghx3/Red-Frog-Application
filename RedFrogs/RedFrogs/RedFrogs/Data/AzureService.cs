@@ -178,6 +178,23 @@ namespace RedFrogs.Data
 
         }
 
+        public async Task<IEnumerable<CaseInfo>> GetAllEventCases(string eventName)
+        {
+            try
+            {                            
+                await Initialize();
+                await caseInfoTable.PullAsync("allCases", caseInfoTable.CreateQuery());
+
+                return await caseInfoTable.Where(e => e.EventName == eventName).ToEnumerableAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Unable to sync events, that is alright as we have offline capabilities: " + ex);
+                return await caseInfoTable.Where(e => e.EventName == eventName).ToEnumerableAsync();
+            }
+
+        }
+
         public async Task<int> GetEventCasesCount(string eventName)
         {
             //Initialize
