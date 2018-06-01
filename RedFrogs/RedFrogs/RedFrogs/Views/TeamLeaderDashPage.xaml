@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedFrogs.Views.TeamLeaderDashPage"
              Title="Dashboard"
              BackgroundColor="#c6c6c6">
     <ContentPage.ToolbarItems>
-    <ToolbarItem x:Name="logOut" Icon="logOut.jpg" Clicked="LogOutClicked" />
+    <ToolbarItem x:Name="logOut" Icon="logOut.png" Clicked="LogOutClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
