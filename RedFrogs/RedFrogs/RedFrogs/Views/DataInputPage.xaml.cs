@@ -76,6 +76,11 @@ namespace RedFrogs.Views
                 reportSwitch.IsToggled = true;
             }
         }
+       
+        private async void addingClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new IncidentReportPage());
+        }
 
         private void IfEdit()
         {

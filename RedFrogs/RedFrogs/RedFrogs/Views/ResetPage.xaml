@@ -1,13 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedFrogs.Views.ResetPage">
+    <!--create field so that the user can reset their account's password-->
     <ContentPage.Content>
         <StackLayout>
             <Label Text = "Email" FontSize ="20"></Label>
             <Entry x:Name = "EmailAddress" Placeholder = "sample@email.com"/>
             <Button x:Name = "Submit"  Clicked ="Submit_Clicked" Margin = "6,0,6,0"
-                TextColor = "Gray" BorderRadius ="6" Text = "Submit"></Button>
+                TextColor = "White" BackgroundColor ="#bf3c33" BorderRadius ="6" Text = "Submit"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

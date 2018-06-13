@@ -23,7 +23,16 @@ namespace RedFrogs.Views
             InitializeComponent();
             azureService = DependencyService.Get<AzureService>();
         }
-
+        //button function link to sign up page
+        private void SignUpClicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SignUpPage());
+        }
+        //button function link to reset page
+        private void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ResetPage());
+        }
         private async void Login_Clicked(object sender, EventArgs e)
         {
             string user = name.Text;

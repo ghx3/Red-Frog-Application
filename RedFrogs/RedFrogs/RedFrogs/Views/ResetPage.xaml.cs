@@ -18,21 +18,31 @@ namespace RedFrogs.Views
             InitializeComponent();
 
         }
-        void Submit_Clicked(object sender, System.EventArgs e)
+        //validate email address
+        private void Submit_Clicked(object sender, System.EventArgs e)
         {
-            var email = EmailAddress.Text;
-            var emailPattern = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
-            if (!String.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, emailPattern))
-            {
-                DisplayAlert("Oops", "The Email address is invalid, please enter a valid Email address.", "OK");
+            string email = EmailAddress.Text;
+            string emailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                            + "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
 
-            }
-            else
+           
+            if (!String.IsNullOrEmpty(email))
             {
-                DisplayAlert("Great", "A Email has been sent to the assigned Email address" +
-                                                "\nPlease follow the instruction and reset your passwor", "OK");
+                if (!Regex.IsMatch(email, emailPattern))
+                {
+                    DisplayAlert("Oops", "The Email address is invalid, please enter a valid Email address.", "OK");
+
+                }
+                else
+                {
+                    DisplayAlert("Great", "A Email has been sent to the assigned Email address" +
+                                                    "\nPlease follow the instruction and reset your passwor", "OK");
+                }
+            }else{
+                DisplayAlert("Sorry", "This field cannot be empty,Please enter the valid Email address", "OK");
             }
 
+          
         }
     }
 }
