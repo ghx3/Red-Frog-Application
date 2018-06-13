@@ -13,6 +13,11 @@ using Xamarin.Forms.Xaml;
 namespace RedFrogs.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    /**
+    * This class is used to create DashboardPage, but for team leaders. In this class the leaders can 
+    * view a high level information from all the other volunteers data, like the total number of cases recorded,
+    * products given out etc. 
+    * **/
     public partial class TeamLeaderDashPage : ContentPage
     {
         AzureService azureService;

@@ -11,6 +11,10 @@ using Xamarin.Forms;
 
 namespace RedFrogs.Views
 {
+    /**
+     * This class creates the dashboard page where the user can view the cases they have added, recorded
+     * interactions, lollies, water etc. 
+     * **/
     public partial class DashboardPage : ContentPage
     {
         AzureService azureService;
@@ -25,6 +29,9 @@ namespace RedFrogs.Views
             currEvent = selEvent;
             nameOfEvent = currEvent.EventName;
 
+            /* Code that get the selected item from the listview, which is then used to open 
+             * datainput page. Make sure the object being selected, sent to and the object
+             * used in the datainput page are the same */
             caseList.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
             {
                 var toEdit = e.SelectedItem as CaseInfo;
@@ -91,6 +98,7 @@ namespace RedFrogs.Views
             UserDialogs.Instance.HideLoading();
         }
         
+        //Adding an interaction count
         public async void plus(object sender, EventArgs e)
         {
             currEvent.IndvlInteractions += 1;
@@ -98,6 +106,7 @@ namespace RedFrogs.Views
             await azureService.UpdateEventWithoutSync(currEvent);
         }
 
+        //Substracting an interaction count
         public async void minus(object sender, EventArgs e)
         {
             currEvent.IndvlInteractions -= 1;

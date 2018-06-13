@@ -12,6 +12,10 @@ using Xamarin.Forms;
 
 namespace RedFrogs.Views
 {
+    /**
+    * This class creates the Feedback page form where the user can record important information regarding 
+    * the event for data collection purposes.
+    * **/
     public partial class FeedbackPage : ContentPage
     {
         Events ev;

@@ -13,6 +13,9 @@ using Xamarin.Forms.Xaml;
 namespace RedFrogs.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    /**
+    * This class creates the Events page where the user can view events that are available and or open to them.
+    * **/
     public partial class EventsPage : ContentPage
     {
         AzureService azureService;

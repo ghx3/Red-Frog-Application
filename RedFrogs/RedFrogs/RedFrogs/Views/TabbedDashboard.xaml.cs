@@ -11,6 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace RedFrogs.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    /**
+    * Class used to create a tabbed page that contains TeamLeaderDashPage and DashboardPage 
+    * **/
     public partial class TabbedDashboard : TabbedPage
     {
         public TabbedDashboard(Events e)
