@@ -9,7 +9,7 @@
              <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
-                <Grid BackgroundColor="White" Margin="10,10,10,0" ColumnSpacing="0" >
+                <Grid BackgroundColor="White"  ColumnSpacing="0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -45,27 +45,27 @@
 
                        <Label Text = "Incident type (*)" Grid.Row="4" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                       <controls:CustomEditor x:Name="IncidentEditor" Grid.Row="5" HeightRequest="30"  Grid.ColumnSpan="2"/>
+                       <controls:CustomEditor x:Name="IncidentEditor" Grid.Row="5"   Grid.ColumnSpan="2"/>
 
                        <Label Text = "Involved name(s)" Grid.Row="6" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                       <controls:CustomEditor x:Name="NameEditor" Grid.Row="7" HeightRequest="30"  Grid.ColumnSpan="2"/>
+                       <controls:CustomEditor x:Name="NameEditor" Grid.Row="7" Grid.ColumnSpan="2"/>
 
-                       <Label Text = "Incident detials(*)" Grid.Row="8" FontSize="16" 
+                       <Label Text = "Incident details(*)" Grid.Row="8" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                       <controls:CustomEditor x:Name="detailEditor" Grid.Row="9" HeightRequest="100"  Grid.ColumnSpan="2"/>
+                       <controls:CustomEditor x:Name="detailEditor" Grid.Row="9"   Grid.ColumnSpan="2"/>
 
 
                        <Label Text = "Action/Follow up?" Grid.Row="10" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                       <controls:CustomEditor x:Name="actionEditor" Grid.Row="11" HeightRequest="80"  Grid.ColumnSpan="2"/>
+                       <controls:CustomEditor x:Name="actionEditor" Grid.Row="11"  Grid.ColumnSpan="2"/>
 
 
-                       <Label Text = "More incidents? (*)" Grid.Row="12" FontSize="16" 
+                       <!--<Label Text = "More incidents? (*)" Grid.Row="12" FontSize="16" 
                        VerticalTextAlignment="Center" />
-                       <Switch x:Name="MoreIncident" IsToggled="False" Grid.Row="12" Grid.Column="1"/>
+                       <Switch x:Name="MoreIncident" IsToggled="False" Grid.Row="12" Grid.Column="1"/>-->
                         
-                        <Button x:Name="CreateButton" Text="Create report" Grid.Row="13" HorizontalOptions = "CenterAndExpand" VerticalOptions = "CenterAndExpand"
+                        <Button x:Name="CreateButton" Text="Create report" Grid.Row="12" HorizontalOptions = "CenterAndExpand" VerticalOptions = "CenterAndExpand"
                           BackgroundColor="#bf3336" TextColor="White" Clicked="CreateClicked" Margin="0,8,0,8" Grid.ColumnSpan="2"/>
 
 

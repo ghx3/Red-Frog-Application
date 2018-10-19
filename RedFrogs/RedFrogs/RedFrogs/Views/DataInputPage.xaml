@@ -29,6 +29,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -81,8 +82,8 @@
                     <Button x:Name="addBtn" Text="Add" Grid.Row="14"
                         BackgroundColor="#bf3336" TextColor="White" Clicked="AddClicked" Margin="0,10,0,10"  Grid.ColumnSpan="2"/>
 
-                    <Button x:Name="addReport" Text="Create Incident Report" Grid.Row="13"
-                         TextColor="Blue" Clicked="addingClicked"/>
+                    <Button x:Name="addReport" Text="Create Incident Report" Grid.Row="13" Margin="0,10,0,10"
+                         TextColor="Blue" Clicked="addingClicked" HeightRequest="80"/>
                 </Grid>
             </StackLayout>
         </ScrollView>

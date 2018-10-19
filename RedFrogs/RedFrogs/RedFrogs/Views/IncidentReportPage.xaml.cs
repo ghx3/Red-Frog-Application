@@ -26,13 +26,14 @@ namespace RedFrogs.Views
             if (!String.IsNullOrEmpty(story) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(name)
                && !String.IsNullOrEmpty(detail) && !String.IsNullOrEmpty(action))
             {
-                if ((followUp.IsToggled == true) && (activeIncident.IsToggled == true) && (MoreIncident.IsToggled == true))
+                if ((followUp.IsToggled == true) && (activeIncident.IsToggled == true))
                 {
                     DisplayAlert("Congraduations", "New incident report has been created", "OK");
+                    Navigation.PopAsync();
                 }
                
 
-            }else if ((followUp.IsToggled == false) || (activeIncident.IsToggled == false) || (MoreIncident.IsToggled == false)
+            }else if ((followUp.IsToggled == false) || (activeIncident.IsToggled == false)
                       ||String.IsNullOrEmpty(story) || String.IsNullOrEmpty(type) ||String.IsNullOrEmpty(name)
                || String.IsNullOrEmpty(detail) || String.IsNullOrEmpty(action)){
                 DisplayAlert("Oops", "You missing some parts did not fill in, please enter the necessary information", "OK");

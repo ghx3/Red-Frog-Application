@@ -16,20 +16,25 @@ namespace RedFrogs.Views
         {
             string username = accountName.Text;
             string pswd = accountPassword.Text;
+            string verifyPassw = accountPassword1.Text;
             string namePattern = "^[a-zA-Z][a-zA-Z0-9]{5,11}$";
             string pswdPattern = "^[a-zA-Z][a-zA-Z0-9]{5,11}$";
-
-            if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(pswd))
+           
+            if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(pswd) && !String.IsNullOrEmpty(verifyPassw))
             {
                 if (!Regex.IsMatch(username, namePattern))
                 {
-                    DisplayAlert("Oops", "username input is invalid, please check the enter information", "OK");
-                }else if (!Regex.IsMatch(pswd, pswdPattern)){
-                    DisplayAlert("Oops", "password input is invalid, please check the enter information", "OK");
+                    DisplayAlert("Oops", "username input is invalid, please check the entered information", "OK");
+                }else if (!Regex.IsMatch(pswd, pswdPattern) || !Regex.IsMatch(verifyPassw, pswdPattern)){
+                    DisplayAlert("Oops", "password input is invalid, please check the entered information", "OK");
+                }
+                else if(string.Equals(pswd, verifyPassw))
+                {
+                    DisplayAlert("Warning!", "Incorrect password entry", "OK");
                 }
                 else
                 {
-                    DisplayAlert("Congraduations", "New account has been created", "OK");
+                    DisplayAlert("Congratuations", "New account has been created", "OK");
                 }
             }
             else

@@ -55,6 +55,12 @@ namespace RedFrogs.Views
             }
         }
 
+        //button function link to sign up page
+        private void SignUpClicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SignUpPage());
+        }
+
         private async void addClicked(object sender, EventArgs e)
         {
             var button = sender as Button;

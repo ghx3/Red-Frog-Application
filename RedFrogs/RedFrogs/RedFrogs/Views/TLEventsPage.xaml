@@ -11,6 +11,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
+            
             <ListView x:Name="EventsList"  SeparatorVisibility="Default" SeparatorColor="Black" 
                       ItemSelected="EventSelected" RowHeight="75">
                 <ListView.ItemTemplate>
@@ -39,6 +40,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button x:Name="SignUp" Margin="10, 0, 10, 10" TextColor="White" BorderRadius="5"
+                               Clicked="SignUpClicked" BackgroundColor="#bf3336" Text="Sign up" Grid.Column="1" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
